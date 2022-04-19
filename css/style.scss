@@ -1,0 +1,531 @@
+// Palette color codes */
+// Palette URL: http://paletton.com/#uid=13n0p0ki7wIAD7Pddsmbyl365g5 */
+
+// As hex codes */
+$color-primary-0: #488FA0; // Main Primary color */
+$color-primary-1: #011F27;
+$color-primary-2: #54818C;
+$color-primary-3: #436168;
+$color-primary-4: #414D4F;
+
+// As RGBa codes */
+$rgba-primary-0: rgba(72, 143, 160, 1); // Main Primary color */
+$rgba-primary-1: rgba(1, 31, 39, 1);
+$rgba-primary-2: rgba(84, 129, 140, 1);
+$rgba-primary-3: rgba(67, 97, 104, 1);
+$rgba-primary-4: rgba(65, 77, 79, 1);
+
+
+$color1: #F8F9F7;
+$color3: #E1E9E1;
+$color4: #2F2E2E;
+$color6: #d3e0d3;
+$color7: #8b8585;
+$color8: #ad2626;
+$color9: #000000;
+$white : #ffffff;
+
+
+@font-face {
+    font-family: 'futura';
+    src: url('./police/Futura-Light.otf') format('opentype');
+}
+
+@media screen and (min-width: 960px) {
+    .navButton {
+        width: 700px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .navButton {
+        width: 1000px !important;
+    }
+}
+
+* {
+    font-family: "futura";
+    margin: 0;
+    padding: 0;
+}
+
+//=============================================================
+//===================== header =================================
+//=============================================================
+header {
+    height: 120px;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    display: flex;
+    z-index: 5;
+    background-color: $white;
+
+
+    div {
+        // margin-right: 50px;
+
+        a {
+            font-weight: 900;
+            font-size: 30px;
+            text-decoration: none;
+            color: $color4;
+
+            #logo {
+                color: $color8;
+                height: 40px;
+                width: 40px;
+            }
+        }
+    }
+
+    nav {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 0px;
+        width: 80%;
+        // overflow-x: scroll;
+        // overflow-y: hidden;
+
+        // scrollbar-width: thin;
+        // scrollbar-color: $color8;
+
+
+
+        #filtre {
+            form {
+                #search {
+                    margin-left: 150px;
+                    width: 400px;
+                    height: 30px;
+                }
+
+            }
+
+            div {
+                width: 100%;
+                height: 50px;
+                border-top: 1px solid $color4;
+                border-bottom: 1px solid $color4;
+            }
+
+            .navButton {
+                position: relative;
+                //left: 66px;
+                width: 500px;
+                // display: inline-flex;
+                //display: flex;
+
+                .test {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    overflow-x: scroll;
+                    overflow-y: hidden;
+                    scrollbar-width: thin;
+                    // scrollbar-color: $color8;
+                }
+            }
+        }
+    }
+
+
+
+
+}
+
+
+//=============================================================
+//===================== bouton =================================
+//=============================================================
+.a {
+    text-decoration: none;
+    color: $color1;
+}
+
+.bn632-hover {
+    width: 100px;
+    font-size: 14px;
+    font-weight: 200;
+    color: $color3;
+    cursor: pointer;
+    margin: 10px;
+    height: 20px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+    a {
+        text-decoration: none;
+        color: $color1;
+    }
+
+}
+
+.bn632-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.bn632-hover:focus {
+    outline: none;
+}
+
+.bn632-hover.bn25 {
+    background-image: linear-gradient(to right,
+            #29323c,
+            #485563,
+            #2b5876,
+            #4e4376);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
+
+//=============================================================
+//===================== bouton form============================
+//=============================================================
+
+
+.bn633-hover {
+    font-size: 14px;
+    font-weight: 200;
+    color: $color3;
+    cursor: pointer;
+    margin: 10px;
+    height: 20px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+
+
+}
+
+.bn633-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.bn633-hover:focus {
+    outline: none;
+}
+
+.bn633-hover.bn26 {
+    background-image: linear-gradient(to right,
+            #29323c,
+            #485563,
+            #2b5876,
+            #4e4376);
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+
+}
+
+//=============================================================
+//===================== aside =================================
+//=============================================================
+
+#aside {
+    position: sticky;
+    top: 0px;
+    width: 200px;
+    height: 100%;
+    z-index: 6;
+
+    ul {
+        position: fixed;
+        top: 60px;
+
+        li {
+            list-style: none;
+            margin-bottom: 20px;
+
+            a {
+                text-decoration: none;
+                color: $color4;
+
+            }
+        }
+    }
+
+}
+
+//=============================================================
+//===================== MAIN =================================
+//=============================================================
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin-left: 210px;
+
+    textarea {
+        resize: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color4;
+    }
+
+    //=============================================================
+    //===================== profil =================================
+    //=============================================================
+
+    .profil {
+        display: flex;
+        flex-direction: column;
+
+
+        article {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+
+            img {
+                width: 180px;
+                height: 250px;
+                border: 1px solid black;
+                margin-left: 5px;
+            }
+
+
+
+
+
+        }
+
+
+    }
+
+
+
+
+}
+
+//=============================================================
+//===================== formulaire =================================
+//=============================================================
+.form {
+    article {
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    }
+}
+
+#delBack {
+    display: flex;
+    justify-content: space-between;
+}
+
+//=============================================================
+//===================== index =================================
+//=============================================================
+#index {
+    h2 {
+        text-align: center;
+        margin-top: 30px;
+        font-weight: 900;
+    }
+
+    article {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        border: 1px solid $color6;
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+        gap: 20px;
+
+        .cards {
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            width: 200px;
+
+            a {
+                text-decoration: none;
+
+                .miniCard {
+                    width: 100%;
+                    height: 140px;
+                    background-size: contain;
+                }
+
+                .info {
+                    p {
+                        color: #000000;
+                    }
+                }
+            }
+
+            h3 {
+                font-size: 18px;
+                color: $color9;
+                font-weight: 400;
+            }
+        }
+
+    }
+
+
+}
+
+
+// =============================================================
+//=============================================================
+//===================== connexion =================================
+//=============================================================
+.contact {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+        button {
+            a {
+                color: $white;
+            }
+        }
+    }
+}
+
+//=============================================================
+//===================== l'article =============================
+//=============================================================
+.oneArticle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .fichierOne {
+        width: 250px;
+        height: 350px;
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+
+        h3 {
+            font-weight: 900;
+        }
+
+        #description {
+
+            font-weight: 600;
+        }
+    }
+
+
+}
+
+
+//=============================================================
+//===================== formulaire pop modif user =============
+//=============================================================
+// ============================================================
+
+// apparition pop profil modif
+.formUsers {
+    border: 1px solid black;
+    border-radius: 15px;
+    position: relative;
+    top: -550px;
+    width: 0;
+    height: 0;
+    background: white;
+    margin: 25%;
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.5s;
+    visibility: hidden;
+
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        width: 400px;
+        height: 500px;
+        visibility: visible;
+
+
+
+
+    }
+
+    form {
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        button {
+            margin-top: 20px;
+        }
+
+        #retour {
+            position: relative;
+            top: 5px;
+        }
+    }
+}
+
+//=============================================================
+//===================== footer ================================
+//=============================================================
+footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    background: $color3;
+    height: 50px;
+    align-items: center;
+    font-family: "Roboto";
+
+    nav {
+        ul {
+            display: flex;
+
+            li {
+                list-style-type: none;
+                margin-left: 10px;
+
+                a {
+                    text-decoration: none;
+                    color: $color4;
+
+
+                    svg {
+                        height: 20px;
+                        width: 20px;
+
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+#titreCards {
+    margin-top: 10px;
+}
