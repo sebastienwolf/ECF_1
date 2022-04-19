@@ -158,6 +158,25 @@ class Article extends Controller
     }
 
     // ===================================================================================================
+    // ===============================        udapte reservation    ======================================
+    // ===================================================================================================
+
+    public function reservation()
+    {
+        if (!isset($_SESSION['userType'])) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+
+            $id = filter_input(INPUT_GET, "id");
+            $item = "emprunt = true";
+            $condition = "id_article = {$id}";
+            $this->udapteDate($id);
+            $this->model->udapte($item, $condition);
+
+            echo json_encode(1);
+        }
+    }
+    // ===================================================================================================
     // ===============================        udaptedate    ======================================
     // ===================================================================================================
 
@@ -167,8 +186,11 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
 
-            $item = "udapteDate = DEFAULT";
-            $condition = "idArticle = '{$idArticle}'";
+            $dateNow = date('Y-m-d', time());
+            $nextWeek = time() + (7 * 24 * 60 * 60);
+            $dateEnd = date('Y-m-d', $nextWeek);
+            $item = "date_emprunt = '{$dateNow}', dateRetour = '{$dateEnd}'";
+            $condition = "id_article = '{$idArticle}'";
             $this->model->udapte($item, $condition);
         }
     }

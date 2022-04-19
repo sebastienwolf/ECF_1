@@ -11,10 +11,46 @@
         <hr>
         <p id="description"> Description :</p>
         <p><?= $articles[0]['description'] ?></p>
+
         <?php
+        if ($articles[0]['emprunt'] == false) { ?>
+            <p>stock : Disponible</p>
+        <?php } else { ?>
+            <p>stock : indisponible</p>
+
+        <?php }
+
+        if (isset($_SESSION['userType']) && $articles[0]['emprunt'] == false) { ?>
+            <!-- <button id="tata" type="submit" class="bn632-hover bn25" data-id="<?= $articles[0]['idArticle'] ?>">Réservation</button> -->
+            <button class="bn632-hover bn25"><a href="index.php?controller=article&task=reservation&id=<?= $articles[0]['id_article'] ?>"> réservation</a></button>
+
+        <?php }
         if ($_SESSION['userType'] == "admin") { ?>
-            <button class="bn632-hover bn25"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['idArticle'] ?>"> modifier</a></button>
+            <button id="reserver" class="bn632-hover bn25"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
         <?php } ?>
     </div>
 
 </article>
+
+<script>
+    document.getElementById("reserver").addEventListener('submit', event => {
+        event.preventDefault();
+        debugger
+        let id = document.getElementById('reserver').dataset.id;
+        debugger
+        // on recurepère les données de data des bouton
+        let URL = "index.php?controller=article&task=reservation"
+        let formData = new FormData()
+        formData.append('id', id)
+
+        fetch(URL, {
+                body: formData,
+                method: "post"
+            })
+            .then(function(response) {
+                return response.text()
+            })
+            .then(function(data) {
+                location.reload()
+            })
+    })
