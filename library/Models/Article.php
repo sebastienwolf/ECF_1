@@ -20,4 +20,15 @@ class Article extends Model
 
         $sql->execute(array($typeAdd, $titreAdd, $description, $fileName, $categorie, $idUser));
     }
+
+    public function createPret($data)
+    {
+        extract($data);
+        $a = $date['dateNow'];
+        $b = $date['dateEnd'];
+
+        //{$date['dateNow']}'
+        $sql = $this->pdo->prepare("INSERT INTO pret (id_user, id_article, date_retour, date_depart, `check`) Values (?, ?, ?, ?, ?)");
+        $sql->execute(array($idUser, $id, $b, $a, 0));
+    }
 }

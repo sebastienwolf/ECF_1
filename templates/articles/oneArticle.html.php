@@ -21,27 +21,34 @@
         <?php }
 
         if (isset($_SESSION['userType']) && $articles[0]['emprunt'] == false) { ?>
-            <!-- <button id="tata" type="submit" class="bn632-hover bn25" data-id="<?= $articles[0]['idArticle'] ?>">Réservation</button> -->
-            <button class="bn632-hover bn25"><a href="index.php?controller=article&task=reservation&id=<?= $articles[0]['id_article'] ?>"> réservation</a></button>
+            <button id="reservation" class="bn632-hover bn25" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>">Réservation</button>
+
+        <?php }
+        if (isset($_SESSION['userType']) && $articles[0]['emprunt'] == true) { ?>
+            <button id="reservation" class="bn632-hover bn25" data-bool="false" data-id="<?= $articles[0]['id_article'] ?>">Restitution</button>
 
         <?php }
         if ($_SESSION['userType'] == "admin") { ?>
             <button id="reserver" class="bn632-hover bn25"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
         <?php } ?>
+        <div id="message" class="message">
+            <p id="reponse"></p>
+            <button class="bn632-hover bn25" id="retour">retour</button>
+        </div>
     </div>
 
 </article>
 
 <script>
-    document.getElementById("reserver").addEventListener('submit', event => {
+    document.getElementById("reservation").addEventListener('click', event => {
         event.preventDefault();
-        debugger
-        let id = document.getElementById('reserver').dataset.id;
-        debugger
-        // on recurepère les données de data des bouton
-        let URL = "index.php?controller=article&task=reservation"
-        let formData = new FormData()
-        formData.append('id', id)
+        let id = document.getElementById('reservation').dataset.id;
+        let bool = document.getElementById('reservation').dataset.bool;
+        let URL = "index.php?controller=article&task=reservation";
+        let formData = new FormData();
+        formData.append('id', id);
+        formData.append('bool', bool);
+
 
         fetch(URL, {
                 body: formData,
@@ -51,6 +58,16 @@
                 return response.text()
             })
             .then(function(data) {
+                debugger
+                document.getElementById('reponse').innerHTML = data;
+                document.getElementById('message').classList.toggle("active");
                 location.reload()
             })
     })
+    // ==============================================================================
+    //retour
+    document.getElementById("retour").addEventListener('click', event => {
+        // toogle permet de voir si la classe est active alors il l'enlève sinon il le mets
+        document.getElementById("message").classList.toggle("active")
+    })
+</script>

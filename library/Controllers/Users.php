@@ -10,8 +10,12 @@ class Users extends Controller
     public function logOut()
     {
         session_start();
+        $a = $_COOKIE['PHPSESSID'];
+        setcookie($a);
         session_unset();
         session_destroy();
+
+
         header('location: index.php?controller=article&task=index');
     }
     // ===================================================================================================

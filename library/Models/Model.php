@@ -24,11 +24,11 @@ abstract class Model
     {
         if ($i == "category") {
             $table = $i;
-            $requette = "SELECT * FROM $table";
+            $requete = "SELECT * FROM $table";
         } else {
-            $requette = "SELECT * FROM $this->table Where $i";
+            $requete = "SELECT * FROM $this->table Where $i";
         }
-        $sql = $this->pdo->prepare($requette);
+        $sql = $this->pdo->prepare($requete);
         $sql->execute();
         $response = $sql->fetchAll();
         // $test = $sql->errorInfo();
@@ -40,11 +40,11 @@ abstract class Model
     // ===================================================================================================
     public function showAllTable($where)
     {
-        $requette = "SELECT articles.*, category.* 
+        $requete = "SELECT articles.*, category.* 
         FROM articles 
         LEFT JOIN category ON category.id_category = articles.id_category
         WHERE " . $where . " ORDER BY articles.id_article DESC";
-        $sql = $this->pdo->prepare($requette);
+        $sql = $this->pdo->prepare($requete);
         // $sql->execute(array($where));
         $sql->execute();
 
@@ -54,12 +54,28 @@ abstract class Model
     }
 
     // ===================================================================================================
+    // ===============================        showAllPre   ===================================
+    // ===================================================================================================
+    public function showAllPre($id)
+    {
+
+        $requete = "SELECT pret.* , users.nom, users.prenom , articles.titre, articles.auteur, articles.genre, articles.collection, articles.edition
+        FROM `pret` 
+        LEFT JOIN users ON users.id_user = pret.id_user
+        LEFT JOIN articles ON articles.id_article = articles.id_article
+        WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.check = false";
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute([$id]);
+        $response = $sql->fetchAll();
+        return $response;
+    }
+    // ===================================================================================================
     // ===============================        udapte   ===================================
     // ===================================================================================================
     public function udapte($item, $id)
     {
-        $requette = "UPDATE $this->table SET " . $item . " WHERE " . $id;
-        $sql = $this->pdo->prepare($requette);
+        $requete = "UPDATE $this->table SET " . $item . " WHERE " . $id;
+        $sql = $this->pdo->prepare($requete);
         $response = $sql->execute();
         //$response = $sql->fetchAll();
         // $test = $sql->errorInfo();
@@ -82,8 +98,8 @@ abstract class Model
     // ===================================================================================================
     public function delete($condition)
     {
-        $requette = "DELETE FROM $this->table WHERE " . $condition;
-        $sql = $this->pdo->prepare("$requette");
+        $requete = "DELETE FROM $this->table WHERE " . $condition;
+        $sql = $this->pdo->prepare("$requete");
         $sql->execute();
     }
 }

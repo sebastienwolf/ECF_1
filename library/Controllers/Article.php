@@ -8,6 +8,8 @@ class Article extends Controller
 
     protected $modelName = \Models\Article::class;
 
+
+
     // ===================================================================================================
     // ===============================        index    ===========================================
     // ===================================================================================================
@@ -31,16 +33,10 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = $_SESSION['id'];
-            $i = "articles.idUsers = $id";
-            $articles = $this->model->showAllTable($i);
-            $themes = $this->model->showAll("categorie");
+            $articles = $this->model->showAllPre($id);
 
-            $pageTitle = 'mes articles';
-            // ob_start();
-            // require_once('templates/articles/myArticle.html.php');
-            // $pageContent = ob_get_clean();
-            // require_once('templates/layout.html.php');
-            \Renderer::render('articles/myArticle', compact('pageTitle', 'articles', 'i', 'themes'));
+            $pageTitle = 'mes réservations';
+            \Renderer::render('articles/myArticle', compact('pageTitle', 'articles'));
         }
     }
 
@@ -167,14 +163,35 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
 
-            $id = filter_input(INPUT_GET, "id");
-            $item = "emprunt = true";
+            $id = filter_input(INPUT_POST, "id");
+            $bool = filter_input(INPUT_POST, "bool");
+            $item = "emprunt = $bool";
             $condition = "id_article = {$id}";
-            $this->udapteDate($id);
             $this->model->udapte($item, $condition);
-
-            echo json_encode(1);
+            $this->udapteDate($id);
+            $date = $this->date();
+            $idUser = $_SESSION['id'];
+            $data = compact('idUser', 'id', 'date');
+            $this->model->createPret($data);
+            if ($bool == true) {
+                echo json_encode('Vous avez rendu l\'article');
+            } else {
+                echo json_encode('Vous avez réservé l\'article');
+            }
         }
+    }
+
+    // ===================================================================================================
+    // ===============================        date    ======================================
+    // ===================================================================================================
+
+    public function date()
+    {
+        $dateNow = date('Y-m-d', time());
+        $nextWeek = time() + (7 * 24 * 60 * 60);
+        $dateEnd = date('Y-m-d', $nextWeek);
+        $test = compact('dateNow', 'dateEnd');
+        return ($test);
     }
     // ===================================================================================================
     // ===============================        udaptedate    ======================================
@@ -186,10 +203,8 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
 
-            $dateNow = date('Y-m-d', time());
-            $nextWeek = time() + (7 * 24 * 60 * 60);
-            $dateEnd = date('Y-m-d', $nextWeek);
-            $item = "date_emprunt = '{$dateNow}', dateRetour = '{$dateEnd}'";
+            $date = $this->date();
+            $item = "date_emprunt = '{$date['dateNow']}', dateRetour = '{$date['dateEnd']}'";
             $condition = "id_article = '{$idArticle}'";
             $this->model->udapte($item, $condition);
         }
