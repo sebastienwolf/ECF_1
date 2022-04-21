@@ -19,9 +19,10 @@ class Article extends Controller
         session_start();
         $categorie = $this->model->showAll("category");
         $articles = $this->model->showAllTable(1);
+        $alert = $this->model->alert($_SESSION['id']);
         $pageTitle = 'Accueil';
         //avec le renderer je gere les vu la ba pour eviter de repeter le code
-        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie',));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert'));
     }
     // ===================================================================================================
     // ===============================        myArticles    ===========================================
@@ -39,7 +40,19 @@ class Article extends Controller
             \Renderer::render('articles/myArticle', compact('pageTitle', 'articles'));
         }
     }
+    // ===================================================================================================
+    // ===============================        allArticle    ===========================================
+    // ===================================================================================================
 
+    public function allArticle()
+    {
+        session_start();
+        // $categorie = $this->model->showAll("category");
+        $articles = $this->model->showAllTable(1);
+        $pageTitle = 'all articles';
+        //avec le renderer je gere les vu la ba pour eviter de repeter le code
+        \Renderer::render('articles/allArticle', compact('pageTitle', 'articles'));
+    }
     // ===================================================================================================
     // ===============================        historique    ===========================================
     // ===================================================================================================

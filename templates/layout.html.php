@@ -44,15 +44,34 @@ session_start();
                     <!-- &darr;   fleche bas -->
                     <!-- &uarr;   fleche haut -->
                     <div class="navButton">
-                        <div class="test">
-                            <button id="date" class="filtre bn632-hover bn25" data-id="dateUp">Date &darr;</button>
-                            <button id="image" class="filtre bn632-hover bn25" data-id="image">Image </button>
-                            <button id="video" class="filtre bn632-hover bn25" data-id="video">Video </button>
-
-
-                            <?php foreach ($themes as $theme) {
+                        <div class="categorie">
+                            <?php foreach ($categorie as $cat) {
                             ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $theme['idCategorie'] ?>"><?= $theme['theme'] ?></button>
+                                <button class="filtre bn632-hover bn25" data-id="<?= $cat['idCategorie'] ?>"><?= $cat['theme'] ?></button>
+                            <?php } ?>
+                        </div>
+                        <div class="genre">
+                            <?php foreach ($genre as $gen) {
+                            ?>
+                                <button class="filtre bn632-hover bn25" data-id="<?= $gen['idCategorie'] ?>"><?= $gen['theme'] ?></button>
+                            <?php } ?>
+                        </div>
+                        <div class="auteur">
+                            <?php foreach ($auteur as $aut) {
+                            ?>
+                                <button class="filtre bn632-hover bn25" data-id="<?= $aut['idCategorie'] ?>"><?= $aut['theme'] ?></button>
+                            <?php } ?>
+                        </div>
+                        <div class="collection">
+                            <?php foreach ($collection as $colec) {
+                            ?>
+                                <button class="filtre bn632-hover bn25" data-id="<?= $colec['idCategorie'] ?>"><?= $colec['theme'] ?></button>
+                            <?php } ?>
+                        </div>
+                        <div class="editeur">
+                            <?php foreach ($editeur as $edit) {
+                            ?>
+                                <button class="filtre bn632-hover bn25" data-id="<?= $edit['idCategorie'] ?>"><?= $edit['theme'] ?></button>
                             <?php } ?>
                         </div>
                     </div>
@@ -73,6 +92,14 @@ session_start();
                     </svg></span> <a href="index.php?controller=article&task=index"> Accueil</a></li>
 
             <!-- ======================================================================================== -->
+            <!-- =============================  allArticle ================================================= -->
+            <!-- ======================================================================================== -->
+            <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg></span> <a href="index.php?controller=article&task=allArticle">Recherche</a></li>
+
+
+            <!-- ======================================================================================== -->
             <!-- =============================  Profil ================================================= -->
             <!-- ======================================================================================== -->
             <!-- Si un utilisateur est connecté -->
@@ -90,13 +117,12 @@ session_start();
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg></span> <a href="index.php?controller=article&task=myArticles">Mes videos</a> </li>
                 <!-- ======================================================================================= -->
-                <!-- =============================  Mes articles ================================================= -->
+                <!-- =============================  historique ================================================= -->
                 <!-- ======================================================================================== -->
                 <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                             <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
                             <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                         </svg></span> <a href="index.php?controller=article&task=historique">Historique</a> </li>
-
 
 
 
@@ -118,6 +144,8 @@ session_start();
                     <li><a href="#">ADMIN</a></li>
                 <?php
                 } ?>
+
+
                 <!-- ======================================================================================== -->
                 <!-- =============================  DECONNEXION ================================================= -->
                 <!-- ======================================================================================== -->
