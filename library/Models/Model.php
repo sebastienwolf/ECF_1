@@ -59,11 +59,27 @@ abstract class Model
     public function showAllPre($id)
     {
 
-        $requete = "SELECT pret.* , users.nom, users.prenom , articles.titre, articles.auteur, articles.genre, articles.collection, articles.edition
+        $requete = "SELECT pret.id_pret, articles.titre, articles.auteur, articles.genre, articles.collection, articles.edition,  DATE_FORMAT(pret.date_depart, '%d/%m/%Y') as date_depart, DATE_FORMAT(pret.date_retour, '%d/%m/%Y') as date_retour, articles.id_article
         FROM `pret` 
         LEFT JOIN users ON users.id_user = pret.id_user
         LEFT JOIN articles ON articles.id_article = articles.id_article
-        WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.check = false";
+        WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.back = false";
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute([$id]);
+        $response = $sql->fetchAll();
+        return $response;
+    }
+    // ===================================================================================================
+    // ===============================        historique Show   ===================================
+    // ===================================================================================================
+    public function showHistorique($id)
+    {
+
+        $requete = "SELECT pret.id_pret, articles.titre, articles.auteur, articles.genre, articles.collection, articles.edition, DATE_FORMAT(pret.rendu, '%d/%m/%Y') as rendu
+        FROM `pret` 
+        LEFT JOIN users ON users.id_user = pret.id_user
+        LEFT JOIN articles ON articles.id_article = articles.id_article
+        WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.back = true";
         $sql = $this->pdo->prepare($requete);
         $sql->execute([$id]);
         $response = $sql->fetchAll();
@@ -77,22 +93,22 @@ abstract class Model
         $requete = "UPDATE $this->table SET " . $item . " WHERE " . $id;
         $sql = $this->pdo->prepare($requete);
         $response = $sql->execute();
-        //$response = $sql->fetchAll();
-        // $test = $sql->errorInfo();
+
         return $response;
     }
     // ===================================================================================================
-    // ===============================        a tester   ===================================
+    // ===============================        udapte Pret  ===================================
     // ===================================================================================================
-    // faut que je test ça
-    public function test($usersData)
+
+    public function udaptePret($table, $item, $reponse, $condition, $id)
     {
-        extract($usersData);
+        $dateNow = date('Y-m-d', time());
+        $requete = "UPDATE pret SET back = 1, rendu = ? WHERE id_article = ?";
+        $sql = $this->pdo->prepare($requete);
+        $response = $sql->execute([$dateNow, $id]);
 
-        $sql = $this->pdo->prepare('INSERT INTO ($this->table) VALUES (?), (?), (?), (?), (?), (?), (?)');
-        $sql->execute(["DEFAULT", $userNom, $userPrenom, $userMail, $userPseudo, $hash, "DEFAULT"]);
+        return $response;
     }
-
     // ===================================================================================================
     // ===============================        delete   ===================================
     // ===================================================================================================

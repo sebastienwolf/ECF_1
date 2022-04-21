@@ -1,19 +1,17 @@
 <section id="index">
 
-    <h2>Voici vos réservations en cours</h2>
+    <h2>Voici toutes vos réservations effectué </h2>
 
     <table>
         <thead>
             <tr>
                 <th>Numéro de réservation</th>
-                <th>titre</th>
-                <th>auteur</th>
-                <th>genre</th>
-                <th>collection</th>
-                <th>edition</th>
-                <th>date de réservation</th>
-                <th>date de retour</th>
-                <th>retourner le livre</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Genre</th>
+                <th>Collection</th>
+                <th>Edition</th>
+                <th>Rendu le :</th>
 
 
 
@@ -31,7 +29,7 @@
 <!-- =================================================================================================== -->
 <script>
     const tableau = <?php echo json_encode($articles); ?>;
-
+    debugger
     pop(tableau)
 
     //==============================================================================================
@@ -57,44 +55,11 @@
                     let col = document.createElement('td');
                     col.innerHTML = element[i];
                     a.appendChild(col);
-                } else {
-                    let col = document.createElement('button');
-                    col.innerHTML = "rendre";
-                    col.dataset.id = element[i];
-                    col.className = "rendre"
-                    a.appendChild(col);
                 }
             }
             //on mest tout ça dans le tableau
             x.appendChild(a)
 
         });
-    }
-
-    //==========================================================================================
-    let back = document.getElementsByClassName('rendre')
-    console.log(back)
-    let item
-    for (item of back) {
-        item.addEventListener('click', (event) => {
-            event.preventDefault();
-
-            let id = event.target.dataset.id
-            let URL = "index.php?controller=article&task=back&id=" + id
-            let formData = new FormData()
-            //formData.append(id)
-            fetch(URL)
-                .then(function(response) {
-                    return response.text()
-                })
-                .then(function(data) {
-                    debugger
-                    const x = document.getElementById(id);
-
-                    x.remove()
-                    //pop(data)
-                })
-
-        })
     }
 </script>

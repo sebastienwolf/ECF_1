@@ -28,7 +28,7 @@ class Article extends Model
         $b = $date['dateEnd'];
 
         //{$date['dateNow']}'
-        $sql = $this->pdo->prepare("INSERT INTO pret (id_user, id_article, date_retour, date_depart, `check`) Values (?, ?, ?, ?, ?)");
+        $sql = $this->pdo->prepare("INSERT INTO pret (id_user, id_article, date_retour, date_depart, back) Values (?, ?, ?, ?, ?)");
         $sql->execute(array($idUser, $id, $b, $a, 0));
     }
 }
