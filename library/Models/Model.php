@@ -125,7 +125,98 @@ abstract class Model
 
         return $response;
     }
+    // ===================================================================================================
+    // ===============================        filtre   ===================================
+    // ===================================================================================================
 
+    public function filtre($tableau)
+    {
+        $requete = "SELECT articles.*, category.name FROM articles
+        LEFT JOIN category ON articles.id_category = category.id_category WHERE ";
+        $end = end(end($tableau));
+        extract($tableau);
+        // $endCat = end($tableau['category']);
+        // $endGenre = end($tableau['genre']);
+        // $endAut = end($tableau['auteur']);
+        // $endColl = end($tableau['collection']);
+        // $endEdi = end($tableau['edition']);
+
+
+
+
+        if (isset($category)) {
+            foreach ($tableau['category'] as $a) {
+                if ($a !== $end) {
+                    $requete .= "category.name LIKE '$a' OR ";
+                } else {
+                    $requete .= "category.name LIKE '$end'";
+                }
+            }
+        }
+        if (isset($genre)) {
+            foreach ($tableau['genre'] as $a) {
+                if ($a !== $end) {
+                    $requete .= "articles.genre LIKE '$a' OR ";
+                } else {
+                    $requete .= "articles.genre LIKE '$end'";
+                }
+            }
+        }
+        if (isset($auteur)) {
+            foreach ($auteur as $a) {
+                if ($a !== $end) {
+                    $requete .= "articles.auteur LIKE '$a' OR ";
+                } else {
+                    $requete .= "articles.auteur LIKE '$end'";
+                }
+            }
+        }
+        if (isset($collection)) {
+            foreach ($collection as $a) {
+                if ($a !== $end) {
+                    $requete .= "articles.collection LIKE '$a' OR ";
+                } else {
+                    $requete .= "articles.collection LIKE '$end'";
+                }
+            }
+        }
+        if (isset($edition)) {
+            foreach ($edition as $a) {
+                if ($a !== $end) {
+                    $requete .= "articles.edition LIKE '$a' OR ";
+                } else {
+                    $requete .= "articles.edition LIKE '$end'";
+                }
+            }
+        }
+        // } else {
+        //     switch ($end) {
+        //         case $endCat:
+        //             $requete .= "category.name LIKE " . $end;
+        //             break;
+        //         case $endGenre:
+        //             $requete .= "articles.genre LIKE " . $end;
+        //             break;
+        //         case $endAut:
+        //             $requete .= "articles.auteur LIKE " . $end;
+        //             break;
+        //         case $endColl:
+        //             $requete .= "articles.collection LIKE " . $end;
+        //             break;
+        //         case $endEdi:
+        //             $requete .= "articles.edition LIKE " . $end;
+        //             break;
+        //     }
+        // }
+        //}
+
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute();
+        $response = $sql->fetchAll();
+
+
+        return $response;
+    }
 
     // ===================================================================================================
     // ===============================        delete   ===================================

@@ -62,6 +62,10 @@
                     col.innerHTML = "rendre";
                     col.dataset.id = element[i];
                     col.className = "rendre"
+                    col.onclick = function() {
+                        alert("Voulez vous rendre l'article?");
+                    };
+
                     a.appendChild(col);
                 }
             }
