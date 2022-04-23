@@ -12,11 +12,11 @@
 </section>
 <script>
     const tableau = <?php echo json_encode($articles); ?>;
-    console.log(tableau.file);
-    console.log(tableau[9]);
+    const showCat = <?php echo json_encode($cat); ?>;
 
 
-    pop(tableau)
+
+    pop(tableau, showCat)
 
     //==============================================================================================
 
@@ -24,7 +24,7 @@
      *le paramettre tableau est un array
      *il permet d'afficher les élement du tableau en fonction du nombre d'element du tableau
      */
-    function pop(tableau) {
+    function pop(tableau, showCat) {
         const x = document.getElementById('form');
         const cible = ["", "Titre :", "Auteur :", "Genre :", "Collection :", "Edition :", "Categorie :", "description :", "Image :"]
         let chiffre = 0
@@ -40,7 +40,7 @@
                     label.innerText = cible[chiffre];
                     x.appendChild(label);
                 }
-                if (i !== "description" && i !== "file" && i !== "category") {
+                if (i !== "description" && i !== "file" && i !== "name") {
                     let col = document.createElement('input');
                     col.type = "text"
                     col.name = i
@@ -52,25 +52,22 @@
 
                     x.appendChild(col);
                 }
-                if (i == "category") {
+                if (i == "name") {
+                    debugger
                     let select = document.createElement('select');
                     select.name = "category"
-                    forEach() {
+                    let choix = document.createElement('option');
+                    choix.innerText = element[i];
+                    choix.value = 0;
+                    select.appendChild(choix)
 
+                    showCat.forEach(e => {
+                        let option = document.createElement('option');
+                        option.innerText = e['name'];
+                        option.value = e['id_category'];
+                        select.appendChild(option)
+                    })
 
-                    }
-                    let option1 = document.createElement('option');
-                    option1.innerText = element[i];
-                    let option2 = document.createElement('option');
-                    option2.innerText = "utilisateur";
-                    option2.value = "utilisateur";
-                    let option3 = document.createElement('option');
-                    option3.innerText = "admin";
-                    option3.value = "admin";
-
-                    select.appendChild(option1)
-                    select.appendChild(option2)
-                    select.appendChild(option3)
                     x.appendChild(select)
                 }
 
@@ -153,7 +150,10 @@
                 while (content.firstChild) {
                     content.removeChild(content.firstChild)
                 }
-                pop(data)
+                let tab = Object.values(data.retour);
+                let y = Object.values(data.cat);
+
+                pop(tab, y);
             })
     })
 </script>

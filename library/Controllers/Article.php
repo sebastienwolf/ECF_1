@@ -367,6 +367,20 @@ class Article extends Controller
                 $this->model->udapte($item, $condition);
             }
             //============================================================
+            // edition
+            if ($edit !== "") {
+                $item = "edition = '{$edit}'";
+                $condition = "id_article = '{$idArticle}'";
+                $this->model->udapte($item, $condition);
+            }
+            //============================================================
+            // collection
+            if ($coll !== "") {
+                $item = "collection = '{$coll}'";
+                $condition = "id_article = '{$idArticle}'";
+                $this->model->udapte($item, $condition);
+            }
+            //============================================================
             // fichier et type
 
             if ($_FILES['file']['name'] !== "") {
@@ -434,7 +448,9 @@ class Article extends Controller
                 }
             }
             $retour = $this->model->modifArticle($idArticle);
-            echo json_encode($retour);
+            $cat = $this->model->showAll("category");
+            $a = compact('retour', 'cat');
+            echo json_encode($a);
         }
     }
 
