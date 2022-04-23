@@ -32,4 +32,21 @@ class Article extends Model
         $sql = $this->pdo->prepare("INSERT INTO pret (id_user, id_article, date_retour, date_depart, back) Values (?, ?, ?, ?, ?)");
         $sql->execute(array($idUser, $id, $b, $a, 0));
     }
+
+
+
+    public function modifArticle($data)
+    {
+        $requete = "SELECT articles.id_article, articles.titre, articles.auteur, articles.genre, articles.collection, articles.edition, category.name,  articles.description, articles.file  
+        FROM articles 
+        LEFT JOIN category ON category.id_category = articles.id_category
+        WHERE articles.id_article = ?";
+        $sql = $this->pdo->prepare($requete);
+        // $sql->execute(array($where));
+        $sql->execute([$data]);
+
+        $response = $sql->fetchAll();
+        // $test = $sql->errorInfo();
+        return $response;
+    }
 }

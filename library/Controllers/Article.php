@@ -216,27 +216,21 @@ class Article extends Controller
     }
 
     // ===================================================================================================
-    // ===============================        one Article modify    ======================================
+    // ===============================        modifArticle    ======================================
     // ===================================================================================================
 
     public function modifArticle()
     {
-        if (!isset($_SESSION['userType'])) {
+        if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
 
             $id = filter_input(INPUT_GET, "id");
-            $i = "articles.idArticle = $id";
-            $articles = $this->model->showAllTable($i);
-            $themes = $this->model->showAll("categorie");
-
+            $articles = $this->model->modifArticle($id);
+            $cat = $this->model->showAll("category");
 
             $pageTitle = 'modifier un article';
-            // ob_start();
-            // require_once('templates/articles/modifArticle.html.php');
-            // $pageContent = ob_get_clean();
-            // require_once('templates/layout.html.php');
-            \Renderer::render('articles/modifArticle', compact('pageTitle', 'articles', 'i', 'themes'));
+            \Renderer::render('articles/modifArticle', compact('pageTitle', 'articles', 'cat'));
         }
     }
 
@@ -321,56 +315,67 @@ class Article extends Controller
 
     public function valideModif()
     {
-        if (!isset($_SESSION['userType'])) {
+        if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
 
-            // $typeAdd = htmlspecialchars(filter_input(INPUT_POST, 'type'));
-            $titreAdd = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
-            $categorie = filter_input(INPUT_POST, 'categorie');
-            $idArticle = filter_input(INPUT_POST, 'id');
-            $description = htmlspecialchars(filter_input(INPUT_POST, 'description'));
-            $fichierDelete = htmlspecialchars(filter_input(INPUT_POST, 'deleteFichier'));
-
+            $titre = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
+            $aut = htmlspecialchars(filter_input(INPUT_POST, 'auteur'));
+            $gen = htmlspecialchars(filter_input(INPUT_POST, 'genre'));
+            $coll = htmlspecialchars(filter_input(INPUT_POST, 'collection'));
+            $edit = htmlspecialchars(filter_input(INPUT_POST, 'edition'));
+            $desc = htmlspecialchars(filter_input(INPUT_POST, 'description'));
+            $categorie = htmlspecialchars(filter_input(INPUT_POST, 'category'));
+            $idArticle = htmlspecialchars(filter_input(INPUT_POST, 'id_article'));
+            $fichierDelete = htmlspecialchars(filter_input(INPUT_POST, 'del'));
             //============================================================
             // titre
-            if ($titreAdd !== "") {
-                $item = "titre = '{$titreAdd}'";
-                $condition = "idArticle = '{$idArticle}'";
+            if ($titre !== "") {
+                $item = "titre = '{$titre}'";
+                $condition = "id_article = '{$idArticle}'";
                 $this->model->udapte($item, $condition);
-                $this->udapteDate($idArticle);
-                echo json_encode(1);
+            }
+            //============================================================
+            // auteur
+            if ($aut !== "") {
+                $item = "auteur = '{$aut}'";
+                $condition = "id_article = '{$idArticle}'";
+                $this->model->udapte($item, $condition);
+            }
+            //============================================================
+            // genre
+            if ($gen !== "") {
+                $item = "genre = '{$gen}'";
+                $condition = "id_article = '{$idArticle}'";
+                $this->model->udapte($item, $condition);
             }
 
             //============================================================
             // categori
             if ($categorie > 0) {
-                $item = "idCategorie = '{$categorie}'";
-                $condition = "idArticle = '{$idArticle}'";
+                $item = "id_categorie = '{$categorie}'";
+                $condition = "id_article = '{$idArticle}'";
                 $this->model->udapte($item, $condition);
                 $this->udapteDate($idArticle);
-                echo json_encode(1);
             }
 
             //============================================================
             // desription
-            if ($description !== "") {
-                $item = "contenu = '{$description}'";
-                $condition = "idArticle = '{$idArticle}'";
+            if ($desc !== "") {
+                $item = "description = '{$desc}'";
+                $condition = "id_article = '{$idArticle}'";
                 $this->model->udapte($item, $condition);
-                $this->udapteDate($idArticle);
-                echo json_encode(1);
             }
             //============================================================
             // fichier et type
 
-            if ($_FILES['fichier']['name'] !== "") {
+            if ($_FILES['file']['name'] !== "") {
 
-                $contenu = $_FILES['fichier']['tmp_name'];
-                $size = $_FILES['fichier']['size'];
-                $name = $_FILES['fichier']['name'];
-                $extension = $_FILES['fichier']['type'];
-                $error = $_FILES['fichier']['error'];
+                $contenu = $_FILES['file']['tmp_name'];
+                $size = $_FILES['file']['size'];
+                $name = $_FILES['file']['name'];
+                $extension = $_FILES['file']['type'];
+                $error = $_FILES['file']['error'];
                 // explode dcoupe une chaine en fonction du caractere donné exemple:
                 // salon.jpg =========== [salon, jpg] 
                 $tableExtension = explode('.', $name);
@@ -378,7 +383,7 @@ class Article extends Controller
                 // strtolower = renvoie une chaine de caractere en minuscule
                 $extension = strtolower(end($tableExtension));
                 // type de fichier autorisé
-                $extensionAutorise = ['jpg', 'jpeg', 'png', 'bmp', 'tif', 'mp4', 'mov', 'avi', 'wmv'];
+                $extensionAutorise = ['jpg', 'jpeg', 'png'];
                 // taille de fichier autorisé
                 $tailleAutorise = 5000000;
 
@@ -388,11 +393,7 @@ class Article extends Controller
 
 
                 if (in_array($extension, $extensionAutorise)) {
-                    if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'bmp' || $extension == 'tif') {
-                        $type = "image";
-                    } else {
-                        $type = "video";
-                    }
+                    $type = "image";
 
                     if ($size <= $tailleAutorise) {
                         if ($error == 0) {
@@ -401,14 +402,9 @@ class Article extends Controller
 
                             $b = compact('typeAdd', 'titreAdd', 'description', 'fileName', 'categorie', 'idUser');
                             //========================================================
-                            // changemeent du type
-                            $item = "Type = '{$type}'";
-                            $condition = "idArticle = '{$idArticle}'";
-                            $this->model->udapte($item, $condition);
-                            //========================================================
                             // changemeent du fichier
-                            $item = "imageArticle = '{$fileName}'";
-                            $condition = "idArticle = '{$idArticle}'";
+                            $item = "file = '{$fileName}'";
+                            $condition = "id_article = '{$idArticle}'";
                             $this->model->udapte($item, $condition);
 
                             // move_uploaded_file = deplace le fichier la ou on le décide
@@ -421,7 +417,6 @@ class Article extends Controller
                                 // unlin = suprime un fichier
                                 unlink($delete);
                             }
-                            $this->udapteDate($idArticle);
                             echo json_encode(1);
                         } else {
                             echo json_encode(5);
@@ -438,6 +433,8 @@ class Article extends Controller
                     // 3 = le fichier n'est pas compatible avec notre site
                 }
             }
+            $retour = $this->model->modifArticle($idArticle);
+            echo json_encode($retour);
         }
     }
 
