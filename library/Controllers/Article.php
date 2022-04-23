@@ -47,10 +47,8 @@ class Article extends Controller
     public function allArticle()
     {
         session_start();
-        // $categorie = $this->model->showAll("category");
         $articles = $this->model->showAllTable(1);
         $pageTitle = 'all articles';
-        //avec le renderer je gere les vu la ba pour eviter de repeter le code
         \Renderer::render('articles/allArticle', compact('pageTitle', 'articles'));
     }
     // ===================================================================================================
@@ -70,19 +68,19 @@ class Article extends Controller
         }
     }
     // ===================================================================================================
-    // ===============================        adminArticle    ===========================================
+    // ===============================        addArticle    ===========================================
     // ===================================================================================================
 
-    public function adminArticle()
+    public function addArticle()
     {
-        if (($_SESSION['userType'] == "admin")) {
+        if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = $_SESSION['id'];
-            $articles = $this->model->showHistorique($id);
+            $themes = $this->model->showAll("category");
 
-            $pageTitle = 'Admin article';
-            \Renderer::render('articles/adminArticle', compact('pageTitle', 'articles'));
+            $pageTitle = 'Rajouter un article';
+            \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
         }
     }
 
@@ -130,33 +128,35 @@ class Article extends Controller
     }
 
     // ===================================================================================================
-    // ===============================        addArticle    ==============================================
+    // ===============================        add    ==============================================
     // ===================================================================================================
 
-    public function addArticle()
+    public function add()
     {
-        if (!isset($_SESSION['userType'])) {
+        if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
 
             //$typeAdd = htmlspecialchars(filter_input(INPUT_POST, 'type'));
-            $titreAdd = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
-            $categorie = filter_input(INPUT_POST, 'categorie');
-            $idUser = $_SESSION['id'];
-            $description = htmlspecialchars(filter_input(INPUT_POST, 'description'));
-
+            $titre = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
+            $aut = htmlspecialchars(filter_input(INPUT_POST, 'auteur'));
+            $gen = htmlspecialchars(filter_input(INPUT_POST, 'genre'));
+            $coll = htmlspecialchars(filter_input(INPUT_POST, 'collection'));
+            $edit = htmlspecialchars(filter_input(INPUT_POST, 'edition'));
+            $desc = htmlspecialchars(filter_input(INPUT_POST, 'description'));
+            $categorie = htmlspecialchars(filter_input(INPUT_POST, 'category'));
 
             //=================================================
 
             //====================================================
 
-            if (!empty($_FILES['fichier']) && !empty($description) && !empty($titreAdd) && !empty($categorie) && !empty($idUser)) {
+            if (!empty($_FILES['image']) && !empty($titre) && !empty($aut) && !empty($gen) && !empty($coll) && !empty($edit) && !empty($desc) && !empty($categorie)) {
 
-                $contenu = $_FILES['fichier']['tmp_name'];
-                $size = $_FILES['fichier']['size'];
-                $name = $_FILES['fichier']['name'];
-                $extension = $_FILES['fichier']['type'];
-                $error = $_FILES['fichier']['error'];
+                $contenu = $_FILES['image']['tmp_name'];
+                $size = $_FILES['image']['size'];
+                $name = $_FILES['image']['name'];
+                $extension = $_FILES['image']['type'];
+                $error = $_FILES['image']['error'];
                 // explode dcoupe une chaine en fonction du caractere donné exemple:
                 // salon.jpg =========== [salon, jpg] 
                 $tableExtension = explode('.', $name);
@@ -165,15 +165,13 @@ class Article extends Controller
                 // strtolower = renvoie une chaine de caractere en minuscule
                 $extension = strtolower(end($tableExtension));
 
-                if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png' || $extension == 'bmp' || $extension == 'tif') {
+                if ($extension == 'jpg' || $extension == 'jpeg' || $extension == 'png') {
                     $typeAdd = "image";
-                } else {
-                    $typeAdd = "video";
                 }
 
 
                 // type de fichier autorisé
-                $extensionAutorise = ['jpg', 'jpeg', 'png', 'bmp', 'tif', 'mp4', 'mov', 'avi', 'wmv'];
+                $extensionAutorise = ['jpg', 'jpeg', 'png'];
                 // taille de fichier autorisé
                 $tailleAutorise = 5000000;
 
@@ -186,7 +184,7 @@ class Article extends Controller
                             $uniqueId = uniqid('', true);
                             $fileName = $uniqueId . "." . $extension;
 
-                            $b = compact('typeAdd', 'titreAdd', 'description', 'fileName', 'categorie', 'idUser');
+                            $b = compact('titre', 'aut', 'gen', 'coll', 'edit', 'desc', 'categorie', 'fileName');
                             $this->model->insertArticle($b);
 
                             // move_uploaded_file = deplace le fichier la ou on le décide

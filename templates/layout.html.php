@@ -146,7 +146,7 @@ session_start();
                     </li>
                     <ul>
                         <li><a href="index.php?controller=users&task=adminUsers">Utilisateurs</a></li>
-                        <li><a href=" index.php?controller=article&task=adminArticle">Articles</a></li>
+                        <li><a href=" index.php?controller=article&task=addArticle">Ajouter un article</a></li>
                         <li><a href="index.php?controller=article&task=adminEmprunts">Emprunts</a></li>
                         <li><a href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li>
                     </ul>

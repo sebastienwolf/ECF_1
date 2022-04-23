@@ -166,30 +166,6 @@ header nav #filtre .navButton .test {
           box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
-#aside {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0px;
-  width: 200px;
-  height: 100%;
-  z-index: 6;
-}
-
-#aside ul {
-  position: fixed;
-  top: 60px;
-}
-
-#aside ul li {
-  list-style: none;
-  margin-bottom: 20px;
-}
-
-#aside ul li a {
-  text-decoration: none;
-  color: #2F2E2E;
-}
-
 main {
   display: -webkit-box;
   display: -ms-flexbox;

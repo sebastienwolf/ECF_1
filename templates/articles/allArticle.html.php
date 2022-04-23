@@ -76,7 +76,7 @@ function filtre($tableau, $champ)
 <!-- =================================================================================================== -->
 <script>
     debugger
-    const tableau = <?php echo json_encode($allUsers); ?>;
+    const tableau = <?php echo json_encode($articles); ?>;
 
     pop(tableau)
 

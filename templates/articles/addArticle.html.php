@@ -1,47 +1,42 @@
-<section class="form">
-    <article class="" id="">
+<section>
 
-        <form id="articleAdd" action="" method="post" enctype="multipart/form-data">
-            <h2>Ajouter une vidéo</h2>
+    <form id="form" action="" method="POST">
+        <label for="">Titre :</label>
+        <input type="text" name="titre" placeholder="Titre">
+        <label for="">Auteur :</label>
+        <input type="text" name="auteur" placeholder="Auteur">
+        <label for=""> Genre :</label>
+        <input type="text" name="genre" placeholder="Genre">
+        <label for="">Collection :</label>
+        <input type="text" name="collection" placeholder="collection">
+        <label for="">Edition :</label>
+        <input type="text" name="edition" placeholder="edition">
+        <label for="">Catégorie :</label>
+        <select name="category" id="">
+            <?php
+            foreach ($themes as $theme) {
+            ?>
+                <option value="<?= $theme['id_category'] ?>"><?= $theme['name'] ?></option>
 
-            <!-- <label for=""><b>Type :</b></label>
-            <select type="select" name="type">
-                <option value="video">Video</option>
-                <option value="image">Image</option>
-            </select> -->
-            <label for=""><b>Titre :</b></label>
-            <input type="text" name="titre" placeholder="Titre">
-            <label for=""><b>Categorie :</b></label>
-            <select type="select" name="categorie">
-                <?php
-                foreach ($themes as $theme) {
-                ?>
-                    <option value="<?= $theme['idCategorie'] ?>"><?= $theme['theme'] ?></option>
+            <?php
+            }
+            ?>
 
-                <?php
-                }
-                ?>
-            </select>
-            <label for=""><b>Description :</b></label>
-            <textarea name="description" id="" cols="30" rows="10"></textarea>
-            <input class="filehidden" type="file" name="fichier">
-            <!-- <button type="button" class="bn633-hover bn26">Choisir un fichier</button> -->
-
-
-            <button type="submit" class="creer bn633-hover bn26" name="creer">Envoyer votre article</button>
-            <button id="retour" class="bn633-hover bn26">Retour</button>
-        </form>
-        <h3 id="erreur"></h3>
-    </article>
+        </select>
+        <label for="">Description :</label>
+        <textarea name="description" id="" cols="30" rows="10"></textarea>
+        <label for="">Image :</label>
+        <input type="file" name="image">
+        <button type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
+    </form>
 </section>
 
 <script>
-    document.getElementById('articleAdd').addEventListener('submit', event => {
+    document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
+        let URL = "index.php?controller=article&task=add";
 
-        let URL = "index.php?controller=article&task=addArticle";
-
-        let form = document.getElementById('articleAdd')
+        let form = document.getElementById('form')
         let formData = new FormData(form)
         debugger
         fetch(URL, {

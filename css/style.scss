@@ -237,30 +237,30 @@ header {
 //===================== aside =================================
 //=============================================================
 
-#aside {
-    position: sticky;
-    top: 0px;
-    width: 200px;
-    height: 100%;
-    z-index: 6;
+// #aside {
+//     position: sticky;
+//     top: 0px;
+//     width: 200px;
+//     height: 100%;
+//     z-index: 6;
 
-    ul {
-        position: fixed;
-        top: 60px;
+//     ul {
+//         position: fixed;
+//         top: 60px;
 
-        li {
-            list-style: none;
-            margin-bottom: 20px;
+//         li {
+//             list-style: none;
+//             margin-bottom: 20px;
 
-            a {
-                text-decoration: none;
-                color: $color4;
+//             a {
+//                 text-decoration: none;
+//                 color: $color4;
 
-            }
-        }
-    }
+//             }
+//         }
+//     }
 
-}
+// }
 
 //=============================================================
 //===================== MAIN =================================
