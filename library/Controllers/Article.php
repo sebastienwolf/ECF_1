@@ -70,6 +70,36 @@ class Article extends Controller
         }
     }
     // ===================================================================================================
+    // ===============================        adminArticle    ===========================================
+    // ===================================================================================================
+
+    public function adminArticle()
+    {
+        if (($_SESSION['userType'] == "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $id = $_SESSION['id'];
+            $articles = $this->model->showHistorique($id);
+
+            $pageTitle = 'Admin article';
+            \Renderer::render('articles/adminArticle', compact('pageTitle', 'articles'));
+        }
+    }
+
+    // ===================================================================================================
+    // ===============================        adminEmprunts    ===========================================
+    // ===================================================================================================
+    public function adminEmprunts()
+    {
+        if (($_SESSION['userType'] == "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'Admin emprunt';
+            \Renderer::render('articles/adminEmprunts', compact('pageTitle'));
+        }
+    }
+
+    // ===================================================================================================
     // ===============================        filtreSelection    ===========================================
     // ===================================================================================================
 

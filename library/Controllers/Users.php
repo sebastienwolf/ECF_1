@@ -61,11 +61,47 @@ class Users extends Controller
     // ===================================================================================================
     public function profil()
     {
-        $pageTitle = 'profil';
-        \Renderer::render('articles/profil', compact('pageTitle'));
+        if (!isset($_SESSION['userType'])) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'profil';
+            \Renderer::render('articles/profil', compact('pageTitle'));
+        }
     }
-    //============================================================================                 
-    //============================================================================
+    // ===================================================================================================
+    // ===============================        adminProfil    ===========================================
+    // ===================================================================================================
+    public function adminProfil()
+    {
+        if ($_SESSION['userType'] !== "admin") {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'Admin modif user';
+            $id = filter_input(INPUT_GET, 'id');
+            $users = $this->model->showAll("id_user = $id");
+            \Renderer::render('articles/adminProfil', compact('pageTitle', 'users'));
+        }
+    }
+
+    // ===================================================================================================
+    // ===============================        adminUsers    ===========================================
+    // ===================================================================================================
+    public function adminUsers()
+    {
+        if (($_SESSION['userType'] !== "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+
+            $allUsers = $this->model->showAll(1);
+            $pageTitle = 'Admin Utilisateur';
+            \Renderer::render('articles/adminUser', compact('pageTitle', 'allUsers'));
+        }
+    }
+
+
+    // ===================================================================================================
+    // ===============================        inscription    ===========================================
+    // ===================================================================================================
     // inscription new user
     public function inscription()
     {
@@ -92,14 +128,19 @@ class Users extends Controller
 
                 $usersData = compact("userNom", "userPrenom", "userMail", "hash", "userAdress", "userVille", "userCP", "userType");
                 $sql = $this->model->createUsers($usersData);
-                echo json_encode(("1"));
+                if ($_SESSION['userType'] == 'admin') {
+                    echo json_encode(("5"));
+                } else {
+                    echo json_encode(("1"));
+                }
             }
         } else {
             echo json_encode(("3"));
         }
     }
-    //    =================================================================
-    // ====================================================================
+    // ===================================================================================================
+    // ===============================        modify    ===========================================
+    // ===================================================================================================
     // modifier les donnée user
 
     public function modify()
@@ -145,7 +186,7 @@ class Users extends Controller
             //=======================================
             // Adresse
             if ($userAdress !== "") {
-                $item = "adresse = '{$userAdress}'";
+                $item = "adress = '{$userAdress}'";
                 $condition = "id_user = '{$idUsers}'";
                 $this->model->udapte($item, $condition);
                 $_SESSION['adress'] = $userAdress;
@@ -154,7 +195,7 @@ class Users extends Controller
             //=======================================
             // Ville
             if ($userVille !== "") {
-                $item = "ville = '{$userVille}'";
+                $item = "city = '{$userVille}'";
                 $condition = "id_user = '{$idUsers}'";
                 $this->model->udapte($item, $condition);
                 $_SESSION['ville'] = $userVille;
@@ -188,7 +229,112 @@ class Users extends Controller
                     $_SESSION['userType'] = $userType;
                 }
             }
-            echo json_encode('1');
+            echo json_encode('utilisateur');
+        }
+    }
+
+    // ===================================================================================================
+    // ===============================        modifyAdmin    ===========================================
+    // ===================================================================================================
+    // modifier les donnée user
+
+    public function modifyAdmin()
+    {
+        if (($_SESSION['userType'] !== "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+
+
+            $userNom = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
+            $userPrenom = htmlspecialchars(filter_input(INPUT_POST, 'prenom'));
+            $userMail = filter_input(INPUT_POST, 'mail');
+            $userAdress = htmlspecialchars(filter_input(INPUT_POST, 'adress'));
+            $userVille = htmlspecialchars(filter_input(INPUT_POST, 'city'));
+            $userCp = htmlspecialchars(filter_input(INPUT_POST, 'cp'));
+            $userPassword = htmlspecialchars(filter_input(INPUT_POST, 'pwd'));
+            $userType = htmlspecialchars(filter_input(INPUT_POST, 'type'));
+            $idUsers = filter_input(INPUT_POST, 'id_user');
+            //=======================================
+            //Nom
+            if ($userNom !== "") {
+                $item = "nom = '{$userNom}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            //Prenom
+            if ($userPrenom !== "") {
+                $item = "prenom = '{$userPrenom}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            //Mail
+            if ($userMail !== "") {
+                $item = "mail = '{$userMail}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            // Adresse
+            if ($userAdress !== "") {
+                $item = "adress = '{$userAdress}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+
+            //=======================================
+            // Ville
+            if ($userVille !== "") {
+                $item = "city = '{$userVille}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            // CP
+            if ($userCp !== "") {
+                $item = "cp = '{$userCp}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            // mot de passe
+            if ($userPassword !== "") {
+                $option = ['cost' => 12,];
+                $hash = password_hash($userPassword, PASSWORD_BCRYPT, $option);
+
+                $item = "pwd = '{$hash}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            //=======================================
+            //=======================================
+            // userType
+            if ($userType !== "") {
+
+                $item = "type = '{$userType}'";
+                $condition = "id_user = '{$idUsers}'";
+                $this->model->udapte($item, $condition);
+            }
+            $utilisateur = $this->model->showAll("id_user = $idUsers");
+            echo json_encode($utilisateur);
+        }
+    }
+
+    // ===================================================================================================
+    // ===============================        delete    ===================================
+    // ===================================================================================================
+    public function delete()
+    {
+        if ($_SESSION['userType'] !== 'admin') {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+
+            $id = filter_input(INPUT_GET, 'id');
+            $condition = "id_user = " . $id;
+            $this->model->delete($condition);
+
+            echo json_encode($id);
         }
     }
 }

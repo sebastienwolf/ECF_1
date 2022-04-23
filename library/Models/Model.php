@@ -26,7 +26,7 @@ abstract class Model
             $table = $i;
             $requete = "SELECT * FROM $table";
         } else {
-            $requete = "SELECT * FROM $this->table Where $i";
+            $requete = "SELECT * FROM $this->table WHERE $i";
         }
         $sql = $this->pdo->prepare($requete);
         $sql->execute();
@@ -135,14 +135,6 @@ abstract class Model
         LEFT JOIN category ON articles.id_category = category.id_category WHERE ";
         $end = end(end($tableau));
         extract($tableau);
-        // $endCat = end($tableau['category']);
-        // $endGenre = end($tableau['genre']);
-        // $endAut = end($tableau['auteur']);
-        // $endColl = end($tableau['collection']);
-        // $endEdi = end($tableau['edition']);
-
-
-
 
         if (isset($category)) {
             foreach ($tableau['category'] as $a) {
@@ -189,26 +181,7 @@ abstract class Model
                 }
             }
         }
-        // } else {
-        //     switch ($end) {
-        //         case $endCat:
-        //             $requete .= "category.name LIKE " . $end;
-        //             break;
-        //         case $endGenre:
-        //             $requete .= "articles.genre LIKE " . $end;
-        //             break;
-        //         case $endAut:
-        //             $requete .= "articles.auteur LIKE " . $end;
-        //             break;
-        //         case $endColl:
-        //             $requete .= "articles.collection LIKE " . $end;
-        //             break;
-        //         case $endEdi:
-        //             $requete .= "articles.edition LIKE " . $end;
-        //             break;
-        //     }
-        // }
-        //}
+
 
         $sql = $this->pdo->prepare($requete);
         $sql->execute();
@@ -223,7 +196,7 @@ abstract class Model
     // ===================================================================================================
     public function delete($condition)
     {
-        $requete = "DELETE FROM $this->table WHERE " . $condition;
+        $requete = "DELETE FROM $this->table WHERE $condition";
         $sql = $this->pdo->prepare("$requete");
         $sql->execute();
     }

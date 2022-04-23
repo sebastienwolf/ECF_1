@@ -8,63 +8,50 @@ class Page extends Controller
 
     protected $modelName = \Models\Page::class;
     // ===================================================================================================
-    // ===============================        index    ===========================================
+    // ===============================        adminSauvegarde    =========================================
     // ===================================================================================================
-
-    // public function index()
-    // {
-    //     $articles = $this->model->showAll();
-
-    //     $pageTitle = 'Accueil';
-    //     ob_start();
-    //     require_once('templates/articles/index.html.php');
-    //     $pageContent = ob_get_clean();
-    //     require_once('templates/layout.html.php');
-    //     //  \Renderer::render('articles/index', compact('pageTitle', 'articles'));
-    // }
+    public function adminSauvegarde()
+    {
+        if (($_SESSION['userType'] == "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'Admin sauvegarde';
+            \Renderer::render('articles/adminSauvegarde', compact('pageTitle'));
+        }
+    }
     // ===================================================================================================
-    // ===============================        connexion    ===========================================
+    // ===============================        connexion    ===============================================
     // ===================================================================================================
 
     public function connexion()
     {
         $pageTitle = 'connexion';
-        // ob_start();
-        // require_once('templates/articles/connexion.html.php');
-        // $pageContent = ob_get_clean();
-        // require_once('templates/layout.html.php');
         \Renderer::render('articles/connexion', compact('pageTitle'));
     }
     // ===================================================================================================
-    // ===============================        inscription    ===========================================
+    // ===============================        inscription    =============================================
     // ===================================================================================================
 
     public function inscription()
     {
         $pageTitle = 'inscription';
-        // ob_start();
-        // require_once('templates/articles/inscription.html.php');
-        // $pageContent = ob_get_clean();
-        // require_once('templates/layout.html.php');
         \Renderer::render('articles/inscription', compact('pageTitle'));
     }
 
     // ===================================================================================================
-    // ===============================        profil    ===========================================
+    // ===============================        adminInscription    ========================================
     // ===================================================================================================
-    // public function profil()
-    // {
-    //     $pageTitle = 'profil';
-    //     ob_start();
-    //     require_once('templates/articles/profil.html.php');
-    //     $pageContent = ob_get_clean();
-    //     require_once('templates/layout.html.php');
-    //     //\Renderer::render('users/connexion', compact('pageTitle'));
-    // }
-
-
+    public function adminInscription()
+    {
+        if (($_SESSION['userType'] !== "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'Admin inscription';
+            \Renderer::render('articles/adminInscription', compact('pageTitle'));
+        }
+    }
     // ===================================================================================================
-    // ===============================        addArticle    ===========================================
+    // ===============================        addArticle    =============================================
     // ===================================================================================================
     public function addArticle()
     {
@@ -73,10 +60,6 @@ class Page extends Controller
         } else {
             $themes = $this->model->showAll("categorie");
             $pageTitle = 'profil';
-            // ob_start();
-            // require_once('templates/articles/addArticle.html.php');
-            // $pageContent = ob_get_clean();
-            // require_once('templates/layout.html.php');
             \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
         }
     }
