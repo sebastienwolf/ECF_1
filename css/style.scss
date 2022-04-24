@@ -17,7 +17,7 @@ $rgba-primary-4: rgba(65, 77, 79, 1);
 
 
 $color1: #F8F9F7;
-$color3: #E1E9E1;
+$color2: #c3cf15;
 $color4: #2F2E2E;
 $color6: #d3e0d3;
 $color7: #8b8585;
@@ -31,107 +31,112 @@ $white : #ffffff;
     src: url('./police/Futura-Light.otf') format('opentype');
 }
 
-@media screen and (min-width: 960px) {
-    .navButton {
-        width: 700px !important;
-    }
-}
+// @media screen and (min-width: 960px) {
+//     .navButton {
+//         width: 700px !important;
+//     }
+// }
 
-@media screen and (min-width: 1200px) {
-    .navButton {
-        width: 1000px !important;
-    }
-}
+// @media screen and (min-width: 1200px) {
+//     .navButton {
+//         width: 1000px !important;
+//     }
+// }
 
 * {
     font-family: "futura";
     margin: 0;
     padding: 0;
+    background: $color-primary-3;
+    color: $color1;
 }
 
 //=============================================================
 //===================== header =================================
 //=============================================================
 header {
-    height: 120px;
+    height: 200px;
+    width: 100%;
+    // position: sticky;
+    // top: 0px;
+    // z-index: 5;
+
+    #baniere {
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        margin-bottom: 5px;
+
+    }
+}
+
+#menu {
     width: 100%;
     position: sticky;
     top: 0px;
-    display: flex;
+    margin-bottom: 50px;
     z-index: 5;
-    background-color: $white;
 
+    .menuCase {
 
-    div {
-        // margin-right: 50px;
-
-        a {
-            font-weight: 900;
-            font-size: 30px;
-            text-decoration: none;
-            color: $color4;
-
-            #logo {
-                color: $color8;
-                height: 40px;
-                width: 40px;
-            }
-        }
-    }
-
-    nav {
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         justify-content: center;
-        position: relative;
-        top: 0px;
-        width: 80%;
-        // overflow-x: scroll;
-        // overflow-y: hidden;
 
-        // scrollbar-width: thin;
-        // scrollbar-color: $color8;
+        li {
+            border: solid 5px $color1;
+            list-style: none;
+            width: 150px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-
-
-        #filtre {
-            form {
-                #search {
-                    margin-left: 150px;
-                    width: 400px;
-                    height: 30px;
-                }
-
-            }
-
-            div {
-                width: 100%;
+            #admin {
+                border: solid 5px $color1;
+                list-style: none;
+                width: 150px;
                 height: 50px;
-                border-top: 1px solid $color4;
-                border-bottom: 1px solid $color4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $color1;
             }
 
-            .navButton {
-                position: relative;
-                //left: 66px;
-                width: 500px;
-                // display: inline-flex;
-                //display: flex;
+            ul {
+                li {
+                    a {
+                        color: $color1;
+                        list-style: none;
 
-                .test {
-                    display: flex;
-                    flex-wrap: nowrap;
-                    overflow-x: scroll;
-                    overflow-y: hidden;
-                    scrollbar-width: thin;
-                    // scrollbar-color: $color8;
+                    }
                 }
             }
         }
+
+
+
+        a {
+            text-decoration: none;
+            color: $color-primary-1;
+
+            li {
+                border: solid 5px $color1;
+                list-style: none;
+                width: 150px;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+
+            }
+
+
+        }
+
     }
-
-
-
-
 }
 
 
@@ -147,7 +152,7 @@ header {
     width: 100px;
     font-size: 14px;
     font-weight: 200;
-    color: $color3;
+    color: $color2;
     cursor: pointer;
     margin: 10px;
     height: 20px;
@@ -196,7 +201,7 @@ header {
 .bn633-hover {
     font-size: 14px;
     font-weight: 200;
-    color: $color3;
+    color: $color2;
     cursor: pointer;
     margin: 10px;
     height: 20px;
@@ -233,44 +238,14 @@ header {
 
 }
 
-//=============================================================
-//===================== aside =================================
-//=============================================================
-
-// #aside {
-//     position: sticky;
-//     top: 0px;
-//     width: 200px;
-//     height: 100%;
-//     z-index: 6;
-
-//     ul {
-//         position: fixed;
-//         top: 60px;
-
-//         li {
-//             list-style: none;
-//             margin-bottom: 20px;
-
-//             a {
-//                 text-decoration: none;
-//                 color: $color4;
-
-//             }
-//         }
-//     }
-
-// }
 
 //=============================================================
 //===================== MAIN =================================
 //=============================================================
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    // margin-left: 210px;
+    position: relative;
+    top: -50px;
 
     textarea {
         resize: none;
@@ -278,17 +253,90 @@ main {
 
     a {
         text-decoration: none;
-        color: $color4;
+        color: $color1;
+    }
+
+
+    //=============================================================
+    //===================== index =================================
+    //=============================================================
+    #index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        #popup {
+            border: 5px solid $color2;
+            margin: 10px;
+            padding: 10px;
+            animation: clignote 2s linear infinite;
+
+
+            P {
+                color: $color2;
+                animation: clignote 2s linear infinite;
+            }
+        }
+
+        @keyframes clignote {
+            50% {
+                opacity: 0.2;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            font-weight: 900;
+        }
+
+        article {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            height: auto;
+            border: 1px solid $color6;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            gap: 20px;
+
+            .cards {
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                width: 200px;
+
+                a {
+                    text-decoration: none;
+
+                    .miniCard {
+                        width: 100%;
+                        height: 140px;
+                        background-size: contain;
+                    }
+
+                    .info {
+                        p {
+                            color: #000000;
+                        }
+                    }
+                }
+
+                h3 {
+                    font-size: 18px;
+                    color: $color9;
+                    font-weight: 400;
+                }
+            }
+
+        }
+
+
     }
 
     //=============================================================
     //===================== profil =================================
     //=============================================================
-
     .profil {
         display: flex;
         flex-direction: column;
-
 
         article {
             display: flex;
@@ -301,19 +349,8 @@ main {
                 border: 1px solid black;
                 margin-left: 5px;
             }
-
-
-
-
-
         }
-
-
     }
-
-
-
-
 }
 
 //=============================================================
@@ -334,56 +371,6 @@ main {
     justify-content: space-between;
 }
 
-//=============================================================
-//===================== index =================================
-//=============================================================
-#index {
-    h2 {
-        text-align: center;
-        margin-top: 30px;
-        font-weight: 900;
-    }
-
-    article {
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        height: auto;
-        border: 1px solid $color6;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-        gap: 20px;
-
-        .cards {
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            width: 200px;
-
-            a {
-                text-decoration: none;
-
-                .miniCard {
-                    width: 100%;
-                    height: 140px;
-                    background-size: contain;
-                }
-
-                .info {
-                    p {
-                        color: #000000;
-                    }
-                }
-            }
-
-            h3 {
-                font-size: 18px;
-                color: $color9;
-                font-weight: 400;
-            }
-        }
-
-    }
-
-
-}
 
 
 // =============================================================
@@ -525,7 +512,7 @@ footer {
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
-    background: $color3;
+    background: $color7;
     height: 50px;
     align-items: center;
     font-family: "Roboto";
@@ -554,6 +541,7 @@ footer {
         }
     }
 }
+
 
 #titreCards {
     margin-top: 10px;

@@ -18,85 +18,36 @@ session_start();
 
 <body id="page-top" class="index">
     <header>
-        <div class="headerLogo">
 
-            <a href="index.php?controller=article&task=index"> <span><svg id="logo" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-youtube" viewBox="0 0 16 16">
-                        <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
-                    </svg></span> <b style="color:black"> YourTube</b></a>
-        </div>
-        <?php
-        $nav = filter_input(INPUT_GET, "task");
-        if ($nav == "index" ||  $nav == "myArticles" || !isset($nav)) {
-        ?>
+        <img id="baniere" src="./upload/banniere.jpg" alt="">
 
-            <nav>
-                <div id="filtre">
-                    <?php
-                    if ($nav == "index" || !isset($nav)) {
-                    ?>
-                        <form id="search" action="" method="post">
-                            <input type="search" name="search" id="search">
-                            <input class="bn632-hover bn25" type="submit" value="Search">
-                        </form>
-                    <?php
-                    } ?>
-
-                    <!-- &darr;   fleche bas -->
-                    <!-- &uarr;   fleche haut -->
-                    <div class="navButton">
-                        <div class="categorie">
-                            <?php foreach ($categorie as $cat) {
-                            ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $cat['idCategorie'] ?>"><?= $cat['theme'] ?></button>
-                            <?php } ?>
-                        </div>
-                        <div class="genre">
-                            <?php foreach ($genre as $gen) {
-                            ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $gen['idCategorie'] ?>"><?= $gen['theme'] ?></button>
-                            <?php } ?>
-                        </div>
-                        <div class="auteur">
-                            <?php foreach ($auteur as $aut) {
-                            ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $aut['idCategorie'] ?>"><?= $aut['theme'] ?></button>
-                            <?php } ?>
-                        </div>
-                        <div class="collection">
-                            <?php foreach ($collection as $colec) {
-                            ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $colec['idCategorie'] ?>"><?= $colec['theme'] ?></button>
-                            <?php } ?>
-                        </div>
-                        <div class="editeur">
-                            <?php foreach ($editeur as $edit) {
-                            ?>
-                                <button class="filtre bn632-hover bn25" data-id="<?= $edit['idCategorie'] ?>"><?= $edit['theme'] ?></button>
-                            <?php } ?>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-        <?php } ?>
     </header>
+    <!-- <div class="headerLogo">
 
-    <aside id="aside">
+                <a href="index.php?controller=article&task=index"><img src="./upload/logo.png" alt="" srcset=""></a>
+            </div> -->
+    <div id="menu">
 
-        <ul>
+        <ul class="menuCase">
             <!-- ======================================================================================== -->
             <!-- =============================  ACCUEIL ================================================= -->
             <!-- ======================================================================================== -->
-            <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                        <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-                    </svg></span> <a href="index.php?controller=article&task=index"> Accueil</a></li>
+            <a class="" href="index.php?controller=article&task=index">
+                <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+                            <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+                        </svg></span> Accueil</li>
+            </a>
 
             <!-- ======================================================================================== -->
             <!-- =============================  allArticle ================================================= -->
             <!-- ======================================================================================== -->
-            <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg></span> <a href="index.php?controller=article&task=allArticle">Recherche</a></li>
+            <a href="index.php?controller=article&task=allArticle">
+                <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg></span> Recherche
+                </li>
+            </a>
 
 
             <!-- ======================================================================================== -->
@@ -105,35 +56,41 @@ session_start();
             <!-- Si un utilisateur est connecté -->
             <?php if (isset($_SESSION['userType'])) { ?>
 
-                <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg></span> <a href="index.php?controller=users&task=profil">Profil</a> </li>
+                <a href="index.php?controller=users&task=profil">
+                    <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg></span> Profil </li>
+                </a>
                 <!-- ======================================================================================= -->
                 <!-- =============================  Mes articles ================================================= -->
                 <!-- ======================================================================================== -->
-                <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg></span> <a href="index.php?controller=article&task=myArticles">Mes videos</a> </li>
+                <a href="index.php?controller=article&task=myArticles">
+                    <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg></span> Mes videos </li>
+                </a>
                 <!-- ======================================================================================= -->
                 <!-- =============================  historique ================================================= -->
                 <!-- ======================================================================================== -->
-                <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                        </svg></span> <a href="index.php?controller=article&task=historique">Historique</a> </li>
+                <a href="index.php?controller=article&task=historique">
+                    <li><span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                            </svg></span> Historique </li>
+                </a>
 
 
 
                 <!-- ======================================================================================== -->
                 <!-- =============================  DEPOT ================================================= -->
                 <!-- ======================================================================================== -->
-
-                <li> <span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
-                            <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
-                        </svg></span> <a href="index.php?controller=page&task=addArticle">Dépot</a></li>
+                <!-- 
+                        <li> <span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0v-2z" />
+                                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                                </svg></span> <a href="index.php?controller=page&task=addArticle">Dépot</a></li> -->
                 <!-- ======================================================================================== -->
                 <!-- =============================  ADMIN ================================================= -->
                 <!-- ======================================================================================== -->
@@ -142,15 +99,18 @@ session_start();
                 $type = $_SESSION['userType'];
                 if ($type == "admin") { ?>
                     <li>
-                        <p>ADMIN</p>
+                        <div class="dropdown">
+                            <a id="admin" class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Admin
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="index.php?controller=users&task=adminUsers">Utilisateurs</a></li>
+                                <li><a class="dropdown-item" href=" index.php?controller=article&task=addArticle">Ajouter un article</a></li>
+                                <li><a class="dropdown-item" href="index.php?controller=article&task=adminEmprunts">Emprunts</a></li>
+                                <li><a class="tata dropdown-item" href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li>
+                            </ul>
+                        </div>
                     </li>
-                    <ul>
-                        <li><a href="index.php?controller=users&task=adminUsers">Utilisateurs</a></li>
-                        <li><a href=" index.php?controller=article&task=addArticle">Ajouter un article</a></li>
-                        <li><a href="index.php?controller=article&task=adminEmprunts">Emprunts</a></li>
-                        <li><a href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li>
-                    </ul>
-
                 <?php
                 } ?>
 
@@ -159,18 +119,22 @@ session_start();
                 <!-- =============================  DECONNEXION ================================================= -->
                 <!-- ======================================================================================== -->
 
-                <li> <span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
-                            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
-                        </svg></span> <a href="index.php?controller=users&task=logOut">Déconnexion</a></li>
+                <a href="index.php?controller=users&task=logOut">
+                    <li> <span><svg xmlns=" http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                            </svg></span> Déconnexion </li>
+                </a>
             <?php
             } else { ?>
                 <!-- ======================================================================================== -->
                 <!-- =============================  CONNEXION ================================================= -->
                 <!-- ======================================================================================== -->
 
-                <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
-                            <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
-                        </svg></span> <a href="index.php?controller=page&task=connexion">Connexion</a> </li>
+                <a href="index.php?controller=page&task=connexion">
+                    <li> <span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-door-open-fill" viewBox="0 0 16 16">
+                                <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z" />
+                            </svg></span> Connexion </li>
+                </a>
             <?php } ?>
 
 
@@ -178,8 +142,12 @@ session_start();
 
 
         </ul>
-    </aside>
+    </div>
+
+
     <main>
+
+
         <!-- ============================================================================================================== -->
         <!-- ============================================================================================================== -->
         <!-- ============================================================================================================== -->
@@ -214,10 +182,6 @@ session_start();
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.0-rc.5/vue.js" integrity="sha512-4y5B6Cd2oXNwjjpicAdIVj8BwfAToJAH3ejRUUmCP4rJxfP+BdmdGkpKo30cjFySWWsRDv9wLbidJBR4yMasdA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 

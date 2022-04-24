@@ -3,89 +3,103 @@
   src: url("./police/Futura-Light.otf") format("opentype");
 }
 
-@media screen and (min-width: 960px) {
-  .navButton {
-    width: 700px !important;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .navButton {
-    width: 1000px !important;
-  }
-}
-
 * {
   font-family: "futura";
   margin: 0;
   padding: 0;
+  background: #436168;
+  color: #F8F9F7;
 }
 
 header {
-  height: 120px;
+  height: 200px;
+  width: 100%;
+}
+
+header #baniere {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  margin-bottom: 5px;
+}
+
+#menu {
   width: 100%;
   position: -webkit-sticky;
   position: sticky;
   top: 0px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  margin-bottom: 50px;
   z-index: 5;
-  background-color: #ffffff;
 }
 
-header div a {
-  font-weight: 900;
-  font-size: 30px;
-  text-decoration: none;
-  color: #2F2E2E;
-}
-
-header div a #logo {
-  color: #ad2626;
-  height: 40px;
-  width: 40px;
-}
-
-header nav {
+#menu .menuCase {
+  margin-left: auto;
+  margin-right: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  position: relative;
-  top: 0px;
-  width: 80%;
 }
 
-header nav #filtre form #search {
-  margin-left: 150px;
-  width: 400px;
-  height: 30px;
-}
-
-header nav #filtre div {
-  width: 100%;
+#menu .menuCase li {
+  border: solid 5px #F8F9F7;
+  list-style: none;
+  width: 150px;
   height: 50px;
-  border-top: 1px solid #2F2E2E;
-  border-bottom: 1px solid #2F2E2E;
-}
-
-header nav #filtre .navButton {
-  position: relative;
-  width: 500px;
-}
-
-header nav #filtre .navButton .test {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scrollbar-width: thin;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#menu .menuCase li #admin {
+  border: solid 5px #F8F9F7;
+  list-style: none;
+  width: 150px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #F8F9F7;
+}
+
+#menu .menuCase li ul li a {
+  color: #F8F9F7;
+  list-style: none;
+}
+
+#menu .menuCase a {
+  text-decoration: none;
+  color: #011F27;
+}
+
+#menu .menuCase a li {
+  border: solid 5px #F8F9F7;
+  list-style: none;
+  width: 150px;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .a {
@@ -97,7 +111,7 @@ header nav #filtre .navButton .test {
   width: 100px;
   font-size: 14px;
   font-weight: 200;
-  color: #E1E9E1;
+  color: #c3cf15;
   cursor: pointer;
   margin: 10px;
   height: 20px;
@@ -136,7 +150,7 @@ header nav #filtre .navButton .test {
 .bn633-hover {
   font-size: 14px;
   font-weight: 200;
-  color: #E1E9E1;
+  color: #c3cf15;
   cursor: pointer;
   margin: 10px;
   height: 20px;
@@ -167,6 +181,20 @@ header nav #filtre .navButton .test {
 }
 
 main {
+  position: relative;
+  top: -50px;
+}
+
+main textarea {
+  resize: none;
+}
+
+main a {
+  text-decoration: none;
+  color: #F8F9F7;
+}
+
+main #index {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -179,13 +207,76 @@ main {
           align-items: center;
 }
 
-main textarea {
-  resize: none;
+main #index #popup {
+  border: 5px solid #c3cf15;
+  margin: 10px;
+  padding: 10px;
+  -webkit-animation: clignote 2s linear infinite;
+          animation: clignote 2s linear infinite;
 }
 
-main a {
+main #index #popup P {
+  color: #c3cf15;
+  -webkit-animation: clignote 2s linear infinite;
+          animation: clignote 2s linear infinite;
+}
+
+@-webkit-keyframes clignote {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes clignote {
+  50% {
+    opacity: 0.2;
+  }
+}
+
+main #index h2 {
+  text-align: center;
+  margin-top: 30px;
+  font-weight: 900;
+}
+
+main #index article {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  border: 1px solid #d3e0d3;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  gap: 20px;
+}
+
+main #index article .cards {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  width: 200px;
+}
+
+main #index article .cards a {
   text-decoration: none;
-  color: #2F2E2E;
+}
+
+main #index article .cards a .miniCard {
+  width: 100%;
+  height: 140px;
+  background-size: contain;
+}
+
+main #index article .cards a .info p {
+  color: #000000;
+}
+
+main #index article .cards h3 {
+  font-size: 18px;
+  color: #000000;
+  font-weight: 400;
 }
 
 main .profil {
@@ -233,52 +324,6 @@ main .profil article img {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-}
-
-#index h2 {
-  text-align: center;
-  margin-top: 30px;
-  font-weight: 900;
-}
-
-#index article {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
-  height: auto;
-  border: 1px solid #d3e0d3;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  gap: 20px;
-}
-
-#index article .cards {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  width: 200px;
-}
-
-#index article .cards a {
-  text-decoration: none;
-}
-
-#index article .cards a .miniCard {
-  width: 100%;
-  height: 140px;
-  background-size: contain;
-}
-
-#index article .cards a .info p {
-  color: #000000;
-}
-
-#index article .cards h3 {
-  font-size: 18px;
-  color: #000000;
-  font-weight: 400;
 }
 
 .contact {
@@ -429,7 +474,7 @@ footer {
   display: flex;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  background: #E1E9E1;
+  background: #8b8585;
   height: 50px;
   -webkit-box-align: center;
       -ms-flex-align: center;
