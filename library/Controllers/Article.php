@@ -89,11 +89,12 @@ class Article extends Controller
     // ===================================================================================================
     public function adminEmprunts()
     {
-        if (($_SESSION['userType'] == "admin")) {
+        if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
             $pageTitle = 'Admin emprunt';
-            \Renderer::render('articles/adminEmprunts', compact('pageTitle'));
+            $articles = $this->model->showAllPretAdmin();
+            \Renderer::render('articles/adminEmprunts', compact('pageTitle', 'articles'));
         }
     }
 
@@ -243,11 +244,11 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = filter_input(INPUT_GET, "id");
-            $table = "pret";
-            $col = "back";
-            $reponse = 1;
-            $condition = "id_pret";
-            $this->model->udaptePret($table, $col, $reponse, $condition, $id);
+            //$table = "pret";
+            //$col = "back";
+            // $reponse = 1;
+            //$condition = "id_pret";
+            $this->model->udaptePret($id);
             $this->model->udapte("emprunt = 0", "id_article = $id");
             echo json_encode($id);
         }

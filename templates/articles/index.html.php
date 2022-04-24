@@ -32,7 +32,7 @@
 
 
             <?php
-
+            $i = 0;
             foreach ($articles as $art) {
 
 

@@ -31,7 +31,6 @@ abstract class Model
         $sql = $this->pdo->prepare($requete);
         $sql->execute();
         $response = $sql->fetchAll();
-        // $test = $sql->errorInfo();
         return $response;
     }
 
@@ -45,11 +44,9 @@ abstract class Model
         LEFT JOIN category ON category.id_category = articles.id_category
         WHERE " . $where . " ORDER BY articles.id_article DESC";
         $sql = $this->pdo->prepare($requete);
-        // $sql->execute(array($where));
         $sql->execute();
 
         $response = $sql->fetchAll();
-        // $test = $sql->errorInfo();
         return $response;
     }
 
@@ -66,6 +63,23 @@ abstract class Model
         WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.back = false";
         $sql = $this->pdo->prepare($requete);
         $sql->execute([$id]);
+        $response = $sql->fetchAll();
+        return $response;
+    }
+    // ===================================================================================================
+    // ===============================        show pret admin   ===================================
+    // ===================================================================================================
+    public function showAllPretAdmin()
+    {
+
+        $requete = "SELECT pret.id_pret, pret.id_user, users.prenom, users.nom, articles.titre, articles.auteur, DATE_FORMAT(pret.date_depart, '%d/%m/%Y') as date_depart, DATE_FORMAT(pret.date_retour, '%d/%m/%Y') as date_retour, DATEDIFF(pret.date_retour, CURRENT_DATE()) AS reste, pret.id_article 
+        FROM `pret` 
+        LEFT JOIN users ON users.id_user = pret.id_user
+        LEFT JOIN articles ON articles.id_article = articles.id_article
+        WHERE pret.id_article = articles.id_article AND pret.back = false";
+
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute();
         $response = $sql->fetchAll();
         return $response;
     }
@@ -100,7 +114,7 @@ abstract class Model
     // ===============================        udapte Pret  ===================================
     // ===================================================================================================
 
-    public function udaptePret($table, $item, $reponse, $condition, $id)
+    public function udaptePret($id)
     {
         $dateNow = date('Y-m-d', time());
         $requete = "UPDATE pret SET back = 1, rendu = ? WHERE id_article = ?";
@@ -115,9 +129,9 @@ abstract class Model
 
     public function alert($id)
     {
-        $requete = "SELECT id_pret, articles.titre, DATEDIFF(date_retour, date_depart) AS reste FROM pret 
+        $requete = "SELECT id_pret, articles.titre, DATEDIFF(date_retour, CURRENT_DATE()) AS reste FROM pret 
         LEFT JOIN articles ON articles.id_article = pret.id_article 
-        WHERE pret.id_user = ? AND pret.back = 0 ";
+        WHERE pret.id_user = ? AND pret.back = 0 AND DATEDIFF(date_retour, CURRENT_DATE()) < 0 ";
         $sql = $this->pdo->prepare($requete);
         $sql->execute([$id]);
         $response = $sql->fetchAll();
