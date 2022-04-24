@@ -27,7 +27,7 @@
         if ($_SESSION['userType'] == "admin") { ?>
             <div>
                 <button id=" reserver" class="bn632-hover bn25"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
-                <button id=" supprimer" class="bn632-hover bn25"><a href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a></button>
+                <button id=" supprimer" class="bn632-hover bn25"><a href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>&&file=<?= $articles[0]['file'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a></button>
             </div>
         <?php } ?>
         <div id="message" class="message">

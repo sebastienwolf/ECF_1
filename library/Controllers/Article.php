@@ -353,8 +353,8 @@ class Article extends Controller
             //============================================================
             // categori
             if ($categorie > 0) {
-                $item = "id_categorie = '{$categorie}'";
-                $condition = "id_article = '{$idArticle}'";
+                $item = "id_category = {$categorie}";
+                $condition = "id_article = {$idArticle}";
                 $this->model->udapte($item, $condition);
                 $this->udapteDate($idArticle);
             }
@@ -459,22 +459,23 @@ class Article extends Controller
     // ===================================================================================================
     public function delete()
     {
-        if (!isset($_SESSION['userType'])) {
+        if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
 
             $id = filter_input(INPUT_GET, 'id');
-            $condition = "idarticle = " . $id;
+            $condition = "id_article = " . $id;
+            $fileName = filter_input(INPUT_GET, 'file');
+
             $this->model->delete($condition);
-            $fileName = $_POST['fichier'];
 
             $delete = "./upload/" . $fileName;
             if (file_exists($delete)) {
-                // unlin = suprime un fichier
+                // unlink = suprime un fichier
                 unlink($delete);
             }
 
-            header("Location: index.php?controller=article&Task=myArticles");
+            header("Location: index.php?controller=article&task=index");
         }
     }
     // ===================================================================================================
