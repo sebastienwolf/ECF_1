@@ -12,7 +12,7 @@ class Page extends Controller
     // ===================================================================================================
     public function adminSauvegarde()
     {
-        if (($_SESSION['userType'] == "admin")) {
+        if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
             $pageTitle = 'Admin sauvegarde';

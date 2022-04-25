@@ -29,7 +29,7 @@
     foreach ($categorie as $cat) {
     ?>
         <h2><?= $cat['name'] ?></h2>
-        <article>
+        <article id="popCarte">
 
 
             <?php
@@ -39,17 +39,18 @@
 
                 if ($art['id_category'] == $cat['id_category']) {
             ?>
-                    <div class="cards">
-                        <a href="index.php?controller=article&task=showOne&id=<?= $art['id_article'] ?>">
+                    <div id="wrapper">
+                        <a id="card" href="index.php?controller=article&task=showOne&id=<?= $art['id_article'] ?>">
                             <img class="miniCard" src="./upload/<?= $art['file'] ?>" alt="">
-                            <div class="info">
-                                <p>auteur : <?= $art['auteur'] ?> </p>
-                                <p>genre : <?= $art['genre'] ?></p>
-                                <p>collection : <?= $art['collection'] ?></p>
-                                <p>edition : <?= $art['edition'] ?></p>
+                            <div id="descriptions">
+                                <h3 class="toto"><?= $art['titre'] ?></h3>
+
+                                <p class="tata">auteur : <?= $art['auteur'] ?> <br>
+                                    genre : <?= $art['genre'] ?><br>
+                                    collection : <?= $art['collection'] ?><br>
+                                    edition : <?= $art['edition'] ?></p>
                             </div>
                         </a>
-                        <h3><?= $cat['titre'] ?></h3>
 
                     </div>
             <?php

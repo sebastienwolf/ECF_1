@@ -56,35 +56,6 @@ $white : #ffffff;
 
 }
 
-//     display: grid;
-//     grid-template-columns: 1fr;
-//     grid-template-rows: repeat(4, 1fr);
-//     grid-column-gap: 0px;
-//     grid-row-gap: 0px;
-//     grid-template-areas:
-//         "siteHeader"
-//         "siteMenu"
-//         "siteMain"
-//         "siteFooter";
-
-// }
-
-// #siteHeader {
-//     grid-area: siteHeader;
-// }
-
-// #siteMenu {
-//     grid-area: siteMenu;
-// }
-
-// #siteMain {
-//     grid-area: siteMain;
-// }
-
-// #siteFooter {
-//     grid-area: siteFooter;
-// }
-
 //=============================================================
 
 //===================== header =================================
@@ -327,9 +298,6 @@ header {
 //=============================================================
 
 main {
-    //position: relative;
-    //top: -50px;
-
     height: 100%;
     margin-bottom: 50px;
 
@@ -350,20 +318,12 @@ main {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-bottom: 100px;
+        //margin-bottom: 100px;
 
         #allFiltre {
             margin-top: 10px;
             margin-bottom: 10px;
             height: auto;
-
-            // .checbox {
-            //     button {
-            //         svg {
-            //             background: none;
-            //         }
-            //     }
-            // }
 
             .filtre {
                 visibility: hidden;
@@ -421,54 +381,51 @@ main {
 
         }
 
-        article {
-            display: flex;
-            flex-wrap: wrap;
-            height: auto;
-            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-            gap: 20px;
-            padding: 20px;
-            border-radius: 20px;
-
-            .cards {
-                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-                width: 200px;
-                background: $color1;
-
-                a {
-                    text-decoration: none;
-                    background: $color1;
 
 
-                    .miniCard {
-                        width: 100%;
-                        height: 140px;
-                        background-size: contain;
-                        background: $color1;
+        // .cards {
+        //     box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+        //     width: 200px;
+        //     background: $color1;
 
-                    }
+        //     a {
+        //         text-decoration: none;
+        //         background: $color1;
 
-                    .info {
-                        p {
-                            color: #000000;
-                            background: $color1;
 
-                        }
-                    }
-                }
+        //         .miniCard {
+        //             width: 100%;
+        //             height: 140px;
+        //             background-size: contain;
+        //             background: $color1;
 
-                h3 {
-                    font-size: 18px;
-                    color: $color9;
-                    font-weight: 400;
+        //         }
 
-                }
-            }
+        //         .info {
+        //             p {
+        //                 color: #000000;
+        //                 background: $color1;
 
-        }
+        //             }
+        //         }
+        //     }
+
+        //     h3 {
+        //         font-size: 18px;
+        //         color: $color9;
+        //         font-weight: 400;
+
+        //     }
+        // }
+
 
 
     }
+
+
+
+
+
 
     //=============================================================
     //===================== profil =================================
@@ -513,66 +470,215 @@ main {
 
 
     }
-}
-
-//=============================================================
-//===================== formulaire pop modif user =============
-//=============================================================
-// ============================================================
-
-// apparition pop profil modif
-.formUsers {
-    border: 1px solid $color1;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    border-radius: 20px;
-    position: absolute;
-    top: -350px;
-    left: 110px;
-    width: 0;
-    height: 0;
-    margin: 25%;
-    transform: scale(0);
-    opacity: 0;
-    transition: 0.5s;
-    visibility: hidden;
 
 
-    &.active {
-        transform: scale(1);
-        opacity: 1;
-        width: 500px;
-        height: auto;
-        visibility: visible;
+    //=============================================================
+    //===================== formulaire pop modif user =============
+    //=============================================================
+    // ============================================================
+
+    // apparition pop profil modif
+    .formUsers {
+        border: 1px solid $color1;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
         border-radius: 20px;
+        position: absolute;
+        top: -350px;
+        left: 110px;
+        width: 0;
+        height: 0;
+        margin: 25%;
+        transform: scale(0);
+        opacity: 0;
+        transition: 0.5s;
+        visibility: hidden;
 
 
+        &.active {
+            transform: scale(1);
+            opacity: 1;
+            width: 500px;
+            height: auto;
+            visibility: visible;
+            border-radius: 20px;
+
+
+
+
+        }
+
+        form {
+            padding: 10px;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            border-radius: 20px;
+            background: $rgba-primary-0;
+
+            h2 {
+                background-color: $rgba-primary-0;
+
+            }
+
+            div {
+                background-color: $rgba-primary-0;
+            }
+
+            #usersModForm {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 20px;
+                background: $rgba-primary-0;
+
+
+
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    background: $rgba-primary-0;
+
+                    label {
+                        background: $rgba-primary-0;
+
+                        b {
+                            background: $rgba-primary-0;
+
+                        }
+
+                    }
+
+                    input {
+                        background: $rgba-primary-0;
+                        border: 1px solid $color1;
+
+                    }
+
+                    input::placeholder {
+                        color: $color1;
+
+                    }
+
+
+                    select {
+                        background-color: $rgba-primary-0;
+                        border: 1px solid $color1;
+
+                        option {
+                            background-color: $rgba-primary-0;
+
+                        }
+                    }
+                }
+            }
+
+            button {
+                margin-top: 20px;
+
+
+            }
+
+
+        }
+    }
+
+    // =============================================================
+    //=============================================================
+    //===================== tableau =================================
+    //=============================================================
+
+    #tableau {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 3% 7% 3% 7%;
+
+        table {
+            border: 1px solid $color-primary-1;
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                border: 1px solid $color-primary-1;
+
+                tr {
+                    th {
+                        padding: 10px;
+                    }
+                }
+
+            }
+
+            tbody {
+
+
+                tr {
+                    border-bottom: 1px solid $color-primary-1;
+
+                    td {
+                        padding: 4px;
+                        color: $color1;
+                    }
+
+                    button {
+                        background: $color-primary-1;
+                        ;
+                        color: $color1;
+                        padding: 10px;
+                        height: auto;
+                        width: auto;
+                        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+                        transition: 0.5s;
+
+                        a {
+                            background: none;
+                            color: $color1;
+                        }
+                    }
+
+                    button:hover {
+                        box-shadow: rgba(235, 225, 225, 0.25) 0px 54px 55px, rgba(235, 225, 225, 0.12) 0px -12px 30px, rgba(235, 225, 225, 0.12) 0px 4px 6px, rgba(235, 225, 225, 0.17) 0px 12px 13px, rgba(235, 225, 225, 0.09) 0px -3px 5px;
+                        background: $color-primary-2;
+                    }
+
+
+                }
+
+                #retard {
+                    color: $color8 !important;
+                }
+            }
+        }
 
 
     }
 
-    form {
-        padding: 10px;
-        width: 100%;
-        height: 100%;
+
+
+    //=============================================================
+    //===================== formulaire =================================
+    //=============================================================
+    #formulaire {
         display: flex;
-        flex-direction: column;
         align-items: center;
-        gap: 15px;
-        border-radius: 20px;
-        background: $rgba-primary-0;
+        flex-direction: column;
+        padding: 20px;
 
-        h2 {
-            background-color: $rgba-primary-0;
+        form {
 
-        }
-
-        div {
-            background-color: $rgba-primary-0;
-        }
-
-        #usersModForm {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            width: auto;
+            height: auto;
+            border: 1px solid $color1;
+            border-radius: 20px;
             gap: 20px;
             padding: 20px;
             background: $rgba-primary-0;
@@ -587,293 +693,144 @@ main {
 
                 label {
                     background: $rgba-primary-0;
-
-                    b {
-                        background: $rgba-primary-0;
-
-                    }
-
+                    font-weight: 900;
                 }
 
                 input {
-                    background: $rgba-primary-0;
+                    background: $rgba-primary-2;
                     border: 1px solid $color1;
 
                 }
 
                 input::placeholder {
                     color: $color1;
+                }
+
+                textarea {
+                    background: $rgba-primary-2;
+                    border: 1px solid $color1;
 
                 }
 
+                textarea::placeholder {
+                    color: $color1;
+                }
 
                 select {
-                    background-color: $rgba-primary-0;
+                    background-color: $rgba-primary-2;
                     border: 1px solid $color1;
 
                     option {
-                        background-color: $rgba-primary-0;
+                        background-color: $rgba-primary-2;
 
                     }
                 }
             }
         }
 
-        button {
-            margin-top: 20px;
 
-
-        }
 
 
     }
-}
 
-// =============================================================
-//=============================================================
-//===================== tableau =================================
-//=============================================================
 
-#tableau {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 3% 7% 3% 7%;
 
-    table {
-        border: 1px solid $color-primary-1;
+
+
+
+
+    // =============================================================
+    //=============================================================
+    //===================== connexion =================================
+    //=============================================================
+    .contact {
         width: 100%;
-        border-collapse: collapse;
-
-        thead {
-            border: 1px solid $color-primary-1;
-
-            tr {
-                th {
-                    padding: 10px;
-                }
-            }
-
-        }
-
-        tbody {
-
-
-            tr {
-                border-bottom: 1px solid $color-primary-1;
-
-                td {
-                    padding: 4px;
-                    color: $color1;
-                }
-
-                button {
-                    background: $color-primary-1;
-                    ;
-                    color: $color1;
-                    padding: 10px;
-                    height: auto;
-                    width: auto;
-                    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-                    transition: 0.5s;
-
-                    a {
-                        background: none;
-                        color: $color1;
-                    }
-                }
-
-                button:hover {
-                    box-shadow: rgba(235, 225, 225, 0.25) 0px 54px 55px, rgba(235, 225, 225, 0.12) 0px -12px 30px, rgba(235, 225, 225, 0.12) 0px 4px 6px, rgba(235, 225, 225, 0.17) 0px 12px 13px, rgba(235, 225, 225, 0.09) 0px -3px 5px;
-                    background: $color-primary-2;
-                }
-
-
-            }
-
-            #retard {
-                color: $color8 !important;
-            }
-        }
-    }
-
-
-}
-
-
-
-//=============================================================
-//===================== formulaire =================================
-//=============================================================
-#formulaire {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-
-    form {
-
         display: flex;
         flex-direction: column;
         align-items: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-        width: auto;
-        height: auto;
-        border: 1px solid $color1;
-        border-radius: 20px;
-        gap: 20px;
-        padding: 20px;
-        background: $rgba-primary-0;
-
-
-
 
         div {
-            display: flex;
-            flex-direction: column;
-            background: $rgba-primary-0;
 
-            label {
-                background: $rgba-primary-0;
-                font-weight: 900;
-            }
-
-            input {
-                background: $rgba-primary-2;
-                border: 1px solid $color1;
-
-            }
 
             input::placeholder {
                 color: $color1;
             }
 
-            textarea {
-                background: $rgba-primary-2;
-                border: 1px solid $color1;
-
-            }
-
-            textarea::placeholder {
-                color: $color1;
-            }
-
-            select {
-                background-color: $rgba-primary-2;
-                border: 1px solid $color1;
-
-                option {
-                    background-color: $rgba-primary-2;
-
+            button {
+                a {
+                    color: $white;
                 }
             }
         }
-    }
 
-
-
-
-}
-
-
-
-
-
-
-
-// =============================================================
-//=============================================================
-//===================== connexion =================================
-//=============================================================
-.contact {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    div {
-
-
-        input::placeholder {
-            color: $color1;
-        }
-
-        button {
-            a {
-                color: $white;
-            }
+        .spaceButton {
+            background: none;
         }
     }
 
-    .spaceButton {
-        background: none;
-    }
-}
-
-//=============================================================
-//===================== l'article =============================
-//=============================================================
-.oneArticle {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .fichierOne {
-        width: 250px;
-        height: 350px;
-    }
-
-    div {
+    //=============================================================
+    //===================== l'article =============================
+    //=============================================================
+    .oneArticle {
+        padding-top: 50px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        width: 60%;
 
-        h3 {
-            font-weight: 900;
+        .fichierOne {
+            width: 250px;
+            height: 350px;
         }
 
-        #description {
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 60%;
 
-            font-weight: 600;
-        }
-    }
+            h3 {
+                font-weight: 900;
+            }
 
-    .message {
-        border: 1px solid black;
-        border-radius: 15px;
-        position: relative;
-        top: -500px;
-        width: 0;
-        height: 0;
-        background: white;
-        margin: 25%;
-        transform: scale(0);
-        opacity: 0;
-        transition: 0.5s;
-        visibility: hidden;
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            #description {
 
-        &.active {
-            transform: scale(1);
-            opacity: 1;
-            width: 200px;
-            height: 100px;
-            visibility: visible;
-
+                font-weight: 600;
+            }
         }
 
-        p {
-            color: $color-primary-4;
-            font-weight: 900;
+        .message {
+            border: 1px solid black;
+            border-radius: 15px;
+            position: relative;
+            top: -500px;
+            width: 0;
+            height: 0;
+            background: white;
+            margin: 25%;
+            transform: scale(0);
+            opacity: 0;
+            transition: 0.5s;
+            visibility: hidden;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+            &.active {
+                transform: scale(1);
+                opacity: 1;
+                width: 200px;
+                height: 100px;
+                visibility: visible;
+
+            }
+
+            p {
+                color: $color-primary-4;
+                font-weight: 900;
+            }
         }
+
     }
 
 }
-
-
 
 
 //=============================================================
@@ -935,4 +892,99 @@ footer {
 
 #titreCards {
     margin-top: 10px;
+}
+
+
+// 
+// 
+// 
+// 
+// 
+// 
+#popCarte {
+    display: flex;
+    //flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    //width: 75%;
+
+}
+
+#wrapper {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#card {
+    flex: 1;
+    flex-basis: 300px;
+    flex-grow: 0;
+    height: 440px;
+    background: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0px 4px 7px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
+    overflow: hidden;
+    position: relative;
+}
+
+#card .miniCard {
+    width: 100%;
+    height: 100%;
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
+}
+
+#descriptions {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, .7);
+    width: 100%;
+    height: 100%;
+    transition: all .7s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    clip-path: circle(0% at 100% 100%);
+}
+
+#card:hover #descriptions {
+    left: 0px;
+    transition: all .7s ease-in-out;
+    clip-path: circle(75%);
+}
+
+#card:hover {
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, .3);
+    transform: scale(.97);
+}
+
+#card:hover .miniCard {
+    transition: all .5s cubic-bezier(.8, .5, .2, 1.4);
+    transform: scale(1.6) rotate(20deg);
+    filter: blur(3px);
+}
+
+#card .toto {
+    color: $color1;
+    letter-spacing: 1px;
+    margin: 0px;
+}
+
+#card .tata {
+    line-height: 24px;
+    height: 70%;
 }
