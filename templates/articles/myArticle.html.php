@@ -1,4 +1,4 @@
-<section id="index">
+<section id="tableau">
 
     <h2>Voici vos réservations en cours</h2>
 
@@ -58,6 +58,8 @@
                     col.innerHTML = element[i];
                     a.appendChild(col);
                 } else {
+                    let tdButton = document.createElement('td');
+
                     let col = document.createElement('button');
                     col.innerHTML = "rendre";
                     col.dataset.id = element[i];
@@ -65,8 +67,9 @@
                     col.onclick = function() {
                         alert("Voulez vous rendre l'article?");
                     };
+                    tdButton.appendChild(col);
+                    a.appendChild(tdButton);
 
-                    a.appendChild(col);
                 }
             }
             //on mest tout ça dans le tableau

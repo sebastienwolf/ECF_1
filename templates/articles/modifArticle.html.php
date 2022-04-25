@@ -1,15 +1,15 @@
-<section>
+<section id="formulaire">
 
     <form id="form" action="" method="POST">
 
     </form>
-    <a href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour.............................................................</a>
+    <button class="bn632-hover bn25"><a href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a></button>
 </section>
-<section>
+<!-- <section>
     <div id="showImg">
 
     </div>
-</section>
+</section> -->
 <script>
     const tableau = <?php echo json_encode($articles); ?>;
     const showCat = <?php echo json_encode($cat); ?>;
@@ -33,12 +33,16 @@
 
         //boucle pour crée autant de ligne tr que le nombre de ligne du tableau
         tableau.forEach(element => {
-            //crée un l'élement tr
+
             for (const i in element) {
+                debugger
+                let div = document.createElement('div');
+
                 if (i !== "id_article") {
                     let label = document.createElement('label');
                     label.innerText = cible[chiffre];
-                    x.appendChild(label);
+                    div.appendChild(label);
+                    x.appendChild(div);
                 }
                 if (i !== "description" && i !== "file" && i !== "name") {
                     let col = document.createElement('input');
@@ -50,10 +54,10 @@
                     }
                     col.placeholder = element[i];
 
-                    x.appendChild(col);
+                    div.appendChild(col);
+                    x.appendChild(div);
                 }
                 if (i == "name") {
-                    debugger
                     let select = document.createElement('select');
                     select.name = "category"
                     let choix = document.createElement('option');
@@ -68,25 +72,32 @@
                         select.appendChild(option)
                     })
 
-                    x.appendChild(select)
+                    div.appendChild(select)
+                    x.appendChild(div);
+
                 }
 
                 if (i == "description") {
+
                     let select = document.createElement('textarea');
                     select.cols = "30"
                     select.rows = "30"
                     select.name = i
                     select.placeholder = element[i]
-                    x.appendChild(select)
+                    div.appendChild(select)
+                    x.appendChild(div);
+
                 }
                 if (i == "file") {
-                    debugger
+
                     let col = document.createElement('input');
                     col.type = "file";
                     col.name = i;
                     col.placeholder = element[i];
 
-                    x.appendChild(col);
+                    div.appendChild(col);
+                    x.appendChild(div);
+
 
                     let cacher = document.createElement('input');
                     cacher.type = "text";
@@ -94,15 +105,18 @@
                     cacher.value = element[i];
                     cacher.hidden = "hidden";
 
-                    x.appendChild(cacher);
+                    div.appendChild(cacher);
+                    x.appendChild(div);
 
-                    const contenaire = document.getElementById('showImg');
-                    let img = document.createElement('img');
-                    img.src = "./upload/" + element[i];
-                    img.alt = "";
-                    contenaire.appendChild(img);
+
+                    // const contenaire = document.getElementById('showImg');
+                    // let img = document.createElement('img');
+                    // img.src = "./upload/" + element[i];
+                    // img.alt = "";
+                    // contenaire.appendChild(img);
                 }
                 chiffre++
+
 
             }
 
@@ -113,6 +127,7 @@
             mod.onclick = function() {
                 alert("Voulez vous faire les changements.");
             };
+            mod.className = "bn632-hover bn25"
             //on mest tout ça dans le tableau
             x.appendChild(mod);
 

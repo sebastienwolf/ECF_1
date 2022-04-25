@@ -1,4 +1,4 @@
-<section id="index">
+<section id="tableau">
 
     <h2>Voici toutes vos réservations effectué </h2>
 

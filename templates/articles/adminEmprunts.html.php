@@ -1,4 +1,4 @@
-<section id="index">
+<section id="tableau">
 
     <h2>Voici vos réservations en cours</h2>
 
@@ -52,7 +52,8 @@
             a = document.createElement('tr');
             a.id = element.id_article;
             if (element.reste < 0) {
-                a.style.background = 'red';
+                //a.style.background = 'red';
+                a.id += " retard"
             }
 
             for (const i in element) {
@@ -64,6 +65,7 @@
                     col.innerHTML = element[i];
                     a.appendChild(col);
                 } else {
+                    let tdButton = document.createElement('td');
                     let col = document.createElement('button');
                     col.innerHTML = "rendre";
                     col.dataset.id = element[i];
@@ -73,7 +75,8 @@
                         alert("Voulez vous rendre l'article?");
                     };
 
-                    a.appendChild(col);
+                    tdButton.appendChild(col);
+                    a.appendChild(tdButton);
                 }
             }
             //on mest tout ça dans le tableau

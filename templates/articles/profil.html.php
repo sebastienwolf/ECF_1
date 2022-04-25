@@ -35,7 +35,7 @@
         <h2>
             Modification
         </h2>
-        <div id="usersMod__form">
+        <div id="usersModForm">
             <div>
                 <label for=""><b>Nom :</b></label>
                 <input type="text" name="nom" placeholder="<?= $_SESSION['nom'] ?>">
@@ -79,8 +79,8 @@
             <?php } ?>
         </div>
         <div>
-            <button type="submit" class="creer bn632-hover bn25" name="creer"><a href="#profil">Valider</a></button>
-            <button class="bn632-hover bn25" id="retour"> <a href="#profil">Retour</a> </button>
+            <button type="submit" class="creer bn632-hover bn25" name="creer">Valider</button>
+            <button class="bn632-hover bn25" id="retour"> Retour </button>
         </div>
     </form>
 </div>

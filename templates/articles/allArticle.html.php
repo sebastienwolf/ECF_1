@@ -1,6 +1,10 @@
 <section id="index">
     <article id="allFiltre">
-        <form id="filtre" action="" method="post">
+        <div class="checbox">
+            <button id="superFiltre" class="bn634-hover bn27">Filtre</button>
+        </div>
+        <form id="filtre" class="filtre" action="" method="post">
+
             <div>
                 <h2>Categorie</h2>
                 <?php
@@ -47,11 +51,12 @@
                 <?php } ?>
             </div>
 
-            <button type="submit"> rechercher</button>
+            <button class="bn634-hover bn27" type="submit"> rechercher</button>
         </form>
     </article>
 
     <article id="allCards">
+    </article>
 
 </section>
 
@@ -79,6 +84,14 @@ function filtre($tableau, $champ)
     const tableau = <?php echo json_encode($articles); ?>;
 
     pop(tableau)
+    //==============================================================================================
+    // faire descendre les filtres
+    document.getElementById("superFiltre").addEventListener('click', event => {
+        // toogle permet de voir si la classe est active alors il l'enlève sinon il le mets
+        document.getElementById("filtre").classList.toggle("active")
+
+    })
+
 
     //==============================================================================================
 
@@ -142,7 +155,7 @@ function filtre($tableau, $champ)
     document.getElementById('filtre').addEventListener('submit', (event) => {
         event.preventDefault();
         console.log(event);
-        debugger
+        document.getElementById("filtre").classList.toggle("active")
         //let id = event.target.dataset.id
         let URL = "index.php?controller=article&task=filtreSelection"
         let form = document.getElementById('filtre')

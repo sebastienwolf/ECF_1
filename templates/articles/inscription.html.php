@@ -1,32 +1,46 @@
-<section class="form">
-    <article class="contact">
-        <h2>
-            Inscription
-        </h2>
-        <div>
-            <form id="form" action="" method="post">
-                <input type="text" name="nom" placeholder="Nom">
-                <input type="text" name="prenom" placeholder="Prénom">
-                <input type="email" name="mail" placeholder="Mail">
-                <input type="password" name="password" placeholder="Mot de Passe">
-                <input type="text" name="adresse" placeholder="Adresse">
-                <input type="text" name="ville" placeholder="Ville">
-                <input type="text" name="cp" placeholder="Code Postal">
-                <?php
-                $type = $_SESSION['userType'];
-                if ($type == "admin") { ?>
-                    <select type="select" name="type">
-                        <option value="utilisateur">utilisateur</option>
-                        <option value="admin">admin</option>
-                    </select>
-                <?php } ?>
+<section id="formulaire">
+    <h2>
+        Inscription
+    </h2>
 
-                <button type="submit" class="creer bn633-hover bn26" name="creer">Créer</button>
-            </form>
-            <h3 id="erreur"></h3>
+    <form id="form" action="" method="post">
+        <div>
+            <input type="text" name="nom" placeholder="Nom">
+        </div>
+        <div>
+            <input type="text" name="prenom" placeholder="Prénom">
+        </div>
+        <div>
+            <input type="email" name="mail" placeholder="Mail">
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Mot de Passe">
+        </div>
+        <div>
+            <input type="text" name="adresse" placeholder="Adresse">
+        </div>
+        <div>
+            <input type="text" name="ville" placeholder="Ville">
+        </div>
+        <div>
+            <input type="text" name="cp" placeholder="Code Postal">
+        </div>
+        <div>
+            <?php
+            $type = $_SESSION['userType'];
+            if ($type == "admin") { ?>
+                <select type="select" name="type">
+                    <option value="utilisateur">utilisateur</option>
+                    <option value="admin">admin</option>
+                </select>
+            <?php } ?>
         </div>
 
-    </article>
+        <button type="submit" class="creer bn632-hover bn25" name="creer">Créer</button>
+    </form>
+    <h3 id="erreur"></h3>
+
+
 </section>
 
 

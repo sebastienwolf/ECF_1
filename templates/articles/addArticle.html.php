@@ -1,33 +1,51 @@
-<section>
+<section id="formulaire">
+    <h2>Ajouter un article</h2>
 
     <form id="form" action="" method="POST">
-        <label for="">Titre :</label>
-        <input type="text" name="titre" placeholder="Titre">
-        <label for="">Auteur :</label>
-        <input type="text" name="auteur" placeholder="Auteur">
-        <label for=""> Genre :</label>
-        <input type="text" name="genre" placeholder="Genre">
-        <label for="">Collection :</label>
-        <input type="text" name="collection" placeholder="collection">
-        <label for="">Edition :</label>
-        <input type="text" name="edition" placeholder="edition">
-        <label for="">Catégorie :</label>
-        <select name="category" id="">
-            <?php
-            foreach ($themes as $theme) {
-            ?>
-                <option value="<?= $theme['id_category'] ?>"><?= $theme['name'] ?></option>
+        <div>
+            <label for="">Titre :</label>
+            <input type="text" name="titre" placeholder="Titre">
+        </div>
+        <div>
+            <label for="">Auteur :</label>
+            <input type="text" name="auteur" placeholder="Auteur">
+        </div>
+        <div>
+            <label for=""> Genre :</label>
+            <input type="text" name="genre" placeholder="Genre">
+        </div>
+        <div>
+            <label for="">Collection :</label>
+            <input type="text" name="collection" placeholder="collection">
+        </div>
+        <div>
+            <label for="">Edition :</label>
+            <input type="text" name="edition" placeholder="edition">
+        </div>
+        <div>
+            <label for="">Catégorie :</label>
+            <select name="category" id="">
+                <?php
+                foreach ($themes as $theme) {
+                ?>
+                    <option value="<?= $theme['id_category'] ?>"><?= $theme['name'] ?></option>
 
-            <?php
-            }
-            ?>
+                <?php
+                }
+                ?>
 
-        </select>
-        <label for="">Description :</label>
-        <textarea name="description" id="" cols="30" rows="10"></textarea>
-        <label for="">Image :</label>
-        <input type="file" name="image">
-        <button type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
+            </select>
+        </div>
+        <div>
+            <label for="">Description :</label>
+            <textarea name="description" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div>
+            <label for="">Image :</label>
+            <input type="file" name="image">
+
+        </div>
+        <button class="bn632-hover bn25" type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
     </form>
 </section>
 

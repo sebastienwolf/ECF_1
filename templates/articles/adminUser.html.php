@@ -1,19 +1,20 @@
-<section>
+<section id="tableau">
     <div>
         <a href="index.php?controller=page&task=Inscription">Ajouter un utilisateur</a>
     </div>
     <table class="table table-striped table-sm">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Prenom</th>
-                <th scope="col">Nom</th>
-                <th scope="col">Mail</th>
-                <th scope="col">Adresse</th>
-                <th scope="col">Ville</th>
-                <th scope="col">Code postal</th>
-                <th scope="col">Role</th>
-                <th scope="col"></th>
+                <th>Id</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Mail</th>
+                <th>Adresse</th>
+                <th>Ville</th>
+                <th>Code postal</th>
+                <th>Role</th>
+                <th></th>
+                <th></th>
 
             </tr>
         </thead>
@@ -56,7 +57,9 @@
                 }
             }
             debugger
+            let col = document.createElement('td');
             let mod = document.createElement('a');
+            let modify = document.createElement('button');
             mod.innerText = "modifier";
             mod.className = "modifier";
             mod.href = "index.php?controller=users&task=adminProfil&id=" + element['id_user'];
@@ -64,8 +67,11 @@
             // let lien = document.createElement('a')
             // lien.href = "index.php?controller=users&task=adminProfil&id=" + element['id_user'];
             // mod.appendChild(lien)
-            a.appendChild(mod);
+            modify.appendChild(mod)
+            col.appendChild(modify);
+            a.appendChild(col);
 
+            let col2 = document.createElement('td');
             let sup = document.createElement('button');
             sup.innerText = "suprimer";
             sup.dataset.id = element['id_user'];
@@ -73,7 +79,10 @@
             sup.onclick = function() {
                 alert("Voulez vous suprimer " + element['prenom'] + " " + element['nom']);
             };
-            a.appendChild(sup);
+            col2.appendChild(sup);
+            // on met les deux button dans le td
+            a.appendChild(col2);
+
             //on mest tout ça dans le tableau
             x.appendChild(a)
 

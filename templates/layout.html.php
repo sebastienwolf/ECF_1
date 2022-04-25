@@ -14,10 +14,12 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
 
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
 </head>
 
-<body id="page-top" class="index">
-    <header>
+<body id="body" class="body">
+    <header id="siteHeader">
 
         <img id="baniere" src="./upload/banniere.jpg" alt="">
 
@@ -26,7 +28,7 @@ session_start();
 
                 <a href="index.php?controller=article&task=index"><img src="./upload/logo.png" alt="" srcset=""></a>
             </div> -->
-    <div id="menu">
+    <div class="siteMenu" id="menu">
 
         <ul class="menuCase">
             <!-- ======================================================================================== -->
@@ -145,7 +147,7 @@ session_start();
     </div>
 
 
-    <main>
+    <main id="siteMain">
 
 
         <!-- ============================================================================================================== -->
@@ -156,8 +158,8 @@ session_start();
         <!-- ============================================================================================================== -->
         <!-- ============================================================================================================== -->
     </main>
-    <footer>
-        <p>©<?= date("Y") ?> par .......</p>
+    <footer id="siteFooter">
+        <p>©<?= date("Y") ?> par Sébastien Mouret</p>
 
         <nav>
             <ul>

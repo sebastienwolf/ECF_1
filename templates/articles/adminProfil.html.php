@@ -1,9 +1,9 @@
-<section>
+<section id="formulaire">
 
     <form id="form" action="" method="POST">
 
     </form>
-    <a href="index.php?controller=users&task=adminUsers">Retour.............................................................</a>
+    <button class="bn632-hover bn25"><a href="index.php?controller=users&task=adminUsers">Retour</a></button>
 </section>
 <script>
     const tableau = <?php echo json_encode($users); ?>;
@@ -28,10 +28,11 @@
             //crée un l'élement tr
             debugger
             for (const i in element) {
+                let div = document.createElement('div');
                 if (i !== "id_user") {
                     let label = document.createElement('label');
                     label.innerText = cible[chiffre];
-                    x.appendChild(label);
+                    div.appendChild(label);
                 }
                 if (i !== "type") {
                     let col = document.createElement('input');
@@ -46,7 +47,7 @@
                     } else {
                         col.placeholder = "*********";
                     }
-                    x.appendChild(col);
+                    div.appendChild(col);
                 }
                 if (i == "type") {
                     let select = document.createElement('select');
@@ -63,10 +64,10 @@
                     select.appendChild(option1)
                     select.appendChild(option2)
                     select.appendChild(option3)
-                    x.appendChild(select)
+                    div.appendChild(select)
                 }
                 chiffre++
-
+                x.appendChild(div)
             }
 
             let mod = document.createElement('button');
@@ -76,7 +77,9 @@
             mod.onclick = function() {
                 alert("Voulez vous faire les changements.");
             };
+            mod.className = "bn632-hover bn25"
             //on mest tout ça dans le tableau
+
             x.appendChild(mod);
 
         });
