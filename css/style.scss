@@ -246,6 +246,7 @@ header {
 main {
     position: relative;
     top: -50px;
+    margin-bottom: 50px;
 
     textarea {
         resize: none;
@@ -269,18 +270,19 @@ main {
             border: 5px solid $color2;
             margin: 10px;
             padding: 10px;
-            animation: clignote 2s linear infinite;
+            animation: clignote 3s linear infinite;
 
 
-            P {
+            p {
                 color: $color2;
-                animation: clignote 2s linear infinite;
+                animation: clignote 3s linear infinite;
             }
+
         }
 
         @keyframes clignote {
             50% {
-                opacity: 0.2;
+                opacity: 0.3;
             }
         }
 
@@ -288,33 +290,42 @@ main {
             text-align: center;
             margin-top: 30px;
             font-weight: 900;
+            background: none;
+
         }
 
         article {
             display: flex;
             flex-wrap: wrap;
-            width: 100%;
             height: auto;
-            border: 1px solid $color6;
-            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
             gap: 20px;
+            padding: 20px;
+            border-radius: 20px;
 
             .cards {
-                box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
                 width: 200px;
+                background: $color1;
 
                 a {
                     text-decoration: none;
+                    background: $color1;
+
 
                     .miniCard {
                         width: 100%;
                         height: 140px;
                         background-size: contain;
+                        background: $color1;
+
                     }
 
                     .info {
                         p {
                             color: #000000;
+                            background: $color1;
+
                         }
                     }
                 }
@@ -323,6 +334,7 @@ main {
                     font-size: 18px;
                     color: $color9;
                     font-weight: 400;
+
                 }
             }
 
@@ -335,13 +347,34 @@ main {
     //===================== profil =================================
     //=============================================================
     .profil {
+        padding-top: 30px;
         display: flex;
         flex-direction: column;
+        align-items: center;
+
 
         article {
+            padding: 30px;
             display: flex;
             justify-content: space-between;
             gap: 30px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+            border-radius: 20px;
+            background: $color-primary-0;
+
+            div {
+                background: $color-primary-0;
+
+                p {
+                    background: $color-primary-0;
+
+                    b {
+                        background: $color-primary-0;
+                        color: $color4;
+
+                    }
+                }
+            }
 
             img {
                 width: 180px;
@@ -349,6 +382,120 @@ main {
                 border: 1px solid black;
                 margin-left: 5px;
             }
+        }
+    }
+}
+
+//=============================================================
+//===================== formulaire pop modif user =============
+//=============================================================
+// ============================================================
+
+// apparition pop profil modif
+.formUsers {
+    border: 1px solid $color1;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border-radius: 20px;
+    position: absolute;
+    top: -350px;
+    left: 110px;
+    width: 0;
+    height: 0;
+    margin: 25%;
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.5s;
+    visibility: hidden;
+
+
+    &.active {
+        transform: scale(1);
+        opacity: 1;
+        width: 500px;
+        height: auto;
+        visibility: visible;
+        border-radius: 20px;
+
+
+
+
+    }
+
+    form {
+        padding: 10px;
+        width: 95%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        border-radius: 20px;
+        background: $rgba-primary-0;
+
+        h2 {
+            background-color: $rgba-primary-0;
+
+        }
+
+        div {
+            background-color: $rgba-primary-0;
+        }
+
+        #usersMod__form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+            background: $rgba-primary-0;
+
+
+
+
+            div {
+                display: flex;
+                flex-direction: column;
+                background: $rgba-primary-0;
+
+                label {
+                    background: $rgba-primary-0;
+
+                    b {
+                        background: $rgba-primary-0;
+
+                    }
+
+                }
+
+                input {
+                    background: $rgba-primary-0;
+                    border: 1px solid $color1;
+
+                }
+
+                input::placeholder {
+                    color: $color1;
+
+                }
+
+
+                select {
+                    background-color: $rgba-primary-0;
+                    border: 1px solid $color1;
+
+                    option {
+                        background-color: $rgba-primary-0;
+
+                    }
+                }
+            }
+        }
+
+        button {
+            margin-top: 20px;
+        }
+
+        #retour {
+            position: relative;
+            top: 5px;
         }
     }
 }
@@ -454,56 +601,7 @@ main {
 }
 
 
-//=============================================================
-//===================== formulaire pop modif user =============
-//=============================================================
-// ============================================================
 
-// apparition pop profil modif
-.formUsers {
-    border: 1px solid black;
-    border-radius: 15px;
-    position: relative;
-    top: -550px;
-    width: 0;
-    height: 0;
-    background: white;
-    margin: 25%;
-    transform: scale(0);
-    opacity: 0;
-    transition: 0.5s;
-    visibility: hidden;
-
-
-    &.active {
-        transform: scale(1);
-        opacity: 1;
-        width: 400px;
-        height: 500px;
-        visibility: visible;
-
-
-
-
-    }
-
-    form {
-        width: 95%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-
-        button {
-            margin-top: 20px;
-        }
-
-        #retour {
-            position: relative;
-            top: 5px;
-        }
-    }
-}
 
 //=============================================================
 //===================== footer ================================

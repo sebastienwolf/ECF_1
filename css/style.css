@@ -183,6 +183,7 @@ header #baniere {
 main {
   position: relative;
   top: -50px;
+  margin-bottom: 50px;
 }
 
 main textarea {
@@ -211,25 +212,25 @@ main #index #popup {
   border: 5px solid #c3cf15;
   margin: 10px;
   padding: 10px;
-  -webkit-animation: clignote 2s linear infinite;
-          animation: clignote 2s linear infinite;
+  -webkit-animation: clignote 3s linear infinite;
+          animation: clignote 3s linear infinite;
 }
 
-main #index #popup P {
+main #index #popup p {
   color: #c3cf15;
-  -webkit-animation: clignote 2s linear infinite;
-          animation: clignote 2s linear infinite;
+  -webkit-animation: clignote 3s linear infinite;
+          animation: clignote 3s linear infinite;
 }
 
 @-webkit-keyframes clignote {
   50% {
-    opacity: 0.2;
+    opacity: 0.3;
   }
 }
 
 @keyframes clignote {
   50% {
-    opacity: 0.2;
+    opacity: 0.3;
   }
 }
 
@@ -237,6 +238,7 @@ main #index h2 {
   text-align: center;
   margin-top: 30px;
   font-weight: 900;
+  background: none;
 }
 
 main #index article {
@@ -245,32 +247,36 @@ main #index article {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 100%;
   height: auto;
-  border: 1px solid #d3e0d3;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 main #index article .cards {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-          box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+          box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   width: 200px;
+  background: #F8F9F7;
 }
 
 main #index article .cards a {
   text-decoration: none;
+  background: #F8F9F7;
 }
 
 main #index article .cards a .miniCard {
   width: 100%;
   height: 140px;
   background-size: contain;
+  background: #F8F9F7;
 }
 
 main #index article .cards a .info p {
   color: #000000;
+  background: #F8F9F7;
 }
 
 main #index article .cards h3 {
@@ -280,6 +286,7 @@ main #index article .cards h3 {
 }
 
 main .profil {
+  padding-top: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -287,9 +294,13 @@ main .profil {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 main .profil article {
+  padding: 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -297,6 +308,23 @@ main .profil article {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 30px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 20px;
+  background: #488FA0;
+}
+
+main .profil article div {
+  background: #488FA0;
+}
+
+main .profil article div p {
+  background: #488FA0;
+}
+
+main .profil article div p b {
+  background: #488FA0;
+  color: #2F2E2E;
 }
 
 main .profil article img {
@@ -304,6 +332,130 @@ main .profil article img {
   height: 250px;
   border: 1px solid black;
   margin-left: 5px;
+}
+
+.formUsers {
+  border: 1px solid #F8F9F7;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+          box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 20px;
+  position: absolute;
+  top: -350px;
+  left: 110px;
+  width: 0;
+  height: 0;
+  margin: 25%;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  visibility: hidden;
+}
+
+.formUsers.active {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
+  width: 500px;
+  height: auto;
+  visibility: visible;
+  border-radius: 20px;
+}
+
+.formUsers form {
+  padding: 10px;
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+  border-radius: 20px;
+  background: #488fa0;
+}
+
+.formUsers form h2 {
+  background-color: #488fa0;
+}
+
+.formUsers form div {
+  background-color: #488fa0;
+}
+
+.formUsers form #usersMod__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background: #488fa0;
+}
+
+.formUsers form #usersMod__form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #488fa0;
+}
+
+.formUsers form #usersMod__form div label {
+  background: #488fa0;
+}
+
+.formUsers form #usersMod__form div label b {
+  background: #488fa0;
+}
+
+.formUsers form #usersMod__form div input {
+  background: #488fa0;
+  border: 1px solid #F8F9F7;
+}
+
+.formUsers form #usersMod__form div input::-webkit-input-placeholder {
+  color: #F8F9F7;
+}
+
+.formUsers form #usersMod__form div input:-ms-input-placeholder {
+  color: #F8F9F7;
+}
+
+.formUsers form #usersMod__form div input::-ms-input-placeholder {
+  color: #F8F9F7;
+}
+
+.formUsers form #usersMod__form div input::placeholder {
+  color: #F8F9F7;
+}
+
+.formUsers form #usersMod__form div select {
+  background-color: #488fa0;
+  border: 1px solid #F8F9F7;
+}
+
+.formUsers form #usersMod__form div select option {
+  background-color: #488fa0;
+}
+
+.formUsers form button {
+  margin-top: 20px;
+}
+
+.formUsers form #retour {
+  position: relative;
+  top: 5px;
 }
 
 .form article form {
@@ -415,56 +567,6 @@ main .profil article img {
 .oneArticle .message p {
   color: #414D4F;
   font-weight: 900;
-}
-
-.formUsers {
-  border: 1px solid black;
-  border-radius: 15px;
-  position: relative;
-  top: -550px;
-  width: 0;
-  height: 0;
-  background: white;
-  margin: 25%;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  opacity: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-  visibility: hidden;
-}
-
-.formUsers.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
-  width: 400px;
-  height: 500px;
-  visibility: visible;
-}
-
-.formUsers form {
-  width: 95%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 8px;
-}
-
-.formUsers form button {
-  margin-top: 20px;
-}
-
-.formUsers form #retour {
-  position: relative;
-  top: 5px;
 }
 
 footer {

@@ -3,60 +3,85 @@
 
 ?>
 
-<section class="profil">
+<section id="profil" class="profil">
     <h2>Votre profil :</h2>
     <article>
         <img src="./upload/profil.webp" alt="">
         <div id="profilUser">
-            <p><b>Nom :</b> <?= $_SESSION['nom'] ?></p>
-            <p><b>Prenom :</b> <?= $_SESSION['prenom'] ?></p>
+
+            <p>
+                <b>Prenom :</b> <?= $_SESSION['prenom'] ?>
+                <b>Nom :</b> <?= $_SESSION['nom'] ?>
+            </p>
             <p><b>Mail :</b> <?= $_SESSION['mail'] ?></p>
             <p><b>Adresse :</b> <?= $_SESSION['adress'] ?></p>
             <p><b>Ville :</b> <?= $_SESSION['ville'] ?></p>
             <p><b>Code postal :</b> <?= $_SESSION['cp'] ?></p>
             <p><b>Votre grade :</b> <?= $_SESSION['userType'] ?></p>
-            <p><b>Mot de passe :</b> *******</p>
-
-            <button class="bn632-hover bn25" id="modifier">Modifier</button>
-
+            <!-- <p><b>Mot de passe :</b> *******</p> -->
         </div>
+
+
     </article>
+    <button class="bn632-hover bn25" id="modifier">Modifier</button>
 
 </section>
 
 <!-- section bulle modification -->
 <div class="formUsers" id="formUsers">
 
+
     <form id="usersMod" action="" method="post">
-        <h2>Modification</h2>
+        <h2>
+            Modification
+        </h2>
+        <div id="usersMod__form">
+            <div>
+                <label for=""><b>Nom :</b></label>
+                <input type="text" name="nom" placeholder="<?= $_SESSION['nom'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Prénom :</b></label>
+                <input type="text" name="prenom" placeholder="<?= $_SESSION['prenom'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Email :</b></label>
+                <input type="email" name="mail" placeholder="<?= $_SESSION['mail'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Adresse :</b></label>
+                <input type="text" name="adress" placeholder="<?= $_SESSION['adress'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Ville :</b></label>
+                <input type="text" name="ville" placeholder="<?= $_SESSION['ville'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Code postal :</b></label>
+                <input type="text" name="cp" placeholder="<?= $_SESSION['cp'] ?>">
+            </div>
+            <div>
+                <label for=""><b>Mot de Passe :</b></label>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            <?php
 
-        <label for=""><b>Nom :</b></label>
-        <input type="text" name="nom" placeholder="<?= $_SESSION['nom'] ?>">
-        <label for=""><b>Prénom :</b></label>
-        <input type="text" name="prenom" placeholder="<?= $_SESSION['prenom'] ?>">
-        <label for=""><b>Email :</b></label>
-        <input type="email" name="mail" placeholder="<?= $_SESSION['mail'] ?>">
-        <label for=""><b>Adresse :</b></label>
-        <input type="text" name="adress" placeholder="<?= $_SESSION['adress'] ?>">
-        <label for=""><b>Ville :</b></label>
-        <input type="text" name="ville" placeholder="<?= $_SESSION['ville'] ?>">
-        <label for=""><b>Code postal :</b></label>
-        <input type="text" name="cp" placeholder="<?= $_SESSION['cp'] ?>">
-        <label for=""><b>Mot de Passe :</b></label>
-        <input type="password" name="password" placeholder="Password">
-        <?php
-
-        $type = $_SESSION['userType'];
-        if ($type == "admin") { ?>
-            <label for=""><b>Grade :</b></label>
-            <select type="select" name="type">
-                <option value="<?= $_SESSION['userType'] ?>"><?= $_SESSION['userType'] ?></option>
-                <option value="utilisateur">utilisateur</option>
-                <option value="admin">admin</option>
-            </select>
-        <?php } ?>
-        <button type="submit" class="creer bn632-hover bn25" name="creer">Valider</button>
-        <button class="bn632-hover bn25" id="retour">Retour</button>
+            $type = $_SESSION['userType'];
+            if ($type == "admin") { ?>
+                <div>
+                    <label for=""><b>Grade :</b></label>
+                    <select type="select" name="type">
+                        <option value="<?= $_SESSION['userType'] ?>"><?= $_SESSION['userType'] ?></option>
+                        <option value="utilisateur">utilisateur</option>
+                        <option value="admin">admin</option>
+                    </select>
+                </div>
+            <?php } ?>
+        </div>
+        <div>
+            <button type="submit" class="creer bn632-hover bn25" name="creer"><a href="#profil">Valider</a></button>
+            <button class="bn632-hover bn25" id="retour"> <a href="#profil">Retour</a> </button>
+        </div>
     </form>
 </div>
 <script>
