@@ -3,7 +3,7 @@
     <form id="form" action="" method="POST">
 
     </form>
-    <button class="bn632-hover bn25"><a href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a></button>
+    <button class="bn634-hover bn27"><a href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a></button>
 </section>
 <!-- <section>
     <div id="showImg">
@@ -127,7 +127,7 @@
             mod.onclick = function() {
                 alert("Voulez vous faire les changements.");
             };
-            mod.className = "bn632-hover bn25"
+            mod.className = "bn634-hover bn27"
             //on mest tout ça dans le tableau
             x.appendChild(mod);
 

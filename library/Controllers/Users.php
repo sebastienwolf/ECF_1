@@ -97,7 +97,22 @@ class Users extends Controller
             \Renderer::render('articles/adminUser', compact('pageTitle', 'allUsers'));
         }
     }
+    // ===================================================================================================
+    // ===============================        adminUsers    ===========================================
+    // ===================================================================================================
+    public function adminImprim()
+    {
+        if (($_SESSION['userType'] !== "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
 
+            $id = filter_input(INPUT_GET, 'id');
+            $condition = "id_user = {$id}";
+            $user = $this->model->showAll($condition);
+            $pageTitle = 'Admin Utilisateur';
+            \Renderer::render('articles/adminImprim', compact('pageTitle', 'user'));
+        }
+    }
 
     // ===================================================================================================
     // ===============================        inscription    ===========================================

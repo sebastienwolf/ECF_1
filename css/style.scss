@@ -47,7 +47,7 @@ $white : #ffffff;
     font-family: "futura";
     margin: 0;
     padding: 0;
-    background: $color-primary-3;
+    // background: $color-primary-3;
     color: $color1;
 }
 
@@ -96,6 +96,7 @@ header {
     // top: 0px;
     // z-index: 5;
 
+
     #baniere {
         width: 100%;
         height: 200px;
@@ -110,7 +111,7 @@ header {
     position: sticky;
     top: 0px;
     margin-bottom: 50px;
-    z-index: 5;
+    z-index: 7;
 
     .menuCase {
 
@@ -118,25 +119,35 @@ header {
         margin-right: auto;
         display: flex;
         justify-content: center;
+        align-items: center;
+        align-content: center;
 
         li {
             border: solid 5px $color1;
             list-style: none;
-            width: 150px;
+            width: 200px;
             height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: $color-primary-3;
+            transition: all 0.5s ease;
+
 
             #admin {
                 border: solid 5px $color1;
                 list-style: none;
-                width: 150px;
+                width: 200px;
                 height: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 color: $color1;
+
+                p {
+                    position: relative;
+                    top: 7px;
+                }
             }
 
             ul {
@@ -146,8 +157,16 @@ header {
                         list-style: none;
 
                     }
+
+                    a:hover {
+                        color: $color9;
+                    }
                 }
             }
+        }
+
+        li:hover {
+            background: $color-primary-4;
         }
 
 
@@ -159,11 +178,17 @@ header {
             li {
                 border: solid 5px $color1;
                 list-style: none;
-                width: 150px;
+                width: 200px;
                 height: 50px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                p {
+                    position: relative;
+                    top: 7px;
+                }
+
             }
         }
     }
@@ -296,7 +321,9 @@ header {
     text-decoration: none;
 
 
-
+    a {
+        color: $color9;
+    }
 
 }
 
@@ -306,10 +333,12 @@ header {
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    color: $color9;
 }
 
 .bn634-hover:focus {
     outline: none;
+    color: $color9;
 }
 
 .bn634-hover.bn27 {
@@ -343,6 +372,7 @@ main {
     }
 
 
+
     //=============================================================
     //===================== index =================================
     //=============================================================
@@ -370,7 +400,7 @@ main {
                 position: absolute;
                 top: 0;
                 left: 0;
-                transition: 0.5s;
+                transition: all 0.5s ease;
                 width: 0;
                 height: 0;
                 transform: scale(0);
@@ -431,38 +461,54 @@ main {
             border-radius: 20px;
 
             .cards {
-                box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-                width: 200px;
-                background: $color1;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+                width: 250px;
+                background: $color-primary-4;
+                border: 1px solid $color1;
+                padding: 5px;
+                border-radius: 5px;
+                transition: all 0.5s ease;
+                // height: 400px;
+
+
 
                 a {
                     text-decoration: none;
-                    background: $color1;
+                    background: $color-primary-4;
 
 
                     .miniCard {
                         width: 100%;
-                        height: 140px;
+                        height: 200px;
                         background-size: contain;
-                        background: $color1;
+                        background: $color-primary-4;
 
                     }
 
                     .info {
+                        background: $color-primary-4;
+
+
                         p {
-                            color: #000000;
-                            background: $color1;
+                            color: $color1;
+                            background: $color-primary-4;
 
                         }
                     }
                 }
 
                 h3 {
-                    font-size: 18px;
-                    color: $color9;
-                    font-weight: 400;
+                    font-size: 22px;
+                    color: $color1;
+                    font-weight: 800;
+                    background: $color-primary-4;
 
                 }
+            }
+
+            .cards:hover {
+                transform: scale(1.5);
+                z-index: 5;
             }
 
         }
@@ -515,6 +561,7 @@ main {
     }
 }
 
+
 //=============================================================
 //===================== formulaire pop modif user =============
 //=============================================================
@@ -526,8 +573,8 @@ main {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     border-radius: 20px;
     position: absolute;
-    top: -350px;
-    left: 110px;
+    top: -25%;
+    left: 14%;
     width: 0;
     height: 0;
     margin: 25%;
@@ -641,6 +688,11 @@ main {
     width: 100%;
     padding: 3% 7% 3% 7%;
 
+    div {
+
+        margin-bottom: 20px;
+    }
+
     table {
         border: 1px solid $color-primary-1;
         width: 100%;
@@ -692,8 +744,9 @@ main {
 
             }
 
-            #retard {
-                color: $color8 !important;
+            .retard {
+                background: none;
+                background: $color8;
             }
         }
     }
@@ -931,6 +984,8 @@ footer {
         }
     }
 }
+
+
 
 
 #titreCards {

@@ -43,13 +43,13 @@
                         <a href="index.php?controller=article&task=showOne&id=<?= $art['id_article'] ?>">
                             <img class="miniCard" src="./upload/<?= $art['file'] ?>" alt="">
                             <div class="info">
-                                <p>auteur : <?= $art['auteur'] ?> </p>
-                                <p>genre : <?= $art['genre'] ?></p>
-                                <p>collection : <?= $art['collection'] ?></p>
-                                <p>edition : <?= $art['edition'] ?></p>
+                                <p>Auteur : <?= $art['auteur'] ?> </p>
+                                <p>Genre : <?= $art['genre'] ?></p>
+                                <p>Collection : <?= $art['collection'] ?></p>
+                                <p>Edition : <?= $art['edition'] ?></p>
                             </div>
                         </a>
-                        <h3><?= $cat['titre'] ?></h3>
+                        <h3><?= $art['titre'] ?></h3>
 
                     </div>
             <?php
@@ -149,7 +149,7 @@
                     lien.textContent = "En savoir plus"
                     nom.textContent = titre
 
-                    let text = date + "<br> " + "Auteur : " + pseudo + " &#149; Categorie : " + categori + "<br>" + "<button class='bn632-hover bn25'>" + "<a style='color: white;' href=" + lien + "> En savoir plus </button>"
+                    let text = date + "<br> " + "Auteur : " + pseudo + " &#149; Categorie : " + categori + "<br>" + "<button class='bn634-hover bn27'>" + "<a style='color: white;' href=" + lien + "> En savoir plus </button>"
 
                     p1.innerHTML = text
 
@@ -241,7 +241,7 @@
                         lien.textContent = "En savoir plus"
                         nom.textContent = titre
 
-                        let text = date + "<br> " + "Auteur : " + pseudo + " &#149; Categorie : " + categori + "<br>" + "<button class='bn632-hover bn25'>" + "<a style='color: white;' href=" + lien + "> En savoir plus </button>"
+                        let text = date + "<br> " + "Auteur : " + pseudo + " &#149; Categorie : " + categori + "<br>" + "<button class='bn634-hover bn27'>" + "<a style='color: white;' href=" + lien + "> En savoir plus </button>"
                         p1.innerHTML = text
 
 

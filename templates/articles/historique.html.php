@@ -1,6 +1,6 @@
 <section id="tableau">
 
-    <h2>Voici toutes vos réservations effectué </h2>
+    <h2>Voici toutes vos réservations effectuées </h2>
 
     <table>
         <thead>

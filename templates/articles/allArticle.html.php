@@ -1,7 +1,7 @@
 <section id="index">
     <article id="allFiltre">
         <div class="checbox">
-            <button id="superFiltre" class="bn634-hover bn27">Filtre</button>
+            <button id="superFiltre" class="bn634-hover bn27">Filtres</button>
         </div>
         <form id="filtre" class="filtre" action="" method="post">
 
@@ -51,7 +51,7 @@
                 <?php } ?>
             </div>
 
-            <button class="bn634-hover bn27" type="submit"> rechercher</button>
+            <button class="bn634-hover bn27" type="submit"> Rechercher</button>
         </form>
     </article>
 
@@ -118,16 +118,16 @@ function filtre($tableau, $champ)
             minContenaire.className = "info"
 
             let p1 = document.createElement('p');
-            p1.innerText = "auteur : " + element.auteur;
+            p1.innerText = "Auteur : " + element.auteur;
 
             let p2 = document.createElement('p');
-            p2.innerText = "genre : " + element.genre;
+            p2.innerText = "Genre : " + element.genre;
 
             let p3 = document.createElement('p');
-            p3.innerText = "collection : " + element.collection;
+            p3.innerText = "Collection : " + element.collection;
 
             let p4 = document.createElement('p');
-            p4.innerText = "edition : " + element.edition;
+            p4.innerText = "Edition : " + element.edition;
 
             let titre = document.createElement('h3');
             titre.innerText = element.titre;

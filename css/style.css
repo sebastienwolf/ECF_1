@@ -7,7 +7,6 @@
   font-family: "futura";
   margin: 0;
   padding: 0;
-  background: #436168;
   color: #F8F9F7;
 }
 
@@ -33,7 +32,7 @@ header #baniere {
   position: sticky;
   top: 0px;
   margin-bottom: 50px;
-  z-index: 5;
+  z-index: 7;
 }
 
 #menu .menuCase {
@@ -45,12 +44,17 @@ header #baniere {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 
 #menu .menuCase li {
   border: solid 5px #F8F9F7;
   list-style: none;
-  width: 150px;
+  width: 200px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -61,12 +65,15 @@ header #baniere {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  background: #436168;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 #menu .menuCase li #admin {
   border: solid 5px #F8F9F7;
   list-style: none;
-  width: 150px;
+  width: 200px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -80,9 +87,22 @@ header #baniere {
   color: #F8F9F7;
 }
 
+#menu .menuCase li #admin p {
+  position: relative;
+  top: 7px;
+}
+
 #menu .menuCase li ul li a {
   color: #F8F9F7;
   list-style: none;
+}
+
+#menu .menuCase li ul li a:hover {
+  color: #000000;
+}
+
+#menu .menuCase li:hover {
+  background: #414D4F;
 }
 
 #menu .menuCase a {
@@ -93,7 +113,7 @@ header #baniere {
 #menu .menuCase a li {
   border: solid 5px #F8F9F7;
   list-style: none;
-  width: 150px;
+  width: 200px;
   height: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -104,6 +124,11 @@ header #baniere {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+#menu .menuCase a li p {
+  position: relative;
+  top: 7px;
 }
 
 .bn632-hover {
@@ -206,15 +231,21 @@ header #baniere {
   text-decoration: none;
 }
 
+.bn634-hover a {
+  color: #000000;
+}
+
 .bn634-hover:hover {
   background-position: 100% 0;
   moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
   transition: all .4s ease-in-out;
+  color: #000000;
 }
 
 .bn634-hover:focus {
   outline: none;
+  color: #000000;
 }
 
 .bn634-hover.bn27 {
@@ -263,8 +294,8 @@ main #index #allFiltre .filtre {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
   width: 0;
   height: 0;
   -webkit-transform: scale(0);
@@ -340,33 +371,49 @@ main #index article {
 }
 
 main #index article .cards {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-          box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  width: 200px;
-  background: #F8F9F7;
+  -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 250px;
+  background: #414D4F;
+  border: 1px solid #F8F9F7;
+  padding: 5px;
+  border-radius: 5px;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 main #index article .cards a {
   text-decoration: none;
-  background: #F8F9F7;
+  background: #414D4F;
 }
 
 main #index article .cards a .miniCard {
   width: 100%;
-  height: 140px;
+  height: 200px;
   background-size: contain;
-  background: #F8F9F7;
+  background: #414D4F;
+}
+
+main #index article .cards a .info {
+  background: #414D4F;
 }
 
 main #index article .cards a .info p {
-  color: #000000;
-  background: #F8F9F7;
+  color: #F8F9F7;
+  background: #414D4F;
 }
 
 main #index article .cards h3 {
-  font-size: 18px;
-  color: #000000;
-  font-weight: 400;
+  font-size: 22px;
+  color: #F8F9F7;
+  font-weight: 800;
+  background: #414D4F;
+}
+
+main #index article .cards:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  z-index: 5;
 }
 
 main .profil {
@@ -424,8 +471,8 @@ main .profil article img {
           box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 20px;
   position: absolute;
-  top: -350px;
-  left: 110px;
+  top: -25%;
+  left: 14%;
   width: 0;
   height: 0;
   margin: 25%;
@@ -553,6 +600,10 @@ main .profil article img {
   padding: 3% 7% 3% 7%;
 }
 
+#tableau div {
+  margin-bottom: 20px;
+}
+
 #tableau table {
   border: 1px solid #011F27;
   width: 100%;
@@ -599,8 +650,9 @@ main .profil article img {
   background: #54818C;
 }
 
-#tableau table tbody #retard {
-  color: #ad2626 !important;
+#tableau table tbody .retard {
+  background: none;
+  background: #ad2626;
 }
 
 #formulaire {

@@ -1,0 +1,24 @@
+* {
+  visibility: hidden;
+}
+
+#yesprint {
+  visibility: visible;
+}
+
+#yesprint div {
+  visibility: visible;
+}
+
+#yesprint div p {
+  visibility: visible;
+}
+
+#yesprint div p b {
+  visibility: visible;
+}
+
+#yesprint img {
+  visibility: visible;
+}
+/*# sourceMappingURL=impression.css.map */

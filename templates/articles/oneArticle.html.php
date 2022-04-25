@@ -21,18 +21,18 @@
         <?php }
 
         if (isset($_SESSION['userType']) && $articles[0]['emprunt'] == false) { ?>
-            <button id="reservation" class="bn632-hover bn25" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir réserver cette article ?')">
+            <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir réserver cette article ?')">
                 Réservation</button>
         <?php }
         if ($_SESSION['userType'] == "admin") { ?>
             <div>
-                <button id=" reserver" class="bn632-hover bn25"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
-                <button id=" supprimer" class="bn632-hover bn25"><a href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>&&file=<?= $articles[0]['file'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a></button>
+                <button id=" reserver" class="bn634-hover bn27"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
+                <button id=" supprimer" class="bn634-hover bn27"><a href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>&&file=<?= $articles[0]['file'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a></button>
             </div>
         <?php } ?>
         <div id="message" class="message">
             <p id="reponse"></p>
-            <button class="bn632-hover bn25" id="retour">retour</button>
+            <button class="bn634-hover bn27" id="retour">retour</button>
         </div>
     </div>
 

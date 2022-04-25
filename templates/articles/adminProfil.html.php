@@ -3,7 +3,7 @@
     <form id="form" action="" method="POST">
 
     </form>
-    <button class="bn632-hover bn25"><a href="index.php?controller=users&task=adminUsers">Retour</a></button>
+    <button class="bn634-hover bn27"><a href="index.php?controller=users&task=adminUsers">Retour</a></button>
 </section>
 <script>
     const tableau = <?php echo json_encode($users); ?>;
@@ -18,7 +18,7 @@
      */
     function pop(tableau) {
         const x = document.getElementById('form');
-        const cible = ["", "Prénom", "Nom", "Email", "Mot de passe", "adresse", "Ville", "Code postal", "Role"]
+        const cible = ["", "Prénom", "Nom", "Email", "Mot de passe", "Adresse", "Ville", "Code postal", "Rôle"]
         let chiffre = 0
 
 
@@ -71,13 +71,13 @@
             }
 
             let mod = document.createElement('button');
-            mod.innerText = "valider";
+            mod.innerText = "Valider";
             mod.id = "valider";
             mod.type = "submit"
             mod.onclick = function() {
                 alert("Voulez vous faire les changements.");
             };
-            mod.className = "bn632-hover bn25"
+            mod.className = "bn634-hover bn27"
             //on mest tout ça dans le tableau
 
             x.appendChild(mod);

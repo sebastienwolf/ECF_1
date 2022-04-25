@@ -14,7 +14,7 @@
                 <th>Date de réservation</th>
                 <th>Date de retour</th>
                 <th>Reste</th>
-                <th>Retourner le livre</th>
+                <th>Retourner l'article</th>
 
 
 
@@ -53,11 +53,11 @@
             a.id = element.id_article;
             if (element.reste < 0) {
                 //a.style.background = 'red';
-                a.id += " retard"
+                a.className = "retard"
             }
 
             for (const i in element) {
-                debugger
+
 
                 //si autre que id_article alors on crée un td avec une valeur sinon un button avec valeur et data-id
                 if (i !== "id_article") {
@@ -67,7 +67,7 @@
                 } else {
                     let tdButton = document.createElement('td');
                     let col = document.createElement('button');
-                    col.innerHTML = "rendre";
+                    col.innerHTML = "Rendre";
                     col.dataset.id = element[i];
                     col.dataset.user = element.id_user
                     col.className = "rendre"

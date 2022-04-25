@@ -9,9 +9,9 @@
                 <input type="password" placeholder="Mot de passe" name="password" id="">
         </div>
         <div class="spaceButton">
-            <button class="bn632-hover bn25" type="submit" name="connexion">Connexion</button>
+            <button class="bn634-hover bn27" type="submit" name="connexion">Connexion</button>
             </form>
-            <button class="bn632-hover bn25" name='inscription'><a href="index.php?controller=page&task=inscription"> Inscription</a></button>
+            <button class="bn634-hover bn27" name='inscription'><a href="index.php?controller=page&task=inscription"> Inscription</a></button>
         </div>
 
         <h3 id="erreur"></h3>

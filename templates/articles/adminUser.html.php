@@ -1,6 +1,6 @@
 <section id="tableau">
     <div>
-        <a href="index.php?controller=page&task=Inscription">Ajouter un utilisateur</a>
+        <a id="addUser" class="bn634-hover bn27" href="index.php?controller=page&task=Inscription">Ajouter un utilisateur</a>
     </div>
     <table class="table table-striped table-sm">
         <thead class="thead-dark">
@@ -12,7 +12,8 @@
                 <th>Adresse</th>
                 <th>Ville</th>
                 <th>Code postal</th>
-                <th>Role</th>
+                <th>Rôle</th>
+                <th></th>
                 <th></th>
                 <th></th>
 
@@ -56,11 +57,23 @@
                     a.appendChild(col);
                 }
             }
-            debugger
+            let colIprim = document.createElement('td');
+            let modImprim = document.createElement('a');
+            let Imprim = document.createElement('button');
+            modImprim.innerText = "Imprimer";
+            modImprim.className = "imprim";
+            modImprim.href = "index.php?controller=users&task=adminImprim&id=" + element['id_user'];
+            Imprim.appendChild(modImprim)
+            colIprim.appendChild(Imprim);
+            a.appendChild(colIprim);
+
+
+
+
             let col = document.createElement('td');
             let mod = document.createElement('a');
             let modify = document.createElement('button');
-            mod.innerText = "modifier";
+            mod.innerText = "Modifier";
             mod.className = "modifier";
             mod.href = "index.php?controller=users&task=adminProfil&id=" + element['id_user'];
 
@@ -73,7 +86,7 @@
 
             let col2 = document.createElement('td');
             let sup = document.createElement('button');
-            sup.innerText = "suprimer";
+            sup.innerText = "Supprimer";
             sup.dataset.id = element['id_user'];
             sup.className = "suprimer";
             sup.onclick = function() {

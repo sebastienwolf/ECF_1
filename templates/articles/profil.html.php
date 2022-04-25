@@ -23,7 +23,7 @@
 
 
     </article>
-    <button class="bn632-hover bn25" id="modifier">Modifier</button>
+    <button class="bn634-hover bn27" id="modifier">Modifier</button>
 
 </section>
 
@@ -79,8 +79,8 @@
             <?php } ?>
         </div>
         <div>
-            <button type="submit" class="creer bn632-hover bn25" name="creer">Valider</button>
-            <button class="bn632-hover bn25" id="retour"> Retour </button>
+            <button type="submit" class="creer bn634-hover bn27" name="creer">Valider</button>
+            <button class="bn634-hover bn27" id="retour"> Retour </button>
         </div>
     </form>
 </div>

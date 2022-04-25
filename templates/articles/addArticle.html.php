@@ -16,11 +16,11 @@
         </div>
         <div>
             <label for="">Collection :</label>
-            <input type="text" name="collection" placeholder="collection">
+            <input type="text" name="collection" placeholder="Collection">
         </div>
         <div>
             <label for="">Edition :</label>
-            <input type="text" name="edition" placeholder="edition">
+            <input type="text" name="edition" placeholder="Edition">
         </div>
         <div>
             <label for="">Catégorie :</label>
@@ -45,7 +45,7 @@
             <input type="file" name="image">
 
         </div>
-        <button class="bn632-hover bn25" type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
+        <button class="bn634-hover bn27" type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
     </form>
 </section>
 

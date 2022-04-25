@@ -6,14 +6,14 @@
         <thead>
             <tr>
                 <th>Numéro de réservation</th>
-                <th>titre</th>
-                <th>auteur</th>
-                <th>genre</th>
-                <th>collection</th>
-                <th>edition</th>
-                <th>date de réservation</th>
-                <th>date de retour</th>
-                <th>retourner le livre</th>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Genre</th>
+                <th>Collection</th>
+                <th>Edition</th>
+                <th>Date de réservation</th>
+                <th>Date de retour</th>
+                <th>Retourner le livre</th>
 
 
 
@@ -61,7 +61,7 @@
                     let tdButton = document.createElement('td');
 
                     let col = document.createElement('button');
-                    col.innerHTML = "rendre";
+                    col.innerHTML = "Rendre";
                     col.dataset.id = element[i];
                     col.className = "rendre"
                     col.onclick = function() {

@@ -36,7 +36,7 @@
             <?php } ?>
         </div>
 
-        <button type="submit" class="creer bn632-hover bn25" name="creer">Créer</button>
+        <button type="submit" class="creer bn634-hover bn27" name="creer">Créer</button>
     </form>
     <h3 id="erreur"></h3>
 
