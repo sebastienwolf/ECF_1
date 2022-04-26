@@ -69,7 +69,7 @@ abstract class Model
     // ===================================================================================================
     // ===============================        show pret admin   ===================================
     // ===================================================================================================
-    public function showAllPretAdmin()
+    public function showAllPretAdmin($id)
     {
 
         $requete = "SELECT pret.id_pret, pret.id_user, users.prenom, users.nom, articles.titre, articles.auteur, DATE_FORMAT(pret.date_depart, '%d/%m/%Y') as date_depart, DATE_FORMAT(pret.date_retour, '%d/%m/%Y') as date_retour, DATEDIFF(pret.date_retour, CURRENT_DATE()) AS reste, pret.id_article 
@@ -78,11 +78,16 @@ abstract class Model
         LEFT JOIN articles ON articles.id_article = articles.id_article
         WHERE pret.id_article = articles.id_article AND pret.back = false";
 
+        if (!empty($id)) {
+            $requete .= " AND pret.id_user = ?";
+        }
+
         $sql = $this->pdo->prepare($requete);
-        $sql->execute();
+        $sql->execute([$id]);
         $response = $sql->fetchAll();
         return $response;
     }
+
     // ===================================================================================================
     // ===============================        historique Show   ===================================
     // ===================================================================================================

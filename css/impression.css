@@ -1,5 +1,6 @@
 * {
   visibility: hidden;
+  color: black;
 }
 
 #yesprint {
@@ -20,5 +21,54 @@
 
 #yesprint img {
   visibility: visible;
+}
+
+#tableau {
+  visibility: visible;
+}
+
+#tableau h2 {
+  visibility: visible;
+}
+
+#tableau table {
+  visibility: visible;
+}
+
+#tableau table thead {
+  visibility: visible;
+}
+
+#tableau table thead tr {
+  visibility: visible;
+}
+
+#tableau table thead tr th {
+  visibility: visible;
+}
+
+#tableau table thead tr th .rendre {
+  visibility: hidden;
+}
+
+#tableau table tbody {
+  visibility: visible;
+}
+
+#tableau table tbody tr {
+  visibility: visible;
+}
+
+#tableau table tbody tr td {
+  visibility: visible;
+  color: black;
+}
+
+#tableau table tbody tr td .rendre {
+  visibility: hidden;
+}
+
+#tableau table tbody .retard {
+  background: #ad2626;
 }
 /*# sourceMappingURL=impression.css.map */

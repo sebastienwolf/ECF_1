@@ -93,8 +93,22 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $pageTitle = 'Admin emprunt';
-            $articles = $this->model->showAllPretAdmin();
+            $articles = $this->model->showAllPretAdmin("");
             \Renderer::render('articles/adminEmprunts', compact('pageTitle', 'articles'));
+        }
+    }
+    // ===================================================================================================
+    // ===============================        adminSituation    ===========================================
+    // ===================================================================================================
+    public function adminSituation()
+    {
+        if ($_SESSION['userType'] !== "admin") {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+            $pageTitle = 'Impression de la situation';
+            $id = filter_input(INPUT_GET, 'id');
+            $articles = $this->model->showAllPretAdmin($id);
+            \Renderer::render('articles/adminSituation', compact('pageTitle', 'articles'));
         }
     }
 

@@ -13,7 +13,8 @@
                 <th>Ville</th>
                 <th>Code postal</th>
                 <th>Rôle</th>
-                <th></th>
+                <th>Carte</th>
+                <th>Situation</th>
                 <th></th>
                 <th></th>
 
@@ -67,7 +68,15 @@
             colIprim.appendChild(Imprim);
             a.appendChild(colIprim);
 
-
+            let colSit = document.createElement('td');
+            let modSit = document.createElement('a');
+            let situation = document.createElement('button');
+            modSit.innerText = "Imprimer";
+            modSit.className = "situation";
+            modSit.href = "index.php?controller=article&task=adminSituation&id=" + element['id_user'];
+            situation.appendChild(modSit)
+            colSit.appendChild(situation);
+            a.appendChild(colSit);
 
 
             let col = document.createElement('td');

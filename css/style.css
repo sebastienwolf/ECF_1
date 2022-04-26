@@ -772,24 +772,25 @@ main .profil article img {
           align-items: center;
 }
 
-.contact div input::-webkit-input-placeholder {
+.contact div form .inputConnec::-webkit-input-placeholder {
   color: #F8F9F7;
 }
 
-.contact div input:-ms-input-placeholder {
+.contact div form .inputConnec:-ms-input-placeholder {
   color: #F8F9F7;
 }
 
-.contact div input::-ms-input-placeholder {
+.contact div form .inputConnec::-ms-input-placeholder {
   color: #F8F9F7;
 }
 
-.contact div input::placeholder {
+.contact div form .inputConnec::placeholder {
   color: #F8F9F7;
 }
 
-.contact div button a {
-  color: #ffffff;
+.contact div form .inputConnec {
+  background: #54818C;
+  border: 1px solid #F8F9F7;
 }
 
 .contact .spaceButton {

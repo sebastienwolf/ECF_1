@@ -5,8 +5,8 @@
         </h2>
         <div>
             <form id="form" action="index.php?controller=users&task=connexion" method="post">
-                <input type="email" placeholder="E-mail" name="mail" id="">
-                <input type="password" placeholder="Mot de passe" name="password" id="">
+                <input type="email" placeholder="E-mail" name="mail" class="inputConnec">
+                <input type="password" placeholder="Mot de passe" name="password" class="inputConnec">
         </div>
         <div class="spaceButton">
             <button class="bn634-hover bn27" type="submit" name="connexion">Connexion</button>

@@ -1,5 +1,6 @@
 * {
     visibility: hidden;
+    color: black;
 }
 
 #yesprint {
@@ -23,5 +24,66 @@
     img {
         visibility: visible;
 
+    }
+}
+
+#tableau {
+    visibility: visible;
+
+
+    h2 {
+        visibility: visible;
+
+    }
+
+    table {
+        visibility: visible;
+
+
+        thead {
+            visibility: visible;
+
+
+            tr {
+                visibility: visible;
+
+                th {
+                    visibility: visible;
+
+
+                    .rendre {
+                        visibility: hidden;
+
+                    }
+                }
+
+
+            }
+
+        }
+
+        tbody {
+            visibility: visible;
+
+            tr {
+                visibility: visible;
+
+                td {
+                    visibility: visible;
+                    color: black;
+
+                    .rendre {
+                        visibility: hidden;
+
+                    }
+                }
+            }
+
+            .retard {
+                background: #ad2626;
+
+            }
+
+        }
     }
 }

@@ -347,6 +347,7 @@ header {
             rgb(255, 253, 219),
             rgb(84, 139, 62),
             #3ac09e);
+
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
 
@@ -847,16 +848,22 @@ main {
 
     div {
 
+        form {
+            .inputConnec::placeholder {
+                color: $color1;
+            }
 
-        input::placeholder {
-            color: $color1;
-        }
-
-        button {
-            a {
-                color: $white;
+            .inputConnec {
+                background: $color-primary-2;
+                border: 1px solid $color1;
             }
         }
+
+        // button {
+        //     a {
+        //         color: $white;
+        //     }
+        // }
     }
 
     .spaceButton {
