@@ -58,30 +58,34 @@
                     a.appendChild(col);
                 }
             }
+            // carte adhérent
             let colIprim = document.createElement('td');
             let modImprim = document.createElement('a');
-            let Imprim = document.createElement('button');
+            //let Imprim = document.createElement('button');
             modImprim.innerText = "Imprimer";
             modImprim.className = "imprim";
             modImprim.href = "index.php?controller=users&task=adminImprim&id=" + element['id_user'];
-            Imprim.appendChild(modImprim)
-            colIprim.appendChild(Imprim);
+            //Imprim.appendChild(modImprim)
+            //colIprim.appendChild(Imprim);
+            colIprim.appendChild(modImprim);
             a.appendChild(colIprim);
 
+            // situation
             let colSit = document.createElement('td');
             let modSit = document.createElement('a');
-            let situation = document.createElement('button');
+            //let situation = document.createElement('button');
             modSit.innerText = "Imprimer";
             modSit.className = "situation";
             modSit.href = "index.php?controller=article&task=adminSituation&id=" + element['id_user'];
-            situation.appendChild(modSit)
-            colSit.appendChild(situation);
+            // situation.appendChild(modSit)
+            //colSit.appendChild(situation);
+            colSit.appendChild(modSit);
             a.appendChild(colSit);
 
-
+            // modifier
             let col = document.createElement('td');
             let mod = document.createElement('a');
-            let modify = document.createElement('button');
+            //let modify = document.createElement('button');
             mod.innerText = "Modifier";
             mod.className = "modifier";
             mod.href = "index.php?controller=users&task=adminProfil&id=" + element['id_user'];
@@ -89,12 +93,13 @@
             // let lien = document.createElement('a')
             // lien.href = "index.php?controller=users&task=adminProfil&id=" + element['id_user'];
             // mod.appendChild(lien)
-            modify.appendChild(mod)
-            col.appendChild(modify);
+            //modify.appendChild(mod)
+            //col.appendChild(modify);
+            col.appendChild(mod);
             a.appendChild(col);
 
             let col2 = document.createElement('td');
-            let sup = document.createElement('button');
+            let sup = document.createElement('a');
             sup.innerText = "Supprimer";
             sup.dataset.id = element['id_user'];
             sup.className = "suprimer";

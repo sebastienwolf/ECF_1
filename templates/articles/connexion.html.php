@@ -10,7 +10,9 @@
         </div>
         <div class="spaceButton">
             <button class="bn634-hover bn27" type="submit" name="connexion">Connexion</button>
-            </form>
+        </div>
+        </form>
+        <div>
             <button class="bn634-hover bn27" name='inscription'><a href="index.php?controller=page&task=inscription"> Inscription</a></button>
         </div>
 
@@ -26,9 +28,9 @@
         //let url = "index.php?controller=users&task=connexion"
 
 
-        console.log(document.cookie)
-        document.cookie = "PHPSESSID=;"
-        console.log(document.cookie)
+        // console.log(document.cookie)
+        // document.cookie = "PHPSESSID=;"
+        // console.log(document.cookie)
 
 
 
@@ -51,8 +53,9 @@
 
                 switch (err) {
                     case '1':
-                        document.location.href = "index.php?controller=article&task=index"
-                        alert("vous êtes connecté <?= $_SESSION['pseudo'] ?>")
+                        location.reload();
+                        // document.location.href = "index.php?controller=article&task=index"
+                        // alert("vous êtes connecté ?= $_SESSION['pseudo'] ?>")
                         break;
                     case '2':
                         document.getElementById('erreur').innerHTML = "<p style='color:red'>il y a une erreur dans le mot de passe ou le mail</p>";

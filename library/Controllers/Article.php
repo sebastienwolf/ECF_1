@@ -16,10 +16,18 @@ class Article extends Controller
 
     public function index()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+            session_start();
+        }
         $categorie = $this->model->showAll("category");
         $articles = $this->model->showAllTable(1);
-        $alert = $this->model->alert($_SESSION['id']);
+
+        if (!isset($_SESSION)) {
+            $id = $_SESSION['id'];
+            $alert = $this->model->alert($id);
+        } else {
+            $alert = "";
+        }
         $pageTitle = 'Accueil';
         //avec le renderer je gere les vu la ba pour eviter de repeter le code
         \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert'));
@@ -46,7 +54,10 @@ class Article extends Controller
 
     public function allArticle()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+
+            session_start();
+        }
         $articles = $this->model->showAllTable(1);
         $pageTitle = 'all articles';
         \Renderer::render('articles/allArticle', compact('pageTitle', 'articles'));

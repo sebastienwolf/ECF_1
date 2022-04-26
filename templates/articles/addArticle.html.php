@@ -47,6 +47,8 @@
         </div>
         <button class="bn634-hover bn27" type="submit" onclick="return window.confirm('Êtes vous sûr de vouloir ajouter cette articles ?')"> Ajouter l'article</button>
     </form>
+    <a class="bn634-hover bn27" href="index.php?controller=article&task=index">Retour</a>
+
 </section>
 
 <script>

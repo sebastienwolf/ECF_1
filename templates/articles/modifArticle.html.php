@@ -3,7 +3,7 @@
     <form id="form" action="" method="POST">
 
     </form>
-    <button class="bn634-hover bn27"><a href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a></button>
+    <a class="bn634-hover bn27" href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a>
 </section>
 <!-- <section>
     <div id="showImg">

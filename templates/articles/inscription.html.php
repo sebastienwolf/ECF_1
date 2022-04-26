@@ -27,13 +27,16 @@
         </div>
         <div>
             <?php
-            $type = $_SESSION['userType'];
-            if ($type == "admin") { ?>
-                <select type="select" name="type">
-                    <option value="utilisateur">utilisateur</option>
-                    <option value="admin">admin</option>
-                </select>
-            <?php } ?>
+            if (!isset($_SESSION)) {
+
+                $type = $_SESSION['userType'];
+                if ($type == "admin") { ?>
+                    <select type="select" name="type">
+                        <option value="utilisateur">utilisateur</option>
+                        <option value="admin">admin</option>
+                    </select>
+            <?php }
+            } ?>
         </div>
 
         <button type="submit" class="creer bn634-hover bn27" name="creer">Créer</button>

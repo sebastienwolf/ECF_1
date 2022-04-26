@@ -24,11 +24,20 @@
         </tbody>
     </table>
 
-
+    <form>
+        <input class="bn634-hover bn27" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
+    </form>
 
     <a class="bn634-hover bn27" href="index.php?controller=users&task=adminUsers"> retour</a>
 
 </section>
+
+
+<script type="text/javascript">
+    function imprimer_page() {
+        window.print();
+    }
+</script>
 <!-- =================================================================================================== -->
 <script>
     const tableau = <?php echo json_encode($articles); ?>;

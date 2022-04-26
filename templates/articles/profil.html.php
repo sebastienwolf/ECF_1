@@ -101,7 +101,7 @@
     // fetch
     document.getElementById('usersMod').addEventListener('submit', modif => {
         modif.preventDefault();
-        if (confirm("Voulez vous faire ces modification ?")) {
+        if (confirm("Voulez vous faire ces modifications ?")) {
             let form = document.getElementById('usersMod')
             let formData = new FormData(form)
             let URL = "index.php?controller=users&task=modify"

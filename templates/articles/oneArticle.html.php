@@ -18,22 +18,23 @@
         <?php } else { ?>
             <p>stock : indisponible</p>
 
+            <?php }
+        if (!isset($_SESSION)) {
+            if ($_SESSION['userType'] == "utilisateur" && $articles[0]['emprunt'] == false) { ?>
+                <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>">
+                    Réservation</button>
+            <?php }
+            if ($_SESSION['userType'] == "admin") { ?>
+                <div>
+                    <a id=" reserver" class="bn634-hover bn27" href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a>
+                    <a id=" supprimer" class="bn634-hover bn27" href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>&&file=<?= $articles[0]['file'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a>
+                </div>
         <?php }
-
-        if ($_SESSION['userType'] == "utilisateur" && $articles[0]['emprunt'] == false) { ?>
-            <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>">
-                Réservation</button>
-        <?php }
-        if ($_SESSION['userType'] == "admin") { ?>
-            <div>
-                <button id=" reserver" class="bn634-hover bn27"><a href="index.php?controller=article&task=modifArticle&id=<?= $articles[0]['id_article'] ?>"> modifier</a></button>
-                <button id=" supprimer" class="bn634-hover bn27"><a href="index.php?controller=article&task=delete&id=<?= $articles[0]['id_article'] ?>&&file=<?= $articles[0]['file'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir suprimer cette article ?')"> suprimer</a></button>
-            </div>
-        <?php } ?>
-        <div id="message" class="message">
+        } ?>
+        <!-- <div id="message" class="message">
             <p id="reponse"></p>
             <button class="bn634-hover bn27" id="retour">retour</button>
-        </div>
+        </div> -->
     </div>
 
 </article>
@@ -59,9 +60,9 @@
                     return response.text()
                 })
                 .then(function(data) {
-                    debugger
-                    document.getElementById('reponse').innerHTML = data;
-                    document.getElementById('message').classList.toggle("active");
+
+                    //document.getElementById('reponse').innerHTML = data;
+                    //document.getElementById('message').classList.toggle("active");
                     location.reload()
                 })
         }
