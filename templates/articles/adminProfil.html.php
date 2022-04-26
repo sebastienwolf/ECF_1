@@ -74,9 +74,7 @@
             mod.innerText = "Valider";
             mod.id = "valider";
             mod.type = "submit"
-            mod.onclick = function() {
-                alert("Voulez vous faire les changements.");
-            };
+
             mod.className = "bn634-hover bn27"
             //on mest tout ça dans le tableau
 
@@ -90,24 +88,26 @@
     //========================================================================================
     document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
-        const form = document.getElementById('form')
-        let URL = "index.php?controller=users&task=modifyAdmin"
-        debugger
-        let formData = new FormData(form)
+        if (confirm("Voulez vous faire ces changements ?")) {
+            const form = document.getElementById('form')
+            let URL = "index.php?controller=users&task=modifyAdmin"
+            debugger
+            let formData = new FormData(form)
 
-        fetch(URL, {
-                body: formData,
-                method: "post"
-            })
-            .then(function(response) {
-                return response.json()
-            })
-            .then(function(data) {
-                debugger
-                while (form.firstChild) {
-                    form.removeChild(form.firstChild)
-                }
-                pop(data)
-            })
+            fetch(URL, {
+                    body: formData,
+                    method: "post"
+                })
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(data) {
+                    debugger
+                    while (form.firstChild) {
+                        form.removeChild(form.firstChild)
+                    }
+                    pop(data)
+                })
+        }
     })
 </script>

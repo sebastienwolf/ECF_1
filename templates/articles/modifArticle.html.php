@@ -124,9 +124,7 @@
             mod.innerText = "valider";
             mod.id = "valider";
             mod.type = "submit";
-            mod.onclick = function() {
-                alert("Voulez vous faire les changements.");
-            };
+
             mod.className = "bn634-hover bn27"
             //on mest tout ça dans le tableau
             x.appendChild(mod);
@@ -143,32 +141,33 @@
     document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
         debugger
+        if (confirm("Voulez vous faire ces modification tetette?")) {
+            const form = document.getElementById('form')
+            const content = document.getElementById('showImg')
+            let URL = "index.php?controller=article&task=valideModif"
+            debugger
+            let formData = new FormData(form)
 
-        const form = document.getElementById('form')
-        const content = document.getElementById('showImg')
-        let URL = "index.php?controller=article&task=valideModif"
-        debugger
-        let formData = new FormData(form)
+            fetch(URL, {
+                    body: formData,
+                    method: "post"
+                })
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(data) {
+                    debugger
+                    while (form.firstChild) {
+                        form.removeChild(form.firstChild)
+                    }
+                    while (content.firstChild) {
+                        content.removeChild(content.firstChild)
+                    }
+                    let tab = Object.values(data.retour);
+                    let y = Object.values(data.cat);
 
-        fetch(URL, {
-                body: formData,
-                method: "post"
-            })
-            .then(function(response) {
-                return response.json()
-            })
-            .then(function(data) {
-                debugger
-                while (form.firstChild) {
-                    form.removeChild(form.firstChild)
-                }
-                while (content.firstChild) {
-                    content.removeChild(content.firstChild)
-                }
-                let tab = Object.values(data.retour);
-                let y = Object.values(data.cat);
-
-                pop(tab, y);
-            })
+                    pop(tab, y);
+                })
+        }
     })
 </script>

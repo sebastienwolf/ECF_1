@@ -52,44 +52,45 @@
 <script>
     document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
-        let URL = "index.php?controller=article&task=add";
+        if (confirm("Voulez vous créer cette article ?")) {
+            let URL = "index.php?controller=article&task=add";
 
-        let form = document.getElementById('form')
-        let formData = new FormData(form)
-        debugger
-        fetch(URL, {
-                body: formData,
-                method: "post"
-            })
-            .then(function(response) {
-                return response.json()
-            })
-            .then(function(data) {
-                console.log(data)
+            let form = document.getElementById('form')
+            let formData = new FormData(form)
+            debugger
+            fetch(URL, {
+                    body: formData,
+                    method: "post"
+                })
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(data) {
+                    console.log(data)
 
-                let err = data;
+                    let err = data;
 
-                switch (err) {
-                    case 1:
-                        document.location.href = "index.php?controller=article&task=index"
-                        alert("Votre fichier est envoyé")
-                        break;
-                    case 2:
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'>Il manque une donnée.</p>";
-                        break;
-                    case 3:
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'> Le fichier n'est pas comptabile avec notre site.<br> Utilisé un format : jpg, jpeg, png, bmp, tif, mp4, mov, avi, wmv.</p>";
-                        break;
-                    case 4:
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'>Le fichier ne peux dépassé les 5M.</p>";
-                        break;
-                    case 5:
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'>Une erreur est survenue avec ce fichier</p>";
-                        break;
+                    switch (err) {
+                        case 1:
+                            document.location.href = "index.php?controller=article&task=index"
+                            alert("Votre fichier est envoyé")
+                            break;
+                        case 2:
+                            document.getElementById('erreur').innerHTML = "<p style='color:red'>Il manque une donnée.</p>";
+                            break;
+                        case 3:
+                            document.getElementById('erreur').innerHTML = "<p style='color:red'> Le fichier n'est pas comptabile avec notre site.<br> Utilisé un format : jpg, jpeg, png, bmp, tif, mp4, mov, avi, wmv.</p>";
+                            break;
+                        case 4:
+                            document.getElementById('erreur').innerHTML = "<p style='color:red'>Le fichier ne peux dépassé les 5M.</p>";
+                            break;
+                        case 5:
+                            document.getElementById('erreur').innerHTML = "<p style='color:red'>Une erreur est survenue avec ce fichier</p>";
+                            break;
 
-                }
-            })
-
+                    }
+                })
+        }
 
     })
 </script>

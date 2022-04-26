@@ -26,7 +26,7 @@ session_start();
 <body id="body" class="body">
     <header id="siteHeader">
 
-        <img id="baniere" src="./upload/banniere.jpg" alt="">
+        <img id="baniere" src="./upload/banniere.png" alt="">
 
     </header>
     <!-- <div class="headerLogo">

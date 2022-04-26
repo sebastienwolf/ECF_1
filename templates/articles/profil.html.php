@@ -80,9 +80,10 @@
         </div>
         <div>
             <button type="submit" class="creer bn634-hover bn27" name="creer">Valider</button>
-            <button class="bn634-hover bn27" id="retour"> Retour </button>
         </div>
     </form>
+    <button class="bn634-hover bn27" id="retour"> Retour </button>
+
 </div>
 <script>
     // animation pop de la bulle modification
@@ -100,24 +101,25 @@
     // fetch
     document.getElementById('usersMod').addEventListener('submit', modif => {
         modif.preventDefault();
-        debugger
-        let form = document.getElementById('usersMod')
-        let formData = new FormData(form)
-        let URL = "index.php?controller=users&task=modify"
-        fetch(URL, {
-                body: formData,
-                method: "post"
-            })
-            .then(function(response) {
-                return response.json()
-            })
-            .then(function(data) {
-                // toogle permet de voir si la classe est active alors il l'enlève sinon il le mets
-                document.getElementById("formUsers").classList.toggle("active")
-                // ".reload" recharge la page
-                location.reload()
+        if (confirm("Voulez vous faire ces modification ?")) {
+            let form = document.getElementById('usersMod')
+            let formData = new FormData(form)
+            let URL = "index.php?controller=users&task=modify"
+            fetch(URL, {
+                    body: formData,
+                    method: "post"
+                })
+                .then(function(response) {
+                    return response.json()
+                })
+                .then(function(data) {
+                    // toogle permet de voir si la classe est active alors il l'enlève sinon il le mets
+                    document.getElementById("formUsers").classList.toggle("active")
+                    // ".reload" recharge la page
+                    location.reload()
 
 
-            })
+                })
+        }
     })
 </script>

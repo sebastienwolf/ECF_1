@@ -20,8 +20,8 @@
 
         <?php }
 
-        if (isset($_SESSION['userType']) && $articles[0]['emprunt'] == false) { ?>
-            <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>" onclick="return window.confirm('Êtes vous sûr de vouloir réserver cette article ?')">
+        if ($_SESSION['userType'] == "utilisateur" && $articles[0]['emprunt'] == false) { ?>
+            <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>">
                 Réservation</button>
         <?php }
         if ($_SESSION['userType'] == "admin") { ?>
@@ -41,27 +41,30 @@
 <script>
     document.getElementById("reservation").addEventListener('click', event => {
         event.preventDefault();
-        let id = document.getElementById('reservation').dataset.id;
-        let bool = document.getElementById('reservation').dataset.bool;
-        let URL = "index.php?controller=article&task=reservation";
-        let formData = new FormData();
-        formData.append('id', id);
-        formData.append('bool', bool);
+
+        if (confirm("Voulez vous reserver cette article ?")) {
+            let id = document.getElementById('reservation').dataset.id;
+            let bool = document.getElementById('reservation').dataset.bool;
+            let URL = "index.php?controller=article&task=reservation";
+            let formData = new FormData();
+            formData.append('id', id);
+            formData.append('bool', bool);
 
 
-        fetch(URL, {
-                body: formData,
-                method: "post"
-            })
-            .then(function(response) {
-                return response.text()
-            })
-            .then(function(data) {
-                debugger
-                document.getElementById('reponse').innerHTML = data;
-                document.getElementById('message').classList.toggle("active");
-                location.reload()
-            })
+            fetch(URL, {
+                    body: formData,
+                    method: "post"
+                })
+                .then(function(response) {
+                    return response.text()
+                })
+                .then(function(data) {
+                    debugger
+                    document.getElementById('reponse').innerHTML = data;
+                    document.getElementById('message').classList.toggle("active");
+                    location.reload()
+                })
+        }
     })
     // ==============================================================================
     //retour

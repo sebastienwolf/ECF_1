@@ -71,9 +71,7 @@
                     col.dataset.id = element[i];
                     col.dataset.user = element.id_user
                     col.className = "rendre"
-                    col.onclick = function() {
-                        alert("Voulez vous rendre l'article?");
-                    };
+
 
                     tdButton.appendChild(col);
                     a.appendChild(tdButton);
@@ -92,24 +90,24 @@
     for (item of back) {
         item.addEventListener('click', (event) => {
             event.preventDefault();
+            if (confirm("Avez vous récuperé cette article ?")) {
+                let id = event.target.dataset.id;
+                let user = event.target.dataset.user;
+                let URL = "index.php?controller=article&task=back&id=" + id
+                let formData = new FormData();
+                //formData.append(id)
+                fetch(URL)
+                    .then(function(response) {
+                        return response.text()
+                    })
+                    .then(function(data) {
+                        debugger
+                        const x = document.getElementById(id);
 
-            let id = event.target.dataset.id;
-            let user = event.target.dataset.user;
-            let URL = "index.php?controller=article&task=back&id=" + id
-            let formData = new FormData();
-            //formData.append(id)
-            fetch(URL)
-                .then(function(response) {
-                    return response.text()
-                })
-                .then(function(data) {
-                    debugger
-                    const x = document.getElementById(id);
-
-                    x.remove()
-                    //pop(data)
-                })
-
+                        x.remove()
+                        //pop(data)
+                    })
+            }
         })
     }
 </script>

@@ -98,9 +98,7 @@
             sup.innerText = "Supprimer";
             sup.dataset.id = element['id_user'];
             sup.className = "suprimer";
-            sup.onclick = function() {
-                alert("Voulez vous suprimer " + element['prenom'] + " " + element['nom']);
-            };
+
             col2.appendChild(sup);
             // on met les deux button dans le td
             a.appendChild(col2);
@@ -120,19 +118,21 @@
 
         itemSupr.addEventListener('click', (event) => {
             event.preventDefault()
-            let a = event.target.dataset.id
-            let URL = "index.php?controller=users&task=delete&id=" + a
-            console.log(a);
-            let id = ("r" + a)
+            if (confirm("Voulez supprimer cette utilisateur ?")) {
+                let a = event.target.dataset.id
+                let URL = "index.php?controller=users&task=delete&id=" + a
+                console.log(a);
+                let id = ("r" + a)
 
-            fetch(URL)
-                .then(function(response) {
-                    return response.text()
-                })
-                .then(function(data) {
+                fetch(URL)
+                    .then(function(response) {
+                        return response.text()
+                    })
+                    .then(function(data) {
 
-                    document.getElementById(id).remove()
-                })
+                        document.getElementById(id).remove()
+                    })
+            }
         })
     }
 </script>
