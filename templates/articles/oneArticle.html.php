@@ -3,14 +3,32 @@
 
     <img class="fichierOne" src="./upload/<?= $articles[0]['file'] ?>" class="card__image" alt="" />
     <div>
-        <h3 class="card__title"><?= $articles[0]['titre'] ?></h3>
+        <?php
+        if (in_array("titre", $control)) {
+        ?>
+            <h3 class="card__title"><?= $articles[0]['titre'] ?></h3>
+            <hr>
+        <?php }
+        if (in_array("auteur", $control)) {
+        ?>
+            <p>auteur : <?= $articles[0]['auteur'] ?> </p>
+        <?php }
+        if (in_array("genre", $control)) {
+        ?>
+            <p>genre : <?= $articles[0]['genre'] ?> &#149; categorie : <?= $articles[0]['name'] ?></p>
+        <?php }
+        if (in_array("edition", $control)) {
+        ?>
+            <p>Edition : <?= $articles[0]['edition'] ?> &#149; collection : <?= $articles[0]['collection'] ?></p>
+        <?php }
+        ?>
         <hr>
-        <p>auteur : <?= $articles[0]['auteur'] ?> </p>
-        <p>genre : <?= $articles[0]['genre'] ?> &#149; categorie : <?= $articles[0]['name'] ?></p>
-        <p>Edition : <?= $articles[0]['edition'] ?> &#149; collection : <?= $articles[0]['collection'] ?></p>
-        <hr>
-        <p id="description"> Description :</p>
-        <p><?= $articles[0]['description'] ?></p>
+        <?php
+        if (in_array("description", $control)) {
+        ?>
+            <p id="description"> Description :</p>
+            <p><?= $articles[0]['description'] ?></p>
+        <?php } ?>
 
         <?php
         if ($articles[0]['emprunt'] == false) { ?>
@@ -19,7 +37,7 @@
             <p>stock : indisponible</p>
 
             <?php }
-        if (!isset($_SESSION)) {
+        if (isset($_SESSION)) {
             if ($_SESSION['userType'] == "utilisateur" && $articles[0]['emprunt'] == false) { ?>
                 <button id="reservation" class="bn634-hover bn27" data-bool="true" data-id="<?= $articles[0]['id_article'] ?>">
                     Réservation</button>

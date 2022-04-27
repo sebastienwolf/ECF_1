@@ -83,6 +83,7 @@ function filtre($tableau, $champ)
     debugger
     const tableau = <?php echo json_encode($articles); ?>;
 
+
     pop(tableau)
     //==============================================================================================
     // faire descendre les filtres
@@ -101,6 +102,14 @@ function filtre($tableau, $champ)
     */
     function pop(tableau) {
         tableau.forEach(element => {
+            debugger
+            const verif = Object.values(<?php echo json_encode($control); ?>);
+            //let verif =
+
+
+            console.log(verif);
+
+
             console.log("./upload/" + element.file);
             //a = document.createElement('article');
             let contenaire = document.createElement('div');
@@ -116,30 +125,48 @@ function filtre($tableau, $champ)
 
             let minContenaire = document.createElement('div');
             minContenaire.className = "info"
+            if (verif.includes("auteur")) {
+                let p1 = document.createElement('p');
+                p1.innerText = "Auteur : " + element.auteur;
+                minContenaire.appendChild(p1);
 
-            let p1 = document.createElement('p');
-            p1.innerText = "Auteur : " + element.auteur;
+            }
+            if (verif.includes("genre")) {
 
-            let p2 = document.createElement('p');
-            p2.innerText = "Genre : " + element.genre;
+                let p2 = document.createElement('p');
+                p2.innerText = "Genre : " + element.genre;
+                minContenaire.appendChild(p2);
 
-            let p3 = document.createElement('p');
-            p3.innerText = "Collection : " + element.collection;
+            }
 
-            let p4 = document.createElement('p');
-            p4.innerText = "Edition : " + element.edition;
+            if (verif.includes("collection")) {
 
-            let titre = document.createElement('h3');
-            titre.innerText = element.titre;
+                let p3 = document.createElement('p');
+                p3.innerText = "Collection : " + element.collection;
+                minContenaire.appendChild(p3);
 
-            minContenaire.appendChild(p1);
-            minContenaire.appendChild(p2);
-            minContenaire.appendChild(p3);
-            minContenaire.appendChild(p4);
+            }
+
+            if (verif.includes("edition")) {
+
+                let p4 = document.createElement('p');
+                p4.innerText = "Edition : " + element.edition;
+                minContenaire.appendChild(p4);
+
+            }
+
+
+
             des.appendChild(img);
             des.appendChild(minContenaire);
             contenaire.appendChild(des);
-            contenaire.appendChild(titre);
+            if (verif.includes("titre")) {
+
+                let titre = document.createElement('h3');
+                titre.innerText = element.titre;
+                contenaire.appendChild(titre);
+
+            }
             document.getElementById('allCards').appendChild(contenaire);
         })
 

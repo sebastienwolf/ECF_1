@@ -697,6 +697,13 @@ main {
     width: 100%;
     padding: 3% 7% 3% 7%;
 
+    #requete {
+        font-weight: 900;
+        color: $color1;
+        border: 1px solid $color1;
+        padding: 10px;
+    }
+
     div {
 
         margin-bottom: 20px;
@@ -854,11 +861,46 @@ main {
             }
         }
     }
-
-
-
-
 }
+
+
+//=============================================================
+//===================== sauvegarde =================================
+//=============================================================
+#sauvegarde {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+
+    form {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        width: auto;
+        height: auto;
+        border: 1px solid $color1;
+        border-radius: 20px;
+        gap: 20px;
+        padding: 20px;
+        background: $rgba-primary-0;
+
+        div {
+            display: flex;
+            background: $rgba-primary-0;
+
+            label {
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+
+
+
 
 
 
@@ -913,6 +955,7 @@ main {
     .fichierOne {
         width: 250px;
         height: 350px;
+        margin-bottom: 40px;
     }
 
     div {

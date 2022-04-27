@@ -1,33 +1,40 @@
 <section id="tableau">
-
-    <h2>Les locations en cours de <?= $articles[0]['prenom'] ?> <?= $articles[0]['nom'] ?></h2>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Réservation</th>
-                <th>Titre</th>
-                <th>Auteur</th>
-                <th>Date de réservation</th>
-                <th>Date de retour</th>
-                <th>Reste</th>
-                <th>
-                    <p class="rendre">Retourner l'article </p>
-                </th>
+    <?php
+    if (empty($articles)) {
+    ?>
+        <h2>Il n'y a pas de réservation en cours</h2>
 
 
+    <?php } else {
+    ?>
+        <h2>Les locations en cours de <?= $articles[0]['prenom'] ?> <?= $articles[0]['nom'] ?></h2>
 
-            </tr>
-        </thead>
-        <tbody id="case">
+        <table>
+            <thead>
+                <tr>
+                    <th>Réservation</th>
+                    <th>Titre</th>
+                    <th>Auteur</th>
+                    <th>Date de réservation</th>
+                    <th>Date de retour</th>
+                    <th>Reste</th>
+                    <th>
+                        <p class="rendre">Retourner l'article </p>
+                    </th>
 
-        </tbody>
-    </table>
 
-    <form>
-        <input class="bn634-hover bn27" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
-    </form>
 
+                </tr>
+            </thead>
+            <tbody id="case">
+
+            </tbody>
+        </table>
+
+        <form>
+            <input class="bn634-hover bn27" id="impression" name="impression" type="button" onclick="imprimer_page()" value="Imprimer cette page" />
+        </form>
+    <?php } ?>
     <a class="bn634-hover bn27" href="index.php?controller=users&task=adminUsers"> retour</a>
 
 </section>

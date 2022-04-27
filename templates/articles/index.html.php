@@ -45,10 +45,24 @@
                         <a href="index.php?controller=article&task=showOne&id=<?= $art['id_article'] ?>">
                             <img class="miniCard" src="./upload/<?= $art['file'] ?>" alt="">
                             <div class="info">
-                                <p>Auteur : <?= $art['auteur'] ?> </p>
-                                <p>Genre : <?= $art['genre'] ?></p>
-                                <p>Collection : <?= $art['collection'] ?></p>
-                                <p>Edition : <?= $art['edition'] ?></p>
+                                <?php
+                                if (in_array("auteur", $control)) {
+                                ?>
+                                    <p>Auteur : <?= $art['auteur'] ?> </p>
+                                <?php }
+                                if (in_array("genre", $control)) {
+                                ?>
+                                    <p>Genre : <?= $art['genre'] ?></p>
+                                <?php }
+                                if (in_array("collection", $control)) {
+                                ?>
+                                    <p>Collection : <?= $art['collection'] ?></p>
+                                <?php }
+                                if (in_array("edition", $control)) {
+                                ?>
+                                    <p>Edition : <?= $art['edition'] ?></p>
+                                <?php } ?>
+
                             </div>
                         </a>
                         <h3><?= $art['titre'] ?></h3>

@@ -28,9 +28,16 @@ class Article extends Controller
         } else {
             $alert = "";
         }
+        $verif = $this->model->verifVue();
+        $control = [];
+        foreach ($verif as $verification) {
+            array_push($control, $verification['colone']);
+        }
+
+
         $pageTitle = 'Accueil';
         //avec le renderer je gere les vu la ba pour eviter de repeter le code
-        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert', 'control'));
     }
     // ===================================================================================================
     // ===============================        myArticles    ===========================================
@@ -58,9 +65,16 @@ class Article extends Controller
 
             session_start();
         }
+        $verif = $this->model->verifVue();
+        $control = [];
+        foreach ($verif as $verification) {
+            array_push($control, $verification['colone']);
+        }
         $articles = $this->model->showAllTable(1);
         $pageTitle = 'all articles';
-        \Renderer::render('articles/allArticle', compact('pageTitle', 'articles'));
+
+
+        \Renderer::render('articles/allArticle', compact('pageTitle', 'articles', 'control'));
     }
     // ===================================================================================================
     // ===============================        historique    ===========================================
@@ -92,6 +106,21 @@ class Article extends Controller
 
             $pageTitle = 'Rajouter un article';
             \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
+        }
+    }
+
+    // ===================================================================================================
+    // ===============================        adminPersonalisation    ===========================================
+    // ===================================================================================================
+
+    public function adminPersonalisation()
+    {
+        if (($_SESSION['userType'] !== "admin")) {
+            header('Location: index.php?controller=article&task=index');
+        } else {
+
+            $pageTitle = 'Personnaliser l\'affichage';
+            \Renderer::render('articles/adminPersonalisation', compact('pageTitle', 'themes'));
         }
     }
 
@@ -565,6 +594,60 @@ class Article extends Controller
     }
 
     // ===================================================================================================
+    // ===============================        personalisation    ===================================
+    // ===================================================================================================
+    public function personalisation()
+    {
+        $titre = filter_input(INPUT_POST, 'titre');
+        if (!isset($titre)) {
+            $titre = 0;
+        }
+        $this->model->persoAdmin($titre, 1);
+        //==============================
+        $auteur = filter_input(INPUT_POST, 'auteur');
+
+        if (!isset($auteur)) {
+            $auteur = 0;
+        }
+        $this->model->persoAdmin($auteur, 2);
+        //=============================================
+        $genre = filter_input(INPUT_POST, 'genre');
+
+        if (!isset($genre)) {
+            $genre = 0;
+        }
+        $this->model->persoAdmin($genre, 3);
+        //==========================================
+        $collection = filter_input(INPUT_POST, 'collection');
+
+        if (!isset($collection)) {
+            $collection = 0;
+        }
+        $this->model->persoAdmin($collection, 4);
+        //======================================
+
+        $edition = filter_input(INPUT_POST, 'edition');
+
+        if (!isset($edition)) {
+            $edition = 0;
+        }
+        $this->model->persoAdmin($edition, 5);
+
+
+        //==========================
+        $description = filter_input(INPUT_POST, 'description');
+
+        if (!isset($description)) {
+            $description = 0;
+        }
+        $this->model->persoAdmin($description, 6);
+        //====================================
+        echo  json_encode(1);
+    }
+
+
+
+    // ===================================================================================================
     // ===============================        showOne    ===========================================
     // ===================================================================================================
 
@@ -573,9 +656,15 @@ class Article extends Controller
         $id = filter_input(INPUT_GET, 'id');
         $id = "articles.id_article = $id";
         $articles = $this->model->showAllTable($id);
+        $verif = $this->model->verifVue();
+        $control = [];
+        foreach ($verif as $verification) {
+            array_push($control, $verification['colone']);
+        }
+
 
         $pageTitle = $articles[0]['titre'];
 
-        \Renderer::render('articles/oneArticle', compact('pageTitle', 'articles'));
+        \Renderer::render('articles/oneArticle', compact('pageTitle', 'articles', 'control'));
     }
 }

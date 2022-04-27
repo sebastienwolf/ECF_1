@@ -53,9 +53,9 @@
 
                 switch (err) {
                     case '1':
-                        location.reload();
-                        // document.location.href = "index.php?controller=article&task=index"
-                        // alert("vous êtes connecté ?= $_SESSION['pseudo'] ?>")
+                        //location.reload();
+                        document.location.href = "index.php?controller=article&task=index"
+                        alert("vous êtes connecté")
                         break;
                     case '2':
                         document.getElementById('erreur').innerHTML = "<p style='color:red'>il y a une erreur dans le mot de passe ou le mail</p>";

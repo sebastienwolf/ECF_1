@@ -1,6 +1,6 @@
 <section id="tableau">
     <div>
-        <a id="addUser" class="bn634-hover bn27" href="index.php?controller=page&task=Inscription">Ajouter un utilisateur</a>
+        <a id="addUser" class="bn634-hover bn27" href="index.php?controller=page&task=inscriptionAdmin">Ajouter un utilisateur</a>
     </div>
     <table class="table table-striped table-sm">
         <thead class="thead-dark">

@@ -16,11 +16,14 @@ if (!isset($_SESSION)) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <?php
-    $impression = filter_input(INPUT_GET, 'task');
-    if ($impression == "adminImprim" || $impression == "adminSituation") {
+    if (isset($_SESSION)) {
+
+        $impression = filter_input(INPUT_GET, 'task');
+        if ($impression == "adminImprim" || $impression == "adminSituation") {
     ?>
-        <link rel="stylesheet" href="./css/impression.css" media="print">
-    <?php } ?>
+            <link rel="stylesheet" href="./css/impression.css" media="print">
+    <?php }
+    } ?>
 
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css'>
 </head>
@@ -114,6 +117,7 @@ if (!isset($_SESSION)) {
                 <!-- ======================================================================================== -->
                 <!-- connexion si admin page admin si user pas de admin sinon connexion -->
                 <?php
+
                 $type = $_SESSION['userType'];
                 if ($type == "admin") { ?>
                     <li>
@@ -129,7 +133,8 @@ if (!isset($_SESSION)) {
                                 <li><a class="dropdown-item" href="index.php?controller=users&task=adminUsers">Utilisateurs</a></li>
                                 <li><a class="dropdown-item" href=" index.php?controller=article&task=addArticle">Ajout d'un article</a></li>
                                 <li><a class="dropdown-item" href="index.php?controller=article&task=adminEmprunts">Emprunts</a></li>
-                                <!-- <li><a class="tata dropdown-item" href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li> -->
+                                <li><a class="dropdown-item" href="index.php?controller=article&task=adminPersonalisation">Personnaliser</a></li>
+                                <li><a class="tata dropdown-item" href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li>
                             </ul>
                         </div>
                     </li>

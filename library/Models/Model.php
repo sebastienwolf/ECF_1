@@ -219,4 +219,24 @@ abstract class Model
         $sql = $this->pdo->prepare("$requete");
         $sql->execute();
     }
+    // ===================================================================================================
+    // ===============================         persoAdmin   ===================================
+    // ===================================================================================================
+    public function  persoAdmin($id, $condition)
+    {
+        $requete = "UPDATE personnalisation SET verif = ? WHERE id_personnalisation = ?";
+        $sql = $this->pdo->prepare("$requete");
+        $sql->execute([$id, $condition]);
+    }
+    // ===================================================================================================
+    // ===============================         verifVue   ===================================
+    // ===================================================================================================
+    public function  verifVue()
+    {
+        $requete = "SELECT colone FROM `personnalisation` WHERE verif = 1";
+        $sql = $this->pdo->prepare("$requete");
+        $sql->execute();
+        $response = $sql->fetchAll();
+        return $response;
+    }
 }

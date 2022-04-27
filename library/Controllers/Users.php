@@ -9,7 +9,10 @@ class Users extends Controller
 
     public function logOut()
     {
-        session_start();
+        if (!isset($_SESSION)) {
+
+            session_start();
+        }
         $a = $_COOKIE['PHPSESSID'];
         setcookie($a);
         session_unset();
@@ -36,9 +39,9 @@ class Users extends Controller
             $verifPassword = password_verify($password, $userLog[0]['pwd']);
             if ($verifPassword == true && ($mail == $userLog[0]['mail'])) // nom d'utilisateur et mot de passe correctes
             {
-
-                session_start();
-
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
                 $_SESSION['id'] = $userLog[0]['id_user'];
                 $_SESSION['nom'] = $userLog[0]['nom'];
                 $_SESSION['prenom'] = $userLog[0]['prenom'];
