@@ -432,11 +432,67 @@ main {
             margin: 10px;
             padding: 10px;
             animation: clignote 3s linear infinite;
+            // display: flex;
+            //   flex-direction: column;
+            //   align-items: center;
+            border-radius: 15px;
 
 
             p {
                 color: $color2;
                 animation: clignote 3s linear infinite;
+            }
+
+            a {
+                text-decoration: none;
+                color: $color1;
+                border: 1px solid $color1;
+                border-radius: 10px;
+                padding: 5px;
+                background: $color7;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+            }
+
+            a:hover {
+                box-shadow: rgba(235, 225, 225, 0.25) 0px 54px 55px, rgba(235, 225, 225, 0.12) 0px -12px 30px, rgba(235, 225, 225, 0.12) 0px 4px 6px, rgba(235, 225, 225, 0.17) 0px 12px 13px, rgba(235, 225, 225, 0.09) 0px -3px 5px;
+                background: $color-primary-4;
+
+            }
+
+        }
+
+        #popupAdmin {
+            border: 5px solid $color2;
+            margin: 10px;
+            padding: 10px;
+            animation: clignote 3s linear infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 15px;
+
+
+            p {
+                color: $color2;
+                animation: clignote 3s linear infinite;
+            }
+
+            a {
+                text-decoration: none;
+                color: $color1;
+                border: 1px solid $color1;
+                border-radius: 10px;
+                padding: 5px;
+                background: $color7;
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+            }
+
+            a:hover {
+                box-shadow: rgba(235, 225, 225, 0.25) 0px 54px 55px, rgba(235, 225, 225, 0.12) 0px -12px 30px, rgba(235, 225, 225, 0.12) 0px 4px 6px, rgba(235, 225, 225, 0.17) 0px 12px 13px, rgba(235, 225, 225, 0.09) 0px -3px 5px;
+                background: $color-primary-4;
+
             }
 
         }
@@ -802,6 +858,12 @@ main {
     align-items: center;
     flex-direction: column;
     padding: 20px;
+
+    #message {
+        margin-top: 20px;
+        color: $color2;
+        font-weight: 800;
+    }
 
     form {
 

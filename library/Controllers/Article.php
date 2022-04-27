@@ -22,11 +22,21 @@ class Article extends Controller
         $categorie = $this->model->showAll("category");
         $articles = $this->model->showAllTable(1);
 
-        if (!isset($_SESSION)) {
+        if (isset($_SESSION)) {
             $id = $_SESSION['id'];
             $alert = $this->model->alert($id);
         } else {
             $alert = "";
+        }
+        if (isset($_SESSION)) {
+            if ($_SESSION['userType'] == "admin") {
+                $id = $_SESSION['id'];
+                $alertAdmin = $this->model->alertAdmin();
+            } else {
+                $alertAdmin = "";
+            }
+        } else {
+            $alertAdmin = "";
         }
         $verif = $this->model->verifVue();
         $control = [];
@@ -37,7 +47,7 @@ class Article extends Controller
 
         $pageTitle = 'Accueil';
         //avec le renderer je gere les vu la ba pour eviter de repeter le code
-        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert', 'control'));
+        \Renderer::render('articles/index', compact('pageTitle', 'articles', 'categorie', 'alert', 'alertAdmin', 'control'));
     }
     // ===================================================================================================
     // ===============================        myArticles    ===========================================

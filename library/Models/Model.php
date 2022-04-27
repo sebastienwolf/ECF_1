@@ -145,6 +145,22 @@ abstract class Model
         return $response;
     }
     // ===================================================================================================
+    // ===============================        alertAdmin   ===================================
+    // ===================================================================================================
+
+    public function alertAdmin()
+    {
+        $requete = "SELECT id_pret, articles.titre, DATEDIFF(date_retour, CURRENT_DATE()) AS reste FROM pret 
+        LEFT JOIN articles ON articles.id_article = pret.id_article 
+        WHERE pret.back = 0 AND DATEDIFF(date_retour, CURRENT_DATE()) < 0 ";
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute();
+        $response = $sql->fetchAll();
+
+
+        return $response;
+    }
+    // ===================================================================================================
     // ===============================        filtre   ===================================
     // ===================================================================================================
 

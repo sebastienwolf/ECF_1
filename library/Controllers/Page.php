@@ -29,12 +29,21 @@ class Page extends Controller
         \Renderer::render('articles/connexion', compact('pageTitle'));
     }
     // ===================================================================================================
+    // ===============================        inscription    =============================================
+    // ===================================================================================================
+
+    public function inscription()
+    {
+        $pageTitle = 'inscription';
+        \Renderer::render('articles/inscription', compact('pageTitle'));
+    }
+    // ===================================================================================================
     // ===============================        inscriptionAdmin    =============================================
     // ===================================================================================================
 
     public function inscriptionAdmin()
     {
-        $pageTitle = 'inscription';
+        $pageTitle = 'inscription Administrateur';
         \Renderer::render('articles/inscriptionAdmin', compact('pageTitle'));
     }
 

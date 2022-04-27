@@ -3,6 +3,7 @@
     <form id="form" action="" method="POST">
 
     </form>
+    <p id="message"></p>
     <a class="bn634-hover bn27" href="index.php?controller=article&task=showOne&id=<?= $articles[0]['id_article'] ?>">Retour</a>
 </section>
 <!-- <section>
@@ -140,12 +141,12 @@
     //========================================================================================
     document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
-        debugger
+
         if (confirm("Voulez vous faire ces modification tetette?")) {
             const form = document.getElementById('form')
             const content = document.getElementById('showImg')
             let URL = "index.php?controller=article&task=valideModif"
-            debugger
+
             let formData = new FormData(form)
 
             fetch(URL, {
@@ -160,13 +161,15 @@
                     while (form.firstChild) {
                         form.removeChild(form.firstChild)
                     }
-                    while (content.firstChild) {
-                        content.removeChild(content.firstChild)
-                    }
+                    // while (content.firstChild) {
+                    //     content.removeChild(content.firstChild)
+                    // }
                     let tab = Object.values(data.retour);
                     let y = Object.values(data.cat);
 
                     pop(tab, y);
+                    document.getElementById('message').innerText = "Changement effectué"
+                    alert('changement effectué');
                 })
         }
     })

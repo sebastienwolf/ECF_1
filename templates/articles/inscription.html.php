@@ -64,13 +64,13 @@
                             alert('Vous êtes inscrit, vous pouvez vous connecter');
                             break;
                         case '2':
-                            document.getElementById('erreur').innerHTML = "<p style='color:red'> le mail est déjà utilsé</p>";
+                            document.getElementById('erreur').innerHTML = "<p style='color:yellow'> le mail est déjà utilsé</p>";
                             break;
                         case '3':
-                            document.getElementById('erreur').innerHTML = "<p style='color:red'> il manque une donnée</p>";
+                            document.getElementById('erreur').innerHTML = "<p style='color:yellow'> il manque une donnée</p>";
                             break;
                         case '4':
-                            document.getElementById('erreur').innerHTML = "<p style='color:red'> le pseudo est déjà utilisé</p>";
+                            document.getElementById('erreur').innerHTML = "<p style='color:yellow'> le pseudo est déjà utilisé</p>";
                             break;
                         case '5':
                             document.location.href = 'index.php?controller=users&task=adminUsers'

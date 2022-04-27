@@ -58,10 +58,10 @@
                         alert("vous êtes connecté")
                         break;
                     case '2':
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'>il y a une erreur dans le mot de passe ou le mail</p>";
+                        document.getElementById('erreur').innerHTML = "<p style='color:yellow'>il y a une erreur dans le mot de passe ou le mail</p>";
                         break;
                     case '3':
-                        document.getElementById('erreur').innerHTML = "<p style='color:red'> l'utilisateur n'existe pas</p>";
+                        document.getElementById('erreur').innerHTML = "<p style='color:yellow'> l'utilisateur n'existe pas</p>";
                         break;
 
                 }
