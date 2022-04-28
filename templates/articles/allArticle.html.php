@@ -43,7 +43,7 @@ function filtre($tableau, $champ)
     const filtre3 = <?php echo json_encode($idAut); ?>;
     const filtre4 = <?php echo json_encode($idCol); ?>;
     const filtre5 = <?php echo json_encode($idEdit); ?>;
-
+    //on appelle les tableau pour les faire crée en js ainsi que les cards
     popCat("category", filtre1)
     popFiltre("genre", filtre2)
     popFiltre("auteur", filtre3)
@@ -136,10 +136,7 @@ function filtre($tableau, $champ)
 
 
     //==========================================================================================
-    // let back = document.getElementsByClassName('rendre')
-    // console.log(back);
-    // let item
-    // for (item of back) {
+    //quand on click sur rechercher lance la recherche en fonction des filtres
     document.getElementById('filtre').addEventListener('submit', (event) => {
         event.preventDefault();
         console.log(event);
@@ -187,7 +184,7 @@ function filtre($tableau, $champ)
                 while (d.firstChild) {
                     d.removeChild(d.firstChild)
                 }
-
+                //on recrée les filtre à zero
                 const filtre1 = <?php echo json_encode($idCat); ?>;
                 const filtre2 = <?php echo json_encode($idGen); ?>;
                 const filtre3 = <?php echo json_encode($idAut); ?>;
@@ -211,7 +208,7 @@ function filtre($tableau, $champ)
 
     /* 
      le paramettre tableau est un array
-     fera apparaitre les filtre en fonction de la donnée en parametre
+     fera apparaitre le filtre categorie en fonction de la donnée en parametre
     */
     function popCat(id, tableau) {
 

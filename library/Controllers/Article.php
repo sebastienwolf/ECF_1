@@ -16,18 +16,23 @@ class Article extends Controller
 
     public function index()
     {
+        //si pas de session lance une session
         if (!isset($_SESSION)) {
             session_start();
         }
+        //appelle les categories
         $categorie = $this->model->showAll("category");
+        //appelle les articles
         $articles = $this->model->showAllTable(1);
-
+        //s'il y a une session  cherche les retards des emprunts de l'utilisateur
         if (isset($_SESSION)) {
             $id = $_SESSION['id'];
             $alert = $this->model->alert($id);
         } else {
             $alert = "";
         }
+        //s'il y a une session  cherche les retards des emprunts des utilisateurs
+
         if (isset($_SESSION)) {
             if ($_SESSION['userType'] == "admin") {
                 $id = $_SESSION['id'];
@@ -38,6 +43,7 @@ class Article extends Controller
         } else {
             $alertAdmin = "";
         }
+        //vérifie ce qui doit être visible dans la table personnalisation
         $verif = $this->model->verifVue();
         $control = [];
         foreach ($verif as $verification) {
@@ -59,6 +65,7 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = $_SESSION['id'];
+            //appelle les réservations en cours de l'utilisateur
             $articles = $this->model->showAllPre($id);
 
             $pageTitle = 'mes réservations';
@@ -75,38 +82,49 @@ class Article extends Controller
 
             session_start();
         }
+        // verifie la table personnalisation
         $verif = $this->model->verifVue();
         $control = [];
         foreach ($verif as $verification) {
             array_push($control, $verification['colone']);
         }
+        //appelle les cards
         $articles = $this->model->showAllTable(1);
         $pageTitle = 'all articles';
         //==============================================
+        //appelle les categories
         $idCateg = $this->model->showCat();
         $idCat = [];
         foreach ($idCateg as $verification) {
             array_push($idCat, $verification['name']);
         }
         //============================================
+        //appelle les genres
+
         $idFiltre = $this->model->showFiltre("genre", 1);
         $idGen = [];
         foreach ($idFiltre as $verification) {
             array_push($idGen, $verification['genre']);
         }
         //============================================
+        //appelle les auteurs
+
         $idFiltre = $this->model->showFiltre("auteur", 1);
         $idAut = [];
         foreach ($idFiltre as $verification) {
             array_push($idAut, $verification['auteur']);
         }
         //============================================
+        //appelle les collections
+
         $idFiltre = $this->model->showFiltre("collection", 1);
         $idCol = [];
         foreach ($idFiltre as $verification) {
             array_push($idCol, $verification['collection']);
         }
         //============================================
+        //appelle les editions
+
         $idFiltre = $this->model->showFiltre("edition", 1);
         $idEdit = [];
         foreach ($idFiltre as $verification) {
@@ -128,6 +146,7 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = $_SESSION['id'];
+            //appelle toutes les réservations passé
             $articles = $this->model->showHistorique($id);
 
             $pageTitle = 'Historique';
@@ -144,6 +163,7 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = $_SESSION['id'];
+            //appelle les categories
             $themes = $this->model->showAll("category");
 
             $pageTitle = 'Rajouter un article';
@@ -174,6 +194,7 @@ class Article extends Controller
         if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
+            //appelle tous les emprunts en cours des utilisateurs
             $pageTitle = 'Admin emprunt';
             $articles = $this->model->showAllPretAdmin("");
             \Renderer::render('articles/adminEmprunts', compact('pageTitle', 'articles'));
@@ -189,6 +210,7 @@ class Article extends Controller
         } else {
             $pageTitle = 'Impression de la situation';
             $id = filter_input(INPUT_GET, 'id');
+            //appelle tout les emprunt en cours de l'utilisateur
             $articles = $this->model->showAllPretAdmin($id);
             \Renderer::render('articles/adminSituation', compact('pageTitle', 'articles'));
         }
@@ -200,23 +222,30 @@ class Article extends Controller
 
     public function filtreSelection()
     {
+        //appelle tous les champs de chaque colonne
         $tableau = [];
         $endArray = [];
         if (isset($_POST['idCat'])) {
+            //categorie
             $category = $_POST['idCat'];
         }
         if (isset($_POST['idGen'])) {
+            //genre
             $genre = $_POST['idGen'];
         }
         if (isset($_POST['idAut'])) {
+            //auteur
             $auteur = $_POST['idAut'];
         }
         if (isset($_POST['idCol'])) {
+            //collection
             $collection = $_POST['idCol'];
         }
         if (isset($_POST['idEdit'])) {
+            //edition
             $edition = $_POST['idEdit'];
         }
+        //compact les variables pour les envoyer
         $endArray = compact("category", 'genre', 'auteur', 'collection', 'edition');
 
         $response = $this->model->filtre($endArray);
@@ -233,8 +262,7 @@ class Article extends Controller
         if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
-
-            //$typeAdd = htmlspecialchars(filter_input(INPUT_POST, 'type'));
+            //récupere les données et les sécuriser
             $titre = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
             $aut = htmlspecialchars(filter_input(INPUT_POST, 'auteur'));
             $gen = htmlspecialchars(filter_input(INPUT_POST, 'genre'));
@@ -323,7 +351,9 @@ class Article extends Controller
         } else {
 
             $id = filter_input(INPUT_GET, "id");
+            //appelle les informations de l'article
             $articles = $this->model->modifArticle($id);
+            //appelle les categories pour le select
             $cat = $this->model->showAll("category");
 
             $pageTitle = 'modifier un article';
@@ -340,11 +370,9 @@ class Article extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
             $id = filter_input(INPUT_GET, "id");
-            //$table = "pret";
-            //$col = "back";
-            // $reponse = 1;
-            //$condition = "id_pret";
+            //modification de la colone back de emprunt pour changer son status
             $this->model->udaptePret($id);
+            //modification de la colonne emprunt de articles pour le remettre disponible  
             $this->model->udapte("emprunt = 0", "id_article = $id");
             echo json_encode($id);
         }
@@ -363,11 +391,15 @@ class Article extends Controller
             $bool = filter_input(INPUT_POST, "bool");
             $item = "emprunt = $bool";
             $condition = "id_article = {$id}";
+            //enlève l'article du stock change la colonne emprunt de article
             $this->model->udapte($item, $condition);
+            //ajoute la date du jour de la reservation dans articles
             $this->udapteDate($id);
+            //crée les dates pour la table emprunt
             $date = $this->date();
             $idUser = $_SESSION['id'];
             $data = compact('idUser', 'id', 'date');
+            //crée les dates dans emprunts
             $this->model->createPret($data);
             if ($bool == true) {
                 echo json_encode('Vous avez rendu l\'article');
@@ -383,6 +415,7 @@ class Article extends Controller
 
     public function date()
     {
+        //crée la date du jour et rajoute 7 jours pour le retour
         $dateNow = date('Y-m-d', time());
         $nextWeek = time() + (7 * 24 * 60 * 60);
         $dateEnd = date('Y-m-d', $nextWeek);
@@ -398,7 +431,7 @@ class Article extends Controller
         if (!isset($_SESSION['userType'])) {
             header('Location: index.php?controller=article&task=index');
         } else {
-
+            //fait la modification des date dans articles pour l'emprunt sur la table article
             $date = $this->date();
             $item = "date_emprunt = '{$date['dateNow']}', dateRetour = '{$date['dateEnd']}'";
             $condition = "id_article = '{$idArticle}'";
@@ -415,6 +448,7 @@ class Article extends Controller
         if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
+            //récupère les données du formulaire
 
             $titre = htmlspecialchars(filter_input(INPUT_POST, 'titre'));
             $aut = htmlspecialchars(filter_input(INPUT_POST, 'auteur'));
@@ -559,7 +593,7 @@ class Article extends Controller
         if ($_SESSION['userType'] !== "admin") {
             header('Location: index.php?controller=article&task=index');
         } else {
-
+            //suprimer l'article
             $id = filter_input(INPUT_GET, 'id');
             $condition = "id_article = " . $id;
             $fileName = filter_input(INPUT_GET, 'file');
@@ -640,6 +674,7 @@ class Article extends Controller
     // ===================================================================================================
     public function personalisation()
     {
+        //Fait la modification de la table personnalisation pour gérer la vue des articles
         $titre = filter_input(INPUT_POST, 'titre');
         if (!isset($titre)) {
             $titre = 0;
@@ -697,6 +732,7 @@ class Article extends Controller
     {
         $id = filter_input(INPUT_GET, 'id');
         $id = "articles.id_article = $id";
+        //appelle les informations pour l'article selectionné
         $articles = $this->model->showAllTable($id);
         $verif = $this->model->verifVue();
         $control = [];
@@ -715,13 +751,14 @@ class Article extends Controller
 
     public function filtre1()
     {
+        //récuperer les donnée des filtres
         $cat = filter_input(INPUT_POST, 'idCat');
         $gen = filter_input(INPUT_POST, 'idGen');
         $aut = filter_input(INPUT_POST, 'idAut');
         $col = filter_input(INPUT_POST, 'idCol');
         $edit = filter_input(INPUT_POST, 'idEdit');
 
-
+        //si categorie choisie va chercher les information pour les autres filtres pour faire apparaitre que ceux qui sont ses enfants
         if (!empty($cat)) {
             $idGen = $this->model->showFiltreAvence("genre", 1, $cat);
             $idAut = $this->model->showFiltreAvence("auteur", 1, $cat);
@@ -729,6 +766,7 @@ class Article extends Controller
             $idEdit = $this->model->showFiltreAvence("edition", 1, $cat);
             $response = compact('idGen', 'idAut', 'idCol', 'idEdit');
         }
+        //si genre choisie va chercher les information pour les autres filtres pour faire apparaitre que ceux qui sont ses enfants
 
         if (!empty($gen)) {
             $idAut = $this->model->showFiltreAvence("auteur", 2, $gen);
@@ -736,12 +774,15 @@ class Article extends Controller
             $idEdit = $this->model->showFiltreAvence("edition", 2, $gen);
             $response = compact('idAut', 'idCol', 'idEdit');
         }
+        //si auteur choisie va chercher les information pour les autres filtres pour faire apparaitre que ceux qui sont ses enfants
 
         if (!empty($aut)) {
             $idCol = $this->model->showFiltreAvence("collection", 3, $aut);
             $idEdit = $this->model->showFiltreAvence("edition", 3, $aut);
             $response = compact('idCol', 'idEdit');
         }
+        //si collection choisie va chercher les information pour le dernier filtre Edition
+
         if (!empty($col)) {
             $idEdit = $this->model->showFiltreAvence("edition", 4, $col);
             $response = compact('idEdit');
@@ -749,16 +790,4 @@ class Article extends Controller
 
         echo json_encode($response);
     }
-    // ===================================================================================================
-    // ===============================        filtreGenre    ===========================================
-    // ===================================================================================================
-    // public function filtreGenre()
-    // {
-    //     $idFiltre = $this->model->showFiltreAvancer("genre", 1);
-    //     $idGen = [];
-    //     foreach ($idFiltre as $verification) {
-    //         array_push($idGen, $verification['genre']);
-    //     }
-    //     return $idGen;
-    // }
 }

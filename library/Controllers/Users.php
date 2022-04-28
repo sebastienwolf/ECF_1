@@ -7,6 +7,11 @@ class Users extends Controller
 {
     protected $modelName = \Models\Users::class;
 
+
+    // ===================================================================================================
+    // ===============================        deconnexion    ===========================================
+    // ===================================================================================================
+
     public function logOut()
     {
         if (!isset($_SESSION)) {
@@ -14,6 +19,8 @@ class Users extends Controller
             session_start();
         }
         $a = $_COOKIE['PHPSESSID'];
+        //selectionne le cookie et le supprime
+        //puis détruit la session
         setcookie($a);
         session_unset();
         session_destroy();
@@ -34,14 +41,16 @@ class Users extends Controller
         //------------------------
         $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
         if ($mail && $password) {
+            //verifie si le mail existe
             $userLog = $this->model->showAll("mail = '{$mail}'");
-
+            //vérifie si le mot de passe correspond
             $verifPassword = password_verify($password, $userLog[0]['pwd']);
             if ($verifPassword == true && ($mail == $userLog[0]['mail'])) // nom d'utilisateur et mot de passe correctes
             {
                 if (!isset($_SESSION)) {
                     session_start();
                 }
+                //entre les information dans la session
                 $_SESSION['id'] = $userLog[0]['id_user'];
                 $_SESSION['nom'] = $userLog[0]['nom'];
                 $_SESSION['prenom'] = $userLog[0]['prenom'];
@@ -83,6 +92,7 @@ class Users extends Controller
         } else {
             $pageTitle = 'Admin modif user';
             $id = filter_input(INPUT_GET, 'id');
+            //appelle les informations de l'utilisateur
             $users = $this->model->showAll("id_user = $id");
             \Renderer::render('articles/adminProfil', compact('pageTitle', 'users'));
         }
@@ -96,21 +106,21 @@ class Users extends Controller
         if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
-
+            //appelle les informations des utilisateurs
             $allUsers = $this->model->showAll(1);
             $pageTitle = 'Admin Utilisateur';
             \Renderer::render('articles/adminUser', compact('pageTitle', 'allUsers'));
         }
     }
     // ===================================================================================================
-    // ===============================        adminUsers    ===========================================
+    // ===============================        admin imprim    ===========================================
     // ===================================================================================================
     public function adminImprim()
     {
         if (($_SESSION['userType'] !== "admin")) {
             header('Location: index.php?controller=article&task=index');
         } else {
-
+            //affiche les information de l'utilisateur pour imprimer la carte adhérent
             $id = filter_input(INPUT_GET, 'id');
             $condition = "id_user = {$id}";
             $user = $this->model->showAll($condition);
@@ -125,7 +135,7 @@ class Users extends Controller
     // inscription new user
     public function inscription()
     {
-
+        //prend les informations du formulaire inscription
         $userNom = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
         $userPrenom = htmlspecialchars(filter_input(INPUT_POST, 'prenom'));
         $userMail = filter_input(INPUT_POST, 'mail');
@@ -135,11 +145,12 @@ class Users extends Controller
         $userCP = htmlspecialchars(filter_input(INPUT_POST, 'cp'));
         $userType = htmlspecialchars(filter_input(INPUT_POST, 'type'));
 
-
+        //hash le mot de passe à stocker
         $option = ['cost' => 12,];
         $hash = password_hash($userPassword, PASSWORD_BCRYPT, $option);
 
         if ($userNom && $userPrenom && $userMail && $hash && $userAdress && $userVille && $userCP) {
+            //vérifie si le mail existe si oui il s'arrete et envoie une erreur
             $verifMail = $this->model->showAll("mail =" . "'{$userMail}'");
 
             if ($verifMail['0']['mail'] == $userMail) {
@@ -169,7 +180,7 @@ class Users extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
 
-
+            //prend les informations du formulaire puis va vérifier un par un les informations à modifier en fonction des entrées
             $userNom = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
             $userPrenom = htmlspecialchars(filter_input(INPUT_POST, 'prenom'));
             $userMail = filter_input(INPUT_POST, 'mail');
@@ -264,6 +275,7 @@ class Users extends Controller
             header('Location: index.php?controller=article&task=index');
         } else {
 
+            //prend les informations du formulaire puis va vérifier un par un les informations à modifier en fonction des entrées
 
             $userNom = htmlspecialchars(filter_input(INPUT_POST, 'nom'));
             $userPrenom = htmlspecialchars(filter_input(INPUT_POST, 'prenom'));
@@ -349,7 +361,7 @@ class Users extends Controller
         if ($_SESSION['userType'] !== 'admin') {
             header('Location: index.php?controller=article&task=index');
         } else {
-
+            //supprime un utilisateur
             $id = filter_input(INPUT_GET, 'id');
             $condition = "id_user = " . $id;
             $this->model->delete($condition);

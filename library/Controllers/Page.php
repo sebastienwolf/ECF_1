@@ -67,6 +67,7 @@ class Page extends Controller
         if (!isset($_SESSION['userType'])) {
             header('Location: index.php?controller=article&task=index');
         } else {
+            //appelle les categories
             $themes = $this->model->showAll("categorie");
             $pageTitle = 'profil';
             \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
