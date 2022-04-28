@@ -5,53 +5,26 @@
         </div>
         <form id="filtre" class="filtre" action="" method="post">
 
-            <div>
-                <h2>Categorie</h2>
-                <?php
-                $categori = filtre($articles, "name");
-                foreach ($categori as $cat) {
-                ?>
-                    <input type="checkbox" value="<?= $cat ?>" name="category[]"><?= $cat ?>
-                <?php } ?>
-            </div>
-            <div>
-                <h2>Genre</h2>
-                <?php
-                $genre = filtre($articles, "genre");
-                foreach ($genre as $gen) {
-                ?>
-                    <input type="checkbox" value="<?= $gen ?>" name="genre[]"><?= $gen ?>
-                <?php } ?>
-            </div>
-            <div>
-                <h2>Auteur</h2>
-                <?php
-                $auteur = filtre($articles, "auteur");
-                foreach ($auteur as $aut) {
-                ?>
-                    <input type="checkbox" value="<?= $aut ?>" name="auteur[]"><?= $aut ?>
-                <?php } ?>
-            </div>
-            <div>
-                <h2>Collection</h2>
-                <?php
-                $collection = filtre($articles, "collection");
-                foreach ($collection as $coll) {
-                ?>
-                    <input type="checkbox" value="<?= $coll ?>" name="collection[]"><?= $coll ?>
-                <?php } ?>
-            </div>
-            <div>
-                <h2>Edition</h2>
-                <?php
-                $editeur = filtre($articles, "edition");
-                foreach ($editeur as $edit) {
-                ?>
-                    <input type="checkbox" value="<?= $edit ?>" name="edition[]"><?= $edit ?>
-                <?php } ?>
-            </div>
+
 
             <button class="bn634-hover bn27" type="submit"> Rechercher</button>
+        </form>
+
+        <form id="form0" name="idCat" action="" method="POST">
+            <select name="idCat" id="category">
+            </select>
+        </form>
+        <form id="form1" name="idGen" action="" method="POST">
+            <select name="idGen" id="genre"></select>
+        </form>
+        <form id="form2" name="idAut" action="" method="POST">
+            <select name="idAut" id="auteur"></select>
+        </form>
+        <form id="form3" name="idCol" action="" method="POST">
+            <select name="idCol" id="collection"></select>
+        </form>
+        <form id="form4" name="idEdit" action="" method="POST">
+            <select name="idEdit" id="edition"></select>
         </form>
     </article>
 
@@ -80,9 +53,18 @@ function filtre($tableau, $champ)
 } ?>
 <!-- =================================================================================================== -->
 <script>
-    debugger
     const tableau = <?php echo json_encode($articles); ?>;
+    const filtre1 = <?php echo json_encode($idCat); ?>;
+    const filtre2 = <?php echo json_encode($idGen); ?>;
+    const filtre3 = <?php echo json_encode($idAut); ?>;
+    const filtre4 = <?php echo json_encode($idCol); ?>;
+    const filtre5 = <?php echo json_encode($idEdit); ?>;
 
+    popCat("category", filtre1)
+    popFiltre("genre", filtre2)
+    popFiltre("auteur", filtre3)
+    popFiltre("collection", filtre4)
+    popFiltre("edition", filtre5)
 
     pop(tableau)
     //==============================================================================================
@@ -102,7 +84,6 @@ function filtre($tableau, $champ)
     */
     function pop(tableau) {
         tableau.forEach(element => {
-            debugger
             const verif = Object.values(<?php echo json_encode($control); ?>);
             //let verif =
 
@@ -174,6 +155,9 @@ function filtre($tableau, $champ)
 
 
 
+
+
+
     //==========================================================================================
     // let back = document.getElementsByClassName('rendre')
     // console.log(back);
@@ -196,7 +180,7 @@ function filtre($tableau, $champ)
                 return response.json()
             })
             .then(function(data) {
-                debugger
+
 
                 let x = document.getElementById('allCards')
                 // on boucle pour suprmier tous les enfant de index
@@ -206,6 +190,205 @@ function filtre($tableau, $champ)
 
                 pop(data)
                 //pop(data)
+            })
+
+    })
+
+
+
+
+    //==============================================================================================
+
+    /* 
+     le paramettre tableau est un array
+     fera apparaitre les filtre en fonction de la donnée en parametre
+    */
+    function popCat(id, tableau) {
+
+        let i = 1
+        let vide = document.createElement('option');
+        vide.innerText = "Choix"
+        vide.value = 0
+        document.getElementById(id).appendChild(vide);
+
+        tableau.forEach(element => {
+            let contenaire = document.createElement('option');
+            contenaire.value = i
+            contenaire.innerText = element
+            document.getElementById(id).appendChild(contenaire);
+            i += 1
+        })
+
+    }
+    //==============================================================================================
+
+    /* 
+     le paramettre tableau est un array
+     fera apparaitre les filtre en fonction de la donnée en parametre
+    */
+    function popFiltre(id, tab) {
+
+        let i = 0
+        const tableau = Array.from(tab);
+        let vide = document.createElement('option');
+        vide.innerText = "Choix"
+        vide.value = 0
+        document.getElementById(id).appendChild(vide);
+
+        tableau.forEach(element => {
+            let contenaire = document.createElement('option');
+            contenaire.value = element
+            contenaire.innerText = element
+            document.getElementById(id).appendChild(contenaire);
+            i += 1
+        })
+
+    }
+
+    //==========================================================================================
+    //filtre 1
+    document.getElementById('form0').addEventListener('change', (event) => {
+        event.preventDefault();
+
+        let URL = "index.php?controller=article&task=filtre1"
+        let form = document.getElementById('form0')
+        let formData = new FormData(form)
+        //formData.append(id)
+        fetch(URL, {
+                body: formData,
+                method: "post"
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(data) {
+
+                console.log(data.idAut);
+                let a = document.getElementById('genre')
+                // on boucle pour suprmier tous les enfant de index
+                while (a.firstChild) {
+                    a.removeChild(a.firstChild)
+                }
+                let b = document.getElementById('auteur')
+                while (b.firstChild) {
+                    b.removeChild(b.firstChild)
+                }
+                let c = document.getElementById('collection')
+                while (c.firstChild) {
+                    c.removeChild(c.firstChild)
+                }
+                let d = document.getElementById('edition')
+                while (d.firstChild) {
+                    d.removeChild(d.firstChild)
+                }
+
+                popFiltre('genre', data.idGen)
+                popFiltre('auteur', data.idAut)
+                popFiltre('collection', data.idCol)
+                popFiltre('edition', data.idEdit)
+
+            })
+
+    })
+
+    //==========================================================================================
+    //filtre 2
+    document.getElementById('form1').addEventListener('change', (event) => {
+        event.preventDefault();
+        debugger
+        let URL = "index.php?controller=article&task=filtre1"
+        let form = document.getElementById('form1')
+        let formData = new FormData(form)
+        //formData.append(id)
+        fetch(URL, {
+                body: formData,
+                method: "post"
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(data) {
+
+                let b = document.getElementById('auteur')
+                while (b.firstChild) {
+                    b.removeChild(b.firstChild)
+                }
+                let c = document.getElementById('collection')
+                while (c.firstChild) {
+                    c.removeChild(c.firstChild)
+                }
+                let d = document.getElementById('edition')
+                while (d.firstChild) {
+                    d.removeChild(d.firstChild)
+                }
+
+                popFiltre('auteur', data.idAut)
+
+                popFiltre('collection', data.idCol)
+
+                popFiltre('edition', data.idEdit)
+
+            })
+
+    })
+    //==========================================================================================
+    //filtre 3
+    document.getElementById('form2').addEventListener('change', (event) => {
+        event.preventDefault();
+        debugger
+        let URL = "index.php?controller=article&task=filtre1"
+        let form = document.getElementById('form2')
+        let formData = new FormData(form)
+        //formData.append(id)
+        fetch(URL, {
+                body: formData,
+                method: "post"
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(data) {
+
+                let c = document.getElementById('collection')
+                while (c.firstChild) {
+                    c.removeChild(c.firstChild)
+                }
+                let d = document.getElementById('edition')
+                while (d.firstChild) {
+                    d.removeChild(d.firstChild)
+                }
+                popFiltre('collection', data.idCol)
+
+                popFiltre('edition', data.idEdit)
+
+            })
+
+    })
+    //==========================================================================================
+    //filtre 4
+    document.getElementById('form3').addEventListener('change', (event) => {
+        event.preventDefault();
+        debugger
+        let URL = "index.php?controller=article&task=filtre1"
+        let form = document.getElementById('form3')
+        let formData = new FormData(form)
+        //formData.append(id)
+        fetch(URL, {
+                body: formData,
+                method: "post"
+            })
+            .then(function(response) {
+                return response.json()
+            })
+            .then(function(data) {
+
+                let d = document.getElementById('edition')
+                while (d.firstChild) {
+                    d.removeChild(d.firstChild)
+                }
+
+                popFiltre('edition', data.idEdit)
+
             })
 
     })

@@ -51,6 +51,111 @@ abstract class Model
     }
 
     // ===================================================================================================
+    // ===============================        showCat   ===================================
+    // ===================================================================================================
+    public function showCat()
+    {
+
+        $requete = "SELECT category.name 
+        FROM articles 
+        LEFT JOIN category ON articles.id_category = category.id_category
+        group BY category.name";
+
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute();
+        $response = $sql->fetchAll();
+        return $response;
+    }
+
+    // ===================================================================================================
+    // ===============================        showFiltre   ===================================
+    // ===================================================================================================
+    public function showFiltre($table, $condition)
+    {
+
+        $requete = "SELECT ";
+        if ($table == "genre") {
+            $requete .= "genre ";
+        }
+        if ($table == "auteur") {
+            $requete .= "auteur ";
+        }
+        if ($table == "collection") {
+            $requete .= "collection ";
+        }
+        if ($table == "edition") {
+            $requete .= "edition ";
+        }
+        //====================================
+        $requete .= "FROM articles 
+        group BY ";
+        //===================================
+        if ($table == "genre") {
+            $requete .= "genre";
+        }
+        if ($table == "auteur") {
+            $requete .= "auteur ";
+        }
+        if ($table == "collection") {
+            $requete .= "collection ";
+        }
+        if ($table == "edition") {
+            $requete .= "edition ";
+        }
+
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute([$condition]);
+        $response = $sql->fetchAll();
+        return $response;
+    }
+
+    // ===================================================================================================
+    // ===============================        showFiltre   ===================================
+    // ===================================================================================================
+    public function showFiltreAvence($table, $where, $condition)
+    {
+
+        $requete = "SELECT ";
+        if ($table == "genre") {
+            $requete .= "genre ";
+        }
+        if ($table == "auteur") {
+            $requete .= "auteur ";
+        }
+        if ($table == "collection") {
+            $requete .= "collection ";
+        }
+        if ($table == "edition") {
+            $requete .= "edition ";
+        }
+        //====================================
+        $requete .= "FROM articles WHERE ";
+        //===================================
+        if ($where == "1") {
+            $requete .= "articles.id_category = ? ";
+        }
+        if ($where == "2") {
+            $requete .= "articles.genre = ? ";
+        }
+        if ($where == "3") {
+            $requete .= "articles.auteur = ? ";
+        }
+        if ($where == "4") {
+            $requete .= "articles.collection = ? ";
+        }
+
+        $sql = $this->pdo->prepare($requete);
+        $sql->execute([$condition]);
+        $response = $sql->fetchAll();
+
+        $tableau = [];
+        foreach ($response as $verification) {
+            array_push($tableau, $verification[$table]);
+        }
+
+        return $tableau;
+    }
+    // ===================================================================================================
     // ===============================        showAllPre   ===================================
     // ===================================================================================================
     public function showAllPre($id)
@@ -98,7 +203,7 @@ abstract class Model
         FROM `pret` 
         LEFT JOIN users ON users.id_user = pret.id_user
         LEFT JOIN articles ON articles.id_article = articles.id_article
-        WHERE pret.id_user = ? AND pret.id_article = articles.id_article AND pret.back = true";
+        WHERE pret.id_user = ? AND pret.id_article = articles.id_article ORDER BY pret.id_pret DESC";
         $sql = $this->pdo->prepare($requete);
         $sql->execute([$id]);
         $response = $sql->fetchAll();

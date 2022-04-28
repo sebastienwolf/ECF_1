@@ -82,9 +82,41 @@ class Article extends Controller
         }
         $articles = $this->model->showAllTable(1);
         $pageTitle = 'all articles';
+        //==============================================
+        $idCateg = $this->model->showCat();
+        $idCat = [];
+        foreach ($idCateg as $verification) {
+            array_push($idCat, $verification['name']);
+        }
+        //============================================
+        $idFiltre = $this->model->showFiltre("genre", 1);
+        $idGen = [];
+        foreach ($idFiltre as $verification) {
+            array_push($idGen, $verification['genre']);
+        }
+        //============================================
+        $idFiltre = $this->model->showFiltre("auteur", 1);
+        $idAut = [];
+        foreach ($idFiltre as $verification) {
+            array_push($idAut, $verification['auteur']);
+        }
+        //============================================
+        $idFiltre = $this->model->showFiltre("collection", 1);
+        $idCol = [];
+        foreach ($idFiltre as $verification) {
+            array_push($idCol, $verification['collection']);
+        }
+        //============================================
+        $idFiltre = $this->model->showFiltre("edition", 1);
+        $idEdit = [];
+        foreach ($idFiltre as $verification) {
+            array_push($idEdit, $verification['edition']);
+        }
+        //============================================
 
 
-        \Renderer::render('articles/allArticle', compact('pageTitle', 'articles', 'control'));
+
+        \Renderer::render('articles/allArticle', compact('pageTitle', 'articles', 'control', 'idCat', 'idGen', 'idAut', 'idCol', 'idEdit'));
     }
     // ===================================================================================================
     // ===============================        historique    ===========================================
@@ -677,4 +709,56 @@ class Article extends Controller
 
         \Renderer::render('articles/oneArticle', compact('pageTitle', 'articles', 'control'));
     }
+    // ===================================================================================================
+    // ===============================        filtre1    ===========================================
+    // ===================================================================================================
+
+    public function filtre1()
+    {
+        $cat = filter_input(INPUT_POST, 'idCat');
+        $gen = filter_input(INPUT_POST, 'idGen');
+        $aut = filter_input(INPUT_POST, 'idAut');
+        $col = filter_input(INPUT_POST, 'idCol');
+        $edit = filter_input(INPUT_POST, 'idEdit');
+
+
+        if (!empty($cat)) {
+            $idGen = $this->model->showFiltreAvence("genre", 1, $cat);
+            $idAut = $this->model->showFiltreAvence("auteur", 1, $cat);
+            $idCol = $this->model->showFiltreAvence("collection", 1, $cat);
+            $idEdit = $this->model->showFiltreAvence("edition", 1, $cat);
+            $response = compact('idGen', 'idAut', 'idCol', 'idEdit');
+        }
+
+        if (!empty($gen)) {
+            $idAut = $this->model->showFiltreAvence("auteur", 2, $gen);
+            $idCol = $this->model->showFiltreAvence("collection", 2, $gen);
+            $idEdit = $this->model->showFiltreAvence("edition", 2, $gen);
+            $response = compact('idAut', 'idCol', 'idEdit');
+        }
+
+        if (!empty($aut)) {
+            $idCol = $this->model->showFiltreAvence("collection", 3, $aut);
+            $idEdit = $this->model->showFiltreAvence("edition", 3, $aut);
+            $response = compact('idCol', 'idEdit');
+        }
+        if (!empty($col)) {
+            $idEdit = $this->model->showFiltreAvence("edition", 4, $col);
+            $response = compact('idEdit');
+        }
+
+        echo json_encode($response);
+    }
+    // ===================================================================================================
+    // ===============================        filtreGenre    ===========================================
+    // ===================================================================================================
+    // public function filtreGenre()
+    // {
+    //     $idFiltre = $this->model->showFiltreAvancer("genre", 1);
+    //     $idGen = [];
+    //     foreach ($idFiltre as $verification) {
+    //         array_push($idGen, $verification['genre']);
+    //     }
+    //     return $idGen;
+    // }
 }

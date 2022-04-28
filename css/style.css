@@ -298,38 +298,21 @@ main #index #allFiltre {
   height: auto;
 }
 
-main #index #allFiltre .filtre {
-  visibility: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  width: 0;
-  height: 0;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  opacity: 0;
+main #index #allFiltre form select {
+  color: #000000;
+}
+
+main #index #allCards {
+  margin-left: 5%;
+  margin-right: 5%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-main #index #allFiltre .filtre.active {
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
-  height: auto;
-  width: 75%;
-  visibility: visible;
-  position: relative;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 main #index #popup {
@@ -1008,7 +991,7 @@ main .profil article img {
   top: -500px;
   width: 0;
   height: 0;
-  background: white;
+  background: #F8F9F7;
   margin: 25%;
   -webkit-transform: scale(0);
           transform: scale(0);
