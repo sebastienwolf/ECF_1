@@ -52,13 +52,6 @@ function filtre($tableau, $champ)
 
     pop(tableau)
     //==============================================================================================
-    // faire descendre les filtres
-    document.getElementById("superFiltre").addEventListener('click', event => {
-        // toogle permet de voir si la classe est active alors il l'enlève sinon il le mets
-        document.getElementById("filtre").classList.toggle("active")
-
-    })
-
 
     //==============================================================================================
 
@@ -224,7 +217,7 @@ function filtre($tableau, $champ)
 
         let i = 1
         let vide = document.createElement('option');
-        vide.innerText = "Choix"
+        vide.innerText = id
         vide.value = 0
         document.getElementById(id).appendChild(vide);
 
@@ -248,7 +241,7 @@ function filtre($tableau, $champ)
         let i = 0
         const tableau = Array.from(tab);
         let vide = document.createElement('option');
-        vide.innerText = "Choix"
+        vide.innerText = id
         vide.value = 0
         document.getElementById(id).appendChild(vide);
 
