@@ -1,30 +1,14 @@
 <section id="index">
     <article id="allFiltre">
-        <div class="checbox">
-            <button id="superFiltre" class="bn634-hover bn27">Filtres</button>
-        </div>
-        <form id="filtre" class="filtre" action="" method="post">
 
-
-
-            <button class="bn634-hover bn27" type="submit"> Rechercher</button>
-        </form>
-
-        <form id="form0" name="idCat" action="" method="POST">
+        <form id="filtre" class="filtre" name="form0" action="" method="POST">
             <select name="idCat" id="category">
             </select>
-        </form>
-        <form id="form1" name="idGen" action="" method="POST">
             <select name="idGen" id="genre"></select>
-        </form>
-        <form id="form2" name="idAut" action="" method="POST">
             <select name="idAut" id="auteur"></select>
-        </form>
-        <form id="form3" name="idCol" action="" method="POST">
             <select name="idCol" id="collection"></select>
-        </form>
-        <form id="form4" name="idEdit" action="" method="POST">
             <select name="idEdit" id="edition"></select>
+            <button class="bn634-hover bn27" type="submit"> Rechercher</button>
         </form>
     </article>
 
@@ -35,9 +19,9 @@
 
 <?php
 /* 
-                Function filtre prend en parametre un tableau et un champ de selection de colonne
-                Il retourne un tableau
-                */
+ Function filtre prend en parametre un tableau et un champ de selection de colonne
+ Il retourne un tableau
+ */
 function filtre($tableau, $champ)
 {
     $filtre = array_column($tableau, $champ);
@@ -188,6 +172,39 @@ function filtre($tableau, $champ)
                     x.removeChild(x.firstChild)
                 }
 
+                let e = document.getElementById('category')
+                // on boucle pour suprmier tous les enfant de index
+                while (e.firstChild) {
+                    e.removeChild(e.firstChild)
+                }
+                let a = document.getElementById('genre')
+                // on boucle pour suprmier tous les enfant de index
+                while (a.firstChild) {
+                    a.removeChild(a.firstChild)
+                }
+                let b = document.getElementById('auteur')
+                while (b.firstChild) {
+                    b.removeChild(b.firstChild)
+                }
+                let c = document.getElementById('collection')
+                while (c.firstChild) {
+                    c.removeChild(c.firstChild)
+                }
+                let d = document.getElementById('edition')
+                while (d.firstChild) {
+                    d.removeChild(d.firstChild)
+                }
+
+                const filtre1 = <?php echo json_encode($idCat); ?>;
+                const filtre2 = <?php echo json_encode($idGen); ?>;
+                const filtre3 = <?php echo json_encode($idAut); ?>;
+                const filtre4 = <?php echo json_encode($idCol); ?>;
+                const filtre5 = <?php echo json_encode($idEdit); ?>;
+                popCat("category", filtre1)
+                popFiltre("genre", filtre2)
+                popFiltre("auteur", filtre3)
+                popFiltre("collection", filtre4)
+                popFiltre("edition", filtre5)
                 pop(data)
                 //pop(data)
             })
@@ -247,12 +264,13 @@ function filtre($tableau, $champ)
 
     //==========================================================================================
     //filtre 1
-    document.getElementById('form0').addEventListener('change', (event) => {
+    document.getElementById('category').addEventListener('change', (event) => {
         event.preventDefault();
-
+        debugger
         let URL = "index.php?controller=article&task=filtre1"
-        let form = document.getElementById('form0')
-        let formData = new FormData(form)
+        let form = document.getElementById('category')
+        let formData = new FormData()
+        formData.append('idCat', form.value)
         //formData.append(id)
         fetch(URL, {
                 body: formData,
@@ -293,12 +311,14 @@ function filtre($tableau, $champ)
 
     //==========================================================================================
     //filtre 2
-    document.getElementById('form1').addEventListener('change', (event) => {
+    document.getElementById('genre').addEventListener('change', (event) => {
         event.preventDefault();
         debugger
         let URL = "index.php?controller=article&task=filtre1"
-        let form = document.getElementById('form1')
-        let formData = new FormData(form)
+        let form = document.getElementById('genre')
+        let formData = new FormData()
+        formData.append('idGen', form.value)
+
         //formData.append(id)
         fetch(URL, {
                 body: formData,
@@ -333,12 +353,14 @@ function filtre($tableau, $champ)
     })
     //==========================================================================================
     //filtre 3
-    document.getElementById('form2').addEventListener('change', (event) => {
+    document.getElementById('auteur').addEventListener('change', (event) => {
         event.preventDefault();
         debugger
         let URL = "index.php?controller=article&task=filtre1"
-        let form = document.getElementById('form2')
-        let formData = new FormData(form)
+        let form = document.getElementById('auteur')
+        let formData = new FormData()
+        formData.append('idAut', form.value)
+
         //formData.append(id)
         fetch(URL, {
                 body: formData,
@@ -366,12 +388,14 @@ function filtre($tableau, $champ)
     })
     //==========================================================================================
     //filtre 4
-    document.getElementById('form3').addEventListener('change', (event) => {
+    document.getElementById('collection').addEventListener('change', (event) => {
         event.preventDefault();
         debugger
         let URL = "index.php?controller=article&task=filtre1"
-        let form = document.getElementById('form3')
-        let formData = new FormData(form)
+        let form = document.getElementById('collection')
+        let formData = new FormData()
+        formData.append('idCol', form.value)
+
         //formData.append(id)
         fetch(URL, {
                 body: formData,

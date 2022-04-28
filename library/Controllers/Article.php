@@ -202,20 +202,20 @@ class Article extends Controller
     {
         $tableau = [];
         $endArray = [];
-        if (isset($_POST['category'])) {
-            $category = $_POST['category'];
+        if (isset($_POST['idCat'])) {
+            $category = $_POST['idCat'];
         }
-        if (isset($_POST['genre'])) {
-            $genre = $_POST['genre'];
+        if (isset($_POST['idGen'])) {
+            $genre = $_POST['idGen'];
         }
-        if (isset($_POST['auteur'])) {
-            $auteur = $_POST['auteur'];
+        if (isset($_POST['idAut'])) {
+            $auteur = $_POST['idAut'];
         }
-        if (isset($_POST['collection'])) {
-            $collection = $_POST['collection'];
+        if (isset($_POST['idCol'])) {
+            $collection = $_POST['idCol'];
         }
-        if (isset($_POST['edition'])) {
-            $edition = $_POST['edition'];
+        if (isset($_POST['idEdit'])) {
+            $edition = $_POST['idEdit'];
         }
         $endArray = compact("category", 'genre', 'auteur', 'collection', 'edition');
 

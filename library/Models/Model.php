@@ -273,61 +273,33 @@ abstract class Model
     {
         $requete = "SELECT articles.*, category.name FROM articles
         LEFT JOIN category ON articles.id_category = category.id_category WHERE ";
-        $end = end(end($tableau));
         extract($tableau);
 
 
-        if (isset($category)) {
-            foreach ($tableau['category'] as $a) {
-                if ($a !== $end) {
-                    $requete .= "category.name LIKE '$a' AND ";
-                } else {
-                    $requete .= "category.name LIKE '$end'";
-                }
-            }
-        }
-        if (isset($genre)) {
-            foreach ($tableau['genre'] as $a) {
-                if ($a !== $end) {
-                    $requete .= "articles.genre LIKE '$a' AND ";
-                } else {
-                    $requete .= "articles.genre LIKE '$end'";
-                }
-            }
-        }
-        if (isset($auteur)) {
-            foreach ($auteur as $a) {
-                if ($a !== $end) {
-                    $requete .= "articles.auteur LIKE '$a' AND ";
-                } else {
-                    $requete .= "articles.auteur LIKE '$end'";
-                }
-            }
-        }
-        if (isset($collection)) {
-            foreach ($collection as $a) {
-                if ($a !== $end) {
-                    $requete .= "articles.collection LIKE '$a' AND ";
-                } else {
-                    $requete .= "articles.collection LIKE '$end'";
-                }
-            }
-        }
-        if (isset($edition)) {
-            foreach ($edition as $a) {
-                if ($a !== $end) {
-                    $requete .= "articles.edition LIKE '$a' AND ";
-                } else {
-                    $requete .= "articles.edition LIKE '$end'";
-                }
-            }
-        }
-        if (empty($tableau)) {
-            $requete .= 1;
+        if ($category !== "0") {
+            $requete .= "category.id_category LIKE '$category' AND ";
         }
 
+        if ($genre !== "0") {
+            $requete .= "articles.genre LIKE '$genre' AND ";
+        }
 
-        $sql = $this->pdo->prepare($requete);
+        if ($auteur !== "0") {
+            $requete .= "articles.auteur LIKE '$auteur' AND ";
+        }
+
+        if ($collection !== "0") {
+            $requete .= "articles.collection LIKE '$collection' AND ";
+        }
+        if ($edition !== "0") {
+            $requete .= "articles.edition LIKE '$edition' AND ";
+        }
+        if ($category == "0" && $genre == "0" && $auteur == "0" && $collection == "0" && $edition == "0") {
+            $requete .= "1 AND";
+        }
+        $req = substr($requete, 0, -4);
+
+        $sql = $this->pdo->prepare($req);
         $sql->execute();
         $response = $sql->fetchAll();
 

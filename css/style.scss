@@ -385,49 +385,20 @@ main {
 
         #allFiltre {
             margin-top: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             height: auto;
 
             form {
+
                 select {
-                    color: $color9;
+                    background: $color-primary-0;
+                    border: $color2;
+                    color: $color1;
+                    border-radius: 5px;
+                    padding: 2px;
+                    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
                 }
             }
-
-            // .checbox {
-            //     button {
-            //         svg {
-            //             background: none;
-            //         }
-            //     }
-            // }
-
-            // .filtre {
-            //     visibility: hidden;
-            //     position: absolute;
-            //     top: 0;
-            //     left: 0;
-            //     transition: all 0.5s ease;
-            //     width: 0;
-            //     height: 0;
-            //     transform: scale(0);
-            //     opacity: 0;
-            //     display: flex;
-            //     align-items: center;
-            //     flex-direction: column;
-
-            //     &.active {
-            //         transform: scale(1);
-            //         opacity: 1;
-            //         height: auto;
-            //         width: 75%;
-            //         visibility: visible;
-            //         position: relative;
-
-            //     }
-            // }
-
-
 
         }
 
@@ -436,7 +407,7 @@ main {
             margin-right: 5%;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: space-around;
         }
 
         #popup {

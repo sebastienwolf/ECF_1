@@ -294,12 +294,18 @@ main #index {
 
 main #index #allFiltre {
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   height: auto;
 }
 
 main #index #allFiltre form select {
-  color: #000000;
+  background: #488FA0;
+  border: #c3cf15;
+  color: #F8F9F7;
+  border-radius: 5px;
+  padding: 2px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+          box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 main #index #allCards {
@@ -310,9 +316,8 @@ main #index #allCards {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 main #index #popup {
