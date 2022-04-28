@@ -3,6 +3,8 @@
 lien de mon site 	
 https://mouret.alwaysdata.net
 
+Le dossier "document_annexe" a tous les documents MCD, MLD, maquette, ...
+
 Sujet :
 Site Gestion d’une médiathèque.
 Compétences à évaluer :
