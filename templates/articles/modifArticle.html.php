@@ -1,4 +1,5 @@
 <section id="formulaire">
+    <h2>Modification d'article</h2>
 
     <form id="form" action="" method="POST">
 

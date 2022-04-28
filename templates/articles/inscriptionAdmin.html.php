@@ -1,6 +1,6 @@
 <section id="formulaire">
     <h2>
-        Inscription
+        Ajouter un utilisateur
     </h2>
 
     <form id="form" action="" method="post">

@@ -19,12 +19,9 @@ $rgba-primary-4: rgba(65, 77, 79, 1);
 $color1: #F8F9F7;
 $color2: #c3cf15;
 $color4: #2F2E2E;
-$color6: #d3e0d3;
 $color7: #8b8585;
 $color8: #ad2626;
 $color9: #000000;
-$white : #ffffff;
-
 
 @font-face {
     font-family: 'futura';
@@ -1043,7 +1040,7 @@ main {
         top: -500px;
         width: 0;
         height: 0;
-        background: white;
+        background: $color1;
         margin: 25%;
         transform: scale(0);
         opacity: 0;

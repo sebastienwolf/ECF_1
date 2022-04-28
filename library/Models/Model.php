@@ -171,10 +171,11 @@ abstract class Model
         $end = end(end($tableau));
         extract($tableau);
 
+
         if (isset($category)) {
             foreach ($tableau['category'] as $a) {
                 if ($a !== $end) {
-                    $requete .= "category.name LIKE '$a' OR ";
+                    $requete .= "category.name LIKE '$a' AND ";
                 } else {
                     $requete .= "category.name LIKE '$end'";
                 }
@@ -183,7 +184,7 @@ abstract class Model
         if (isset($genre)) {
             foreach ($tableau['genre'] as $a) {
                 if ($a !== $end) {
-                    $requete .= "articles.genre LIKE '$a' OR ";
+                    $requete .= "articles.genre LIKE '$a' AND ";
                 } else {
                     $requete .= "articles.genre LIKE '$end'";
                 }
@@ -192,7 +193,7 @@ abstract class Model
         if (isset($auteur)) {
             foreach ($auteur as $a) {
                 if ($a !== $end) {
-                    $requete .= "articles.auteur LIKE '$a' OR ";
+                    $requete .= "articles.auteur LIKE '$a' AND ";
                 } else {
                     $requete .= "articles.auteur LIKE '$end'";
                 }
@@ -201,7 +202,7 @@ abstract class Model
         if (isset($collection)) {
             foreach ($collection as $a) {
                 if ($a !== $end) {
-                    $requete .= "articles.collection LIKE '$a' OR ";
+                    $requete .= "articles.collection LIKE '$a' AND ";
                 } else {
                     $requete .= "articles.collection LIKE '$end'";
                 }
@@ -210,11 +211,14 @@ abstract class Model
         if (isset($edition)) {
             foreach ($edition as $a) {
                 if ($a !== $end) {
-                    $requete .= "articles.edition LIKE '$a' OR ";
+                    $requete .= "articles.edition LIKE '$a' AND ";
                 } else {
                     $requete .= "articles.edition LIKE '$end'";
                 }
             }
+        }
+        if (empty($tableau)) {
+            $requete .= 1;
         }
 
 

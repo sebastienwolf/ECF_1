@@ -1,5 +1,5 @@
 <section id="formulaire">
-
+    <h2>Modification de l'utilisateur</h2>
     <form id="form" action="" method="POST">
 
     </form>
