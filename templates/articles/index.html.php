@@ -150,7 +150,7 @@
                 console.log(data)
                 i = JSON.parse(data)
 
-                debugger
+
 
 
                 let x = document.getElementById('index')
@@ -272,7 +272,7 @@
                         const p5 = document.createElement('p');
                         const saut = document.createElement('br');
                         const lien = document.createElement('a');
-                        debugger
+
                         if (type == "image") {
                             image.src = fichier
                         } else {

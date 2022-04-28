@@ -59,7 +59,7 @@
 
             let form = document.getElementById('form')
             let formData = new FormData(form)
-            debugger
+
             fetch(URL, {
                     body: formData,
                     method: "post"

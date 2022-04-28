@@ -67,7 +67,7 @@
                 })
                 .then(function(data) {
                     console.log("test", data)
-                    debugger
+
                     let err = data;
 
 

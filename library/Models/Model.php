@@ -59,7 +59,7 @@ abstract class Model
         $requete = "SELECT category.name 
         FROM articles 
         LEFT JOIN category ON articles.id_category = category.id_category
-        group BY category.name";
+        group BY category.id_category";
 
         $sql = $this->pdo->prepare($requete);
         $sql->execute();

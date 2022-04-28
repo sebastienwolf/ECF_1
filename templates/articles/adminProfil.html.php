@@ -26,7 +26,7 @@
         //boucle pour crée autant de ligne tr que le nombre de ligne du tableau
         tableau.forEach(element => {
             //crée un l'élement tr
-            debugger
+
             for (const i in element) {
                 let div = document.createElement('div');
                 if (i !== "id_user") {
@@ -91,7 +91,7 @@
         if (confirm("Voulez vous faire ces changements ?")) {
             const form = document.getElementById('form')
             let URL = "index.php?controller=users&task=modifyAdmin"
-            debugger
+
             let formData = new FormData(form)
 
             fetch(URL, {
@@ -102,7 +102,7 @@
                     return response.json()
                 })
                 .then(function(data) {
-                    debugger
+
                     while (form.firstChild) {
                         form.removeChild(form.firstChild)
                     }

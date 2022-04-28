@@ -293,17 +293,30 @@ main #index {
 }
 
 main #index #allFiltre {
+  width: 75%;
   margin-top: 10px;
   margin-bottom: 20px;
   height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+main #index #allFiltre form {
+  width: 100%;
 }
 
 main #index #allFiltre form select {
+  width: 15%;
   background: #488FA0;
   border: #c3cf15;
   color: #F8F9F7;
   border-radius: 5px;
   padding: 2px;
+  height: auto;
   -webkit-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
           box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }

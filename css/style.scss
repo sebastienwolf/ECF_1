@@ -384,18 +384,27 @@ main {
         margin-bottom: 100px;
 
         #allFiltre {
+            width: 75%;
             margin-top: 10px;
             margin-bottom: 20px;
             height: auto;
+            display: flex;
+            justify-content: center;
 
             form {
 
+                width: 100%;
+
+
                 select {
+                    width: 15%;
                     background: $color-primary-0;
                     border: $color2;
                     color: $color1;
                     border-radius: 5px;
                     padding: 2px;
+                    height: auto;
+
                     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
                 }
             }

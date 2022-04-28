@@ -37,7 +37,7 @@
         tableau.forEach(element => {
 
             for (const i in element) {
-                debugger
+
                 let div = document.createElement('div');
 
                 if (i !== "id_article") {
@@ -158,7 +158,7 @@
                     return response.json()
                 })
                 .then(function(data) {
-                    debugger
+
                     while (form.firstChild) {
                         form.removeChild(form.firstChild)
                     }

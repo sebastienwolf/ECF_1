@@ -101,7 +101,7 @@
                         return response.text()
                     })
                     .then(function(data) {
-                        debugger
+
                         const x = document.getElementById(id);
 
                         x.remove()

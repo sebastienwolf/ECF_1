@@ -73,7 +73,7 @@
             }
 
             for (const i in element) {
-                debugger
+
 
                 //si autre que id_article alors on crée un td avec une valeur sinon un button avec valeur et data-id
                 // if (i !== "id_user" || i !== "prenom" || i !== "nom") {
@@ -121,7 +121,7 @@
                         return response.text()
                     })
                     .then(function(data) {
-                        debugger
+
                         const x = document.getElementById(id);
 
                         x.remove()

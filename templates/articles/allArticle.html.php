@@ -217,7 +217,7 @@ function filtre($tableau, $champ)
 
         let i = 1
         let vide = document.createElement('option');
-        vide.innerText = id
+        vide.innerText = "Categorie"
         vide.value = 0
         document.getElementById(id).appendChild(vide);
 
@@ -241,7 +241,8 @@ function filtre($tableau, $champ)
         let i = 0
         const tableau = Array.from(tab);
         let vide = document.createElement('option');
-        vide.innerText = id
+        let text = id[0].toUpperCase() + id.slice(1)
+        vide.innerText = text
         vide.value = 0
         document.getElementById(id).appendChild(vide);
 
@@ -259,7 +260,7 @@ function filtre($tableau, $champ)
     //filtre 1
     document.getElementById('category').addEventListener('change', (event) => {
         event.preventDefault();
-        debugger
+
         let URL = "index.php?controller=article&task=filtre1"
         let form = document.getElementById('category')
         let formData = new FormData()
@@ -306,7 +307,7 @@ function filtre($tableau, $champ)
     //filtre 2
     document.getElementById('genre').addEventListener('change', (event) => {
         event.preventDefault();
-        debugger
+
         let URL = "index.php?controller=article&task=filtre1"
         let form = document.getElementById('genre')
         let formData = new FormData()
@@ -348,7 +349,7 @@ function filtre($tableau, $champ)
     //filtre 3
     document.getElementById('auteur').addEventListener('change', (event) => {
         event.preventDefault();
-        debugger
+
         let URL = "index.php?controller=article&task=filtre1"
         let form = document.getElementById('auteur')
         let formData = new FormData()
@@ -383,7 +384,7 @@ function filtre($tableau, $champ)
     //filtre 4
     document.getElementById('collection').addEventListener('change', (event) => {
         event.preventDefault();
-        debugger
+
         let URL = "index.php?controller=article&task=filtre1"
         let form = document.getElementById('collection')
         let formData = new FormData()
