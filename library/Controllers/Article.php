@@ -311,7 +311,11 @@ class Article extends Controller
         //modification de la colone back de emprunt pour changer son status
         $this->model->udaptePret($id);
         //modification de la colonne emprunt de articles pour le remettre disponible  
-        $this->model->udapte("emprunt = 0", "id_article = $id");
+        $column = "emprunt";
+        $value = 0;
+        $condition = "id_article";
+
+        $this->model->udapte($column, $value, $condition, $id);
         echo json_encode($id);
     }
     // ===================================================================================================
@@ -323,10 +327,11 @@ class Article extends Controller
         $this->checkUser();
         $id = filter_input(INPUT_POST, "id");
         $bool = filter_input(INPUT_POST, "bool");
-        $item = "emprunt = $bool";
-        $condition = "id_article = {$id}";
+        $colomn = "emprunt";
+        $value = $bool;
+        $condition = "id_article";
         //enlève l'article du stock change la colonne emprunt de article
-        $this->model->udapte($item, $condition);
+        $this->model->udapte($colomn, $value, $condition, $id);
         //ajoute la date du jour de la reservation dans articles
         $this->udapteDate($id);
         //crée les dates pour la table emprunt
@@ -335,7 +340,7 @@ class Article extends Controller
         $data = compact('idUser', 'id', 'date');
         //crée les dates dans emprunts
         $this->model->createPret($data);
-        if ($bool == true) {
+        if ($bool !== true) {
             echo json_encode('Vous avez rendu l\'article');
         } else {
             echo json_encode('Vous avez réservé l\'article');
@@ -364,9 +369,13 @@ class Article extends Controller
         $this->checkUser();
         //fait la modification des date dans articles pour l'emprunt sur la table article
         $date = $this->date();
-        $item = "date_emprunt = '{$date['dateNow']}', dateRetour = '{$date['dateEnd']}'";
-        $condition = "id_article = '{$idArticle}'";
-        $this->model->udapte($item, $condition);
+        $colomn = "date_emprunt";
+        $value = $date['dateNow'];
+        $colomnDeux = "dateRetour";
+        $valueDeux = $date['dateEnd'];
+        $condition = "id_article";
+        $id = $idArticle;
+        $this->model->udapteDate($colomn, $value, $colomnDeux, $valueDeux, $condition, $id);
     }
 
     // ===================================================================================================
@@ -708,15 +717,5 @@ class Article extends Controller
         }
 
         echo json_encode($response);
-    }
-
-    public function checkAdmin()
-    {
-        if ($_SESSION['userType'] !== "admin") {
-            header('Location: index.php?controller=article&task=index');
-            die;
-        } else {
-            return true;
-        }
     }
 }

@@ -15,7 +15,7 @@ class Article extends Model
     {
         extract($data);
         $default = "DEFAULT";
-        
+
         $sql = $this->pdo->prepare("INSERT INTO $this->table 
         (id_article, titre, auteur, genre, collection, edition, id_category, file, emprunt, description) 
         VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?)");
@@ -48,6 +48,14 @@ class Article extends Model
 
         $response = $sql->fetchAll();
         // $test = $sql->errorInfo();
+        return $response;
+    }
+
+    public function udapteDate($colomn, $value, $colomnDeux, $valueDeux, $condition, $id)
+    {
+        $requete = "UPDATE $this->table SET $colomn = ? , $colomnDeux = ? WHERE $condition = ?";
+        $sql = $this->pdo->prepare($requete);
+        $response = $sql->execute([$value, $valueDeux, $id]);
         return $response;
     }
 }

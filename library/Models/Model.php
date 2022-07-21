@@ -214,6 +214,10 @@ abstract class Model
     // ===================================================================================================
     public function udapte($column, $value, $condition, $id)
     {
+        if ($value == "true" || $value == "false") {
+            $value = boolval($value);
+        }
+
         $requete = "UPDATE $this->table SET $column = ? WHERE $condition = ?";
         $sql = $this->pdo->prepare($requete);
         $response = $sql->execute([$value, $id]);

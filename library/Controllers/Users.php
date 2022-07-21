@@ -179,70 +179,84 @@ class Users extends Controller
         //=======================================
         //Nom
         if ($userNom !== "") {
-            $item = "nom = '{$userNom}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "nom";
+            $value = $userNom;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
             $_SESSION['nom'] = $userNom;
         }
         //=======================================
         //Prenom
         if ($userPrenom !== "") {
-            $item = "prenom = '{$userPrenom}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "prenom";
+            $value = $userPrenom;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
             $_SESSION['prenom'] = $userPrenom;
         }
         //=======================================
         //Mail
         if ($userMail !== "") {
-            $item = "mail = '{$userMail}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "mail";
+            $value = $userMail;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
             $_SESSION['mail'] = $userMail;
         }
         //=======================================
         // Adresse
         if ($userAdress !== "") {
-            $item = "adress = '{$userAdress}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "adress";
+            $value = $userAdress;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
             $_SESSION['adress'] = $userAdress;
         }
 
         //=======================================
         // Ville
         if ($userVille !== "") {
-            $item = "city = '{$userVille}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $colomn = "city";
+            $value = $userVille;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($colomn, $value, $condition, $id);
             $_SESSION['ville'] = $userVille;
         }
         //=======================================
         // CP
         if ($userCp !== "") {
-            $item = "cp = '{$userCp}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $colomn = "cp";
+            $value = $userCp;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($colomn, $value, $condition, $id);
             $_SESSION['cp'] = $userCp;
         }
         //=======================================
         // mot de passe
         if ($userPassword !== "") {
             $option = ['cost' => 12,];
-            $hash = password_hash($userPassword, PASSWORD_BCRYPT, $option);
-
-            $item = "pwd = '{$hash}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $value = password_hash($userPassword, PASSWORD_BCRYPT, $option);
+            $colomn = "pwd";
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($colomn, $value, $condition, $id);
         }
         //=======================================
         //=======================================
         // userType
         if ($userType !== "") {
             if ($userType !== $_SESSION['userType']) {
-                $item = "type = '{$userType}'";
-                $condition = "id_user = '{$idUsers}'";
-                $this->model->udapte($item, $condition);
+                $colomn = "type";
+                $value = $userType;
+                $condition = "id_user";
+                $id = $idUsers;
+                $this->model->udapte($colomn, $value, $condition, $id);
                 $_SESSION['userType'] = $userType;
             }
         }
@@ -273,45 +287,57 @@ class Users extends Controller
         //=======================================
         //Nom
         if ($userNom !== "") {
-            $item = "nom = '{$userNom}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "nom";
+            $value = $userNom;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         //Prenom
         if ($userPrenom !== "") {
-            $item = "prenom = '{$userPrenom}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "prenom";
+            $value = $userPrenom;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         //Mail
         if ($userMail !== "") {
-            $item = "mail = '{$userMail}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "mail";
+            $value = $userMail;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         // Adresse
         if ($userAdress !== "") {
-            $item = "adress = '{$userAdress}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "adress";
+            $value = $userAdress;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
 
         //=======================================
         // Ville
         if ($userVille !== "") {
-            $item = "city = '{$userVille}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "city";
+            $value = $userVille;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         // CP
         if ($userCp !== "") {
-            $item = "cp = '{$userCp}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "cp";
+            $value = $userCp;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         // mot de passe
@@ -319,18 +345,22 @@ class Users extends Controller
             $option = ['cost' => 12,];
             $hash = password_hash($userPassword, PASSWORD_BCRYPT, $option);
 
-            $item = "pwd = '{$hash}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "pwd";
+            $value = $hash;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //=======================================
         //=======================================
         // userType
         if ($userType !== "") {
 
-            $item = "type = '{$userType}'";
-            $condition = "id_user = '{$idUsers}'";
-            $this->model->udapte($item, $condition);
+            $column = "type";
+            $value = $userType;
+            $condition = "id_user";
+            $id = $idUsers;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         $utilisateur = $this->model->showAll("id_user = $idUsers");
         echo json_encode($utilisateur);
