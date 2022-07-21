@@ -396,7 +396,7 @@ class Article extends Controller
         $fichierDelete = htmlspecialchars(filter_input(INPUT_POST, 'del'));
         //============================================================
         // titre
-        if ($titre !== "") {
+        if ($titre) {
             $column = "titre";
             $value = $titre;
             $condition = "id_article";
@@ -405,48 +405,60 @@ class Article extends Controller
         }
         //============================================================
         // auteur
-        if ($aut !== "") {
-            $item = "auteur = '{$aut}'";
-            $condition = "id_article = '{$idArticle}'";
-            $this->model->udapte($item, $condition);
+        if ($aut) {
+            $column = "auteur";
+            $value = $aut;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //============================================================
         // genre
-        if ($gen !== "") {
-            $item = "genre = '{$gen}'";
-            $condition = "id_article = '{$idArticle}'";
-            $this->model->udapte($item, $condition);
+        if ($gen) {
+            $column = "genre";
+            $value = $gen;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
         }
 
         //============================================================
         // categori
         if ($categorie > 0) {
-            $item = "id_category = {$categorie}";
-            $condition = "id_article = {$idArticle}";
-            $this->model->udapte($item, $condition);
+            $column = "id_category";
+            $value = $categorie;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
             $this->udapteDate($idArticle);
         }
 
         //============================================================
         // desription
         if ($desc !== "") {
-            $item = "description = '{$desc}'";
-            $condition = "id_article = '{$idArticle}'";
-            $this->model->udapte($item, $condition);
+            $column = "description";
+            $value = $desc;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //============================================================
         // edition
         if ($edit !== "") {
-            $item = "edition = '{$edit}'";
-            $condition = "id_article = '{$idArticle}'";
-            $this->model->udapte($item, $condition);
+            $column = "edition";
+            $value = $edit;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //============================================================
         // collection
         if ($coll !== "") {
-            $item = "collection = '{$coll}'";
-            $condition = "id_article = '{$idArticle}'";
-            $this->model->udapte($item, $condition);
+            $column = "collection";
+            $value = $coll;
+            $condition = "id_article";
+            $id = $idArticle;
+            $this->model->udapte($column, $value, $condition, $id);
         }
         //============================================================
         // fichier et type
@@ -485,9 +497,11 @@ class Article extends Controller
                         $b = compact('typeAdd', 'titreAdd', 'description', 'fileName', 'categorie', 'idUser');
                         //========================================================
                         // changemeent du fichier
-                        $item = "file = '{$fileName}'";
-                        $condition = "id_article = '{$idArticle}'";
-                        $this->model->udapte($item, $condition);
+                        $column = "file";
+                        $value = $fileName;
+                        $condition = "id_article";
+                        $id = $idArticle;
+                        $this->model->udapte($column, $value, $condition, $id);
 
                         // move_uploaded_file = deplace le fichier la ou on le décide
                         move_uploaded_file($contenu, './upload/' . $fileName);

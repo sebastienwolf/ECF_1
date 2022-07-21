@@ -55,7 +55,7 @@
     document.getElementById('form').addEventListener('submit', event => {
         event.preventDefault()
         if (confirm("Voulez vous créer cette article ?")) {
-            let URL = "index.php?controller=article&task=add";
+            let URL = "index.php?controller=article&task=addArticle";
 
             let form = document.getElementById('form')
             let formData = new FormData(form)

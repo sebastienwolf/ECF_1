@@ -131,7 +131,7 @@ if (!isset($_SESSION)) {
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="index.php?controller=users&task=adminUsers">Utilisateurs</a></li>
-                                <li><a class="dropdown-item" href=" index.php?controller=article&task=addArticle">Ajout d'un article</a></li>
+                                <li><a class="dropdown-item" href=" index.php?controller=article&task=addArticles">Ajout d'un article</a></li>
                                 <li><a class="dropdown-item" href="index.php?controller=article&task=adminEmprunts">Emprunts</a></li>
                                 <li><a class="dropdown-item" href="index.php?controller=article&task=adminPersonalisation">Personnaliser</a></li>
                                 <li><a class="tata dropdown-item" href=" index.php?controller=page&task=adminSauvegarde">Sauvegarde</a></li>
