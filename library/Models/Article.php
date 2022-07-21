@@ -15,9 +15,10 @@ class Article extends Model
     {
         extract($data);
         $default = "DEFAULT";
-
-
-        $sql = $this->pdo->prepare("INSERT INTO $this->table (id_article, titre, auteur, genre, collection, edition, id_category, file, emprunt, description) VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?)");
+        
+        $sql = $this->pdo->prepare("INSERT INTO $this->table 
+        (id_article, titre, auteur, genre, collection, edition, id_category, file, emprunt, description) 
+        VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?)");
 
         $sql->execute(array($titre, $aut, $gen, $coll, $edit, $categorie, $fileName, $desc,));
     }

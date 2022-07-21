@@ -12,12 +12,10 @@ class Page extends Controller
     // ===================================================================================================
     public function adminSauvegarde()
     {
-        if (($_SESSION['userType'] !== "admin")) {
-            header('Location: index.php?controller=article&task=index');
-        } else {
-            $pageTitle = 'Admin sauvegarde';
-            \Renderer::render('articles/adminSauvegarde', compact('pageTitle'));
-        }
+        $this->checkAdmin();
+
+        $pageTitle = 'Admin sauvegarde';
+        \Renderer::render('articles/adminSauvegarde', compact('pageTitle'));
     }
     // ===================================================================================================
     // ===============================        connexion    ===============================================
@@ -43,6 +41,7 @@ class Page extends Controller
 
     public function inscriptionAdmin()
     {
+        $this->checkAdmin();
         $pageTitle = 'inscription Administrateur';
         \Renderer::render('articles/inscriptionAdmin', compact('pageTitle'));
     }
@@ -52,25 +51,20 @@ class Page extends Controller
     // ===================================================================================================
     public function adminInscription()
     {
-        if (($_SESSION['userType'] !== "admin")) {
-            header('Location: index.php?controller=article&task=index');
-        } else {
-            $pageTitle = 'Admin inscription';
-            \Renderer::render('articles/adminInscription', compact('pageTitle'));
-        }
+        $this->checkAdmin();
+
+        $pageTitle = 'Admin inscription';
+        \Renderer::render('articles/adminInscription', compact('pageTitle'));
     }
     // ===================================================================================================
     // ===============================        addArticle    =============================================
     // ===================================================================================================
     public function addArticle()
     {
-        if (!isset($_SESSION['userType'])) {
-            header('Location: index.php?controller=article&task=index');
-        } else {
-            //appelle les categories
-            $themes = $this->model->showAll("categorie");
-            $pageTitle = 'profil';
-            \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
-        }
+        $this->checkUser();
+        //appelle les categories
+        $themes = $this->model->showAll("categorie");
+        $pageTitle = 'profil';
+        \Renderer::render('articles/addArticle', compact('pageTitle', 'themes'));
     }
 }

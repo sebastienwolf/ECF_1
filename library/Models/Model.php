@@ -87,7 +87,7 @@ abstract class Model
             $requete .= "edition ";
         }
         //====================================
-        $requete .= "FROM articles 
+        $requete .= "FROM articles  
         group BY ";
         //===================================
         if ($table == "genre") {
@@ -104,7 +104,7 @@ abstract class Model
         }
 
         $sql = $this->pdo->prepare($requete);
-        $sql->execute([$condition]);
+        $sql->execute();
         $response = $sql->fetchAll();
         return $response;
     }
@@ -212,12 +212,11 @@ abstract class Model
     // ===================================================================================================
     // ===============================        udapte   ===================================
     // ===================================================================================================
-    public function udapte($item, $id)
+    public function udapte($column, $value, $condition, $id)
     {
-        $requete = "UPDATE $this->table SET " . $item . " WHERE " . $id;
+        $requete = "UPDATE $this->table SET $column = ? WHERE $condition = ?";
         $sql = $this->pdo->prepare($requete);
-        $response = $sql->execute();
-
+        $response = $sql->execute([$value, $id]);
         return $response;
     }
     // ===================================================================================================
@@ -310,11 +309,11 @@ abstract class Model
     // ===================================================================================================
     // ===============================        delete   ===================================
     // ===================================================================================================
-    public function delete($condition)
+    public function delete($condition, $id)
     {
-        $requete = "DELETE FROM $this->table WHERE $condition";
+        $requete = "DELETE FROM $this->table WHERE $condition = ?";
         $sql = $this->pdo->prepare("$requete");
-        $sql->execute();
+        $sql->execute([$id]);
     }
     // ===================================================================================================
     // ===============================         persoAdmin   ===================================
